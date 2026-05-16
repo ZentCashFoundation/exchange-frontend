@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markets</title>
+  <link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/"><img alt="Exchange" loading="lazy" src="assets/img/exchange.png" height="48"> <span class="logo-text">Markets</span></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<div class="navbar-nav">
+				<a class="nav-item" href="./">Home</a>
+				<a class="nav-item" href="markets.html">Markets</a>
+				<a class="nav-item" href="trade.html">Trade</a>
+			</div>
+       		<button class="register-login-btn" onclick="window.location.href='auth.html'" style="display: initial;">Register / Login</button>
+       		<button class="close-session-btn" onclick="closeSession()" style="display: none;">Close Session</button>
+		</div>
+	</div>
+</nav>
+
+<section class="footer">
+	<div class="footer-copyright">		     
+		<p>Copyright © <span id="currentyear">2026</span> Exchange. All rights reserved.</p>
+	</div>
+</section>
+
+<script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/api.js"></script>   
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
