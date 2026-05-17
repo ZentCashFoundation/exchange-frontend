@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async() => {
     const closesessionbtn = document.querySelector('.close-session-btn');
     const authuser = document.querySelector('.auth-container');
     
-    if (!token) {;
+    if (!token) {
         registerloginbtn.style.display = "initial";
 		closesessionbtn.style.display = "none";
     } else {

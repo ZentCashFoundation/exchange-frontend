@@ -24,23 +24,67 @@
 		</div>
 	</div>
 </nav>
+<div class="section-place-order">
+	<h2>Place Order</h2>
+	<div class="section-order-buy">
+		<input type="text" class="form-control" id="order-buy-amount" placeholder="Amount">
+		<input type="text" class="form-control" id="order-buy-price" placeholder="Price">
+		<input type="text" class="form-control" id="order-buy-fee" placeholder="Fee" disabled>
+		<input type="text" class="form-control" id="order-buy-total" placeholder="Total" disabled>
+		<button class="btn btn-success" onclick="buyOrderLimit()" id="order-buy-button">Buy Limit</button>
+		<button class="btn btn-success" onclick="buyOrderMarket()" id="order-buy-market-button">Buy Market</button>
+	</div>
 
-<div class="section-order-buy">
-	<input type="text" class="form-control" id="order-buy-price" placeholder="Price">
-	<input type="text" class="form-control" id="order-buy-amount" placeholder="Amount">
-	<input type="text" class="form-control" id="order-buy-fee" placeholder="Fee" disabled>
-	<input type="text" class="form-control" id="order-buy-total" placeholder="Total" disabled>
-	<button class="btn btn-success" onclick="buyOrderLimit()" id="order-buy-button">Buy Limit</button>
-	<button class="btn btn-success" onclick="buyOrderMarket()" id="order-buy-market-button">Buy Market</button>
+	<div class="section-order-sell">
+		<input type="text" class="form-control" id="order-sell-amount" placeholder="Amount">
+		<input type="text" class="form-control" id="order-sell-price" placeholder="Price">
+		<input type="text" class="form-control" id="order-sell-fee" placeholder="Fee" disabled>
+		<input type="text" class="form-control" id="order-sell-total" placeholder="Total" disabled>
+		<button class="btn btn-danger" onclick="sellOrderLimit()" id="order-sell-button">Sell Limit</button>
+		<button class="btn btn-danger" onclick="sellOrderMarket()" id="order-sell-market-button">Sell Market</button>
+	</div>
+</div>	
+
+<div class="section-open-trade">
+	<h2>Open Trades</h2>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Trade ID</th>
+					<th scope="col">Side</th>
+					<th scope="col">Type</th>
+					<th scope="col">Price</th>
+					<th scope="col">Amount</th>
+					<th scope="col">Filled</th>
+					<th scope="col">Status</th>
+					<th scope="col">Time</th>
+				</tr>
+			</thead>
+			<tbody id="open-trade-table-body"></tbody>
+		</table>
+	</div>
 </div>
 
-<div class="section-order-sell">
-	<input type="text" class="form-control" id="order-sell-price" placeholder="Price">
-	<input type="text" class="form-control" id="order-sell-amount" placeholder="Amount">
-	<input type="text" class="form-control" id="order-sell-fee" placeholder="Fee" disabled>
-	<input type="text" class="form-control" id="order-sell-total" placeholder="Total" disabled>
-	<button class="btn btn-danger" onclick="sellOrderLimit()" id="order-sell-button">Sell Limit</button>
-	<button class="btn btn-danger" onclick="sellOrderMarket()" id="order-sell-market-button">Sell Market</button>
+<div class="section-trade-history">
+	<h2>Trade History</h2>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Trade ID</th>
+					<th scope="col">Side</th>
+					<th scope="col">Type</th>
+					<th scope="col">Price</th>
+					<th scope="col">Amount</th>
+					<th scope="col">Filled</th>
+					<th scope="col">Status</th>
+					<th scope="col">Time</th>
+				</tr>
+			</thead>
+			<tbody id="my-trade-history-table-body"></tbody>
+		</table>
+	</div>
 </div>
 
 <div class="section-orderbook">

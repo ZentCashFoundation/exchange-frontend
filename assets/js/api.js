@@ -1,7 +1,7 @@
 // =======================
 // Configuración de API
 // =======================
-const API = "http://192.168.1.45:3001/api";
+const API = "https://superblockchain.zapto.org/example-api";
 var token = localStorage.getItem("token") || null;
 let gameSessionId = null;
 
@@ -81,12 +81,65 @@ async function orderSend(pair, side, type, price, amount) {
 }
 
 // =======================
+// Funcion de consulta de ordenes
+// =======================
+async function orderGet(pair, status, limit) {
+
+    let url = API + "/exchange/order?pair=" + pair;
+
+    if (status !== null && status !== undefined) {
+        url += "&status=" + status;
+    }
+
+    if (limit) {
+        url += "&limit=" + limit;
+    }
+
+    const res = await fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const data = await res.json();
+
+    if (data.error) {
+        alert(data.error);
+        return null;
+    }
+
+    return data.result;
+}
+
+/* =======================
+   Funcion de cancelación de orden
+   =======================
+*/
+async function orderCancel(orderId) {
+    const res = await fetch(API + "/exchange/order/" + orderId, {
+        method: "DELETE",
+        headers: { 
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const data = await res.json();
+    if (data.error) {
+      	alert(data.error);
+       	return;
+    }
+
+    //alert("Order canceled");
+}
+
+// =======================
 // Funcion de libro de órdenes.
 // =======================
 async function orderbook(pair) {
-
     try {
-
         const res = await fetch(
             API + "/exchange/market/orderbook?pair=" + pair,
             {
@@ -100,67 +153,56 @@ async function orderbook(pair) {
         const data = await res.json();
 
         const tbodyask = document.getElementById("orderbook-ask-table-body");
+        const tbodybid = document.getElementById("orderbook-bid-table-body");
+
+        // ASK
         tbodyask.innerHTML = "";
 
-        
         if (!data.asks || data.asks.length === 0) {
-
             tbodyask.innerHTML = `
                 <tr>
-                    <td colspan="3" style="text-align:center">
-                        There is no data.
+                    <td colspan="2" style="text-align:center">
+                        There are no asks
                     </td>
                 </tr>
             `;
+        } else {
+            [...data.asks].reverse().forEach(item => {
+                const tr = document.createElement("tr");
 
-            return;
+                tr.innerHTML = `
+                    <td>${item[0]}</td>
+                    <td>${item[1]}</td>
+                `;
+
+                tbodyask.appendChild(tr);
+            });
         }
 
-        data.asks.reverse().forEach((item) => {
-
-            const tr = document.createElement("tr");
-
-            // Precio
-            const tdPrice = document.createElement("td");
-            tdPrice.textContent = item[0];
-            tr.appendChild(tdPrice);
-
-            // Cantidad
-            const tdAmount = document.createElement("td");
-            tdAmount.textContent = item[1];
-            tr.appendChild(tdAmount);
-
-            tbodyask.appendChild(tr);
-
-        });
-
-        const tbodybid = document.getElementById("orderbook-bid-table-body");
+        // BID
         tbodybid.innerHTML = "";
 
         if (!data.bids || data.bids.length === 0) {
             tbodybid.innerHTML = `
                 <tr>
-                    <td colspan="3" style="text-align:center">
-                        There is no data.
+                    <td colspan="2" style="text-align:center">
+                        There are no bids
                     </td>
                 </tr>
             `;
-            return;
+        } else {
+            data.bids.forEach(item => {
+                const tr = document.createElement("tr");
+
+                tr.innerHTML = `
+                    <td>${item[0]}</td>
+                    <td>${item[1]}</td>
+                `;
+
+                tbodybid.appendChild(tr);
+            });
         }
-        data.bids.forEach((item) => {
 
-            const tr = document.createElement("tr");
-            // Precio
-            const tdPrice = document.createElement("td");
-            tdPrice.textContent = item[0];
-            tr.appendChild(tdPrice);
-            // Cantidad
-            const tdAmount = document.createElement("td");
-            tdAmount.textContent = item[1];
-            tr.appendChild(tdAmount);
-            tbodybid.appendChild(tr);
-
-        });
     } catch (err) {
         console.error("Error retrieving orderbook:", err);
     }

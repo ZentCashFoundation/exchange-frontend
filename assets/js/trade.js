@@ -38,6 +38,71 @@ function sellOrderMarket() {
 	orderSend(pair, "sell", "market", null, ordersellamount.value);
 }
 
+async function historicalTrades() {
+    const data = await orderGet(pair, null, 100);
+
+    if (!data) return;
+
+    const tableBody = document.getElementById("my-trade-history-table-body");
+    tableBody.innerHTML = "";
+
+    data.forEach(trade => {
+        const row = document.createElement("tr");
+
+        if (trade.price === null) {
+            trade.price = "Market Price";
+        }
+
+        row.innerHTML = `
+            <td style="text-transform: capitalize">${trade.id}</td>
+            <td style="text-transform: capitalize">${trade.side}</td>
+            <td style="text-transform: capitalize">${trade.type}</td>
+            <td style="text-transform: capitalize">${trade.price}</td>
+            <td style="text-transform: capitalize">${trade.amount}</td>
+            <td style="text-transform: capitalize">${trade.filled}</td>
+            <td style="text-transform: capitalize">${trade.status}</td>
+            <td style="text-transform: capitalize">${trade.created_at}</td>
+        `;
+
+        tableBody.appendChild(row);
+    });
+    
+}
+
+async function openTrades() {
+    const openData = await orderGet(pair, "open", 100);
+    const partialData = await orderGet(pair, "partial", 100);
+    const data = [...openData, ...partialData];
+
+    if (!data) return;
+
+    const tableBody = document.getElementById("open-trade-table-body");
+    tableBody.innerHTML = "";
+
+    data.forEach(trade => {
+        const row = document.createElement("tr");
+
+        if (trade.price === null) {
+            trade.price = "Market Price";
+        }
+
+        row.innerHTML = `
+            <td style="text-transform: capitalize">${trade.id}</td>
+            <td style="text-transform: capitalize">${trade.side}</td>
+            <td style="text-transform: capitalize">${trade.type}</td>
+            <td style="text-transform: capitalize">${trade.price}</td>
+            <td style="text-transform: capitalize">${trade.amount}</td>
+            <td style="text-transform: capitalize">${trade.filled}</td>
+            <td style="text-transform: capitalize">${trade.status}</td>
+            <td style="text-transform: capitalize">${trade.created_at}</td>
+            <td><button class="btn btn-sm btn-danger" onclick="orderCancel('${trade.id}')">Cancel</button></td>
+        `;
+
+        tableBody.appendChild(row);
+    });
+    
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 	orderbuyprice.addEventListener("input", updateTotals);
 	orderbuyamount.addEventListener("input", updateTotals);
@@ -46,10 +111,18 @@ document.addEventListener("DOMContentLoaded", () => {
     trades(pair);
     orderbook(pair);
     updateTotals();
+    if (token) {
+        openTrades();
+        historicalTrades();
+    }
 });
 
 setInterval(() => {
     trades(pair);
     orderbook(pair);
     updateTotals();
+    if (token) {
+        openTrades();
+        historicalTrades();
+    }
 }, 5000);
