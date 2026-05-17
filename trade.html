@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Markets</title>
+  <title>Trade</title>
   <link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/"><img alt="Exchange" loading="lazy" src="assets/img/exchange.png" height="48"> <span class="logo-text">Markets</span></a>
+		<a class="navbar-brand" href="/"><img loading="lazy" src="assets/img/exchange.png" height="48"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<div class="navbar-nav">
@@ -25,6 +25,67 @@
 	</div>
 </nav>
 
+<div class="section-order-buy">
+	<input type="text" class="form-control" id="order-buy-price" placeholder="Price">
+	<input type="text" class="form-control" id="order-buy-amount" placeholder="Amount">
+	<input type="text" class="form-control" id="order-buy-fee" placeholder="Fee" disabled>
+	<input type="text" class="form-control" id="order-buy-total" placeholder="Total" disabled>
+	<button class="btn btn-success" onclick="buyOrderLimit()" id="order-buy-button">Buy Limit</button>
+	<button class="btn btn-success" onclick="buyOrderMarket()" id="order-buy-market-button">Buy Market</button>
+</div>
+
+<div class="section-order-sell">
+	<input type="text" class="form-control" id="order-sell-price" placeholder="Price">
+	<input type="text" class="form-control" id="order-sell-amount" placeholder="Amount">
+	<input type="text" class="form-control" id="order-sell-fee" placeholder="Fee" disabled>
+	<input type="text" class="form-control" id="order-sell-total" placeholder="Total" disabled>
+	<button class="btn btn-danger" onclick="sellOrderLimit()" id="order-sell-button">Sell Limit</button>
+	<button class="btn btn-danger" onclick="sellOrderMarket()" id="order-sell-market-button">Sell Market</button>
+</div>
+
+<div class="section-orderbook">
+	<h2>Order Book</h2>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Price</th>
+					<th scope="col">Amount</th>
+				</tr>
+			</thead>
+			<tbody id="orderbook-ask-table-body"></tbody>
+		</table>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Price</th>
+					<th scope="col">Amount </th>
+				</tr>
+			</thead>
+			<tbody id="orderbook-bid-table-body"></tbody>
+		</table>
+	</div>
+</div>
+
+<div class="section-alltrades">
+	<h2>All Trades</h2>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Price</th>
+					<th scope="col">Amount</th>
+					<th scope="col">Time</th>
+				</tr>
+			</thead>
+			<tbody id="trades-table-body"></tbody>
+		</table>
+	</div>
+</div>
+
+
 <section class="footer">
 	<div class="footer-copyright">		     
 		<p>Copyright © <span id="currentyear">2026</span> Exchange. All rights reserved.</p>
@@ -32,8 +93,11 @@
 </section>
 
 <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/api.js"></script>   
 <script src="assets/js/main.js"></script>
+<script src="assets/js/trade.js"></script>
+<script src="assets/js/api.js"></script>
+
+
 
 </body>
 </html>
