@@ -38,12 +38,12 @@ function sellOrderMarket() {
 	orderSend(pair, "sell", "market", null, ordersellamount.value);
 }
 
-async function historicalTrades() {
+async function historicalOrders() {
     const data = await orderGet(pair, null, 100);
 
     if (!data) return;
 
-    const tableBody = document.getElementById("my-trade-history-table-body");
+    const tableBody = document.getElementById("my-orders-history-table-body");
     tableBody.innerHTML = "";
 
     data.forEach(trade => {
@@ -61,7 +61,7 @@ async function historicalTrades() {
             <td style="text-transform: capitalize">${trade.amount}</td>
             <td style="text-transform: capitalize">${trade.filled}</td>
             <td style="text-transform: capitalize">${trade.status}</td>
-            <td style="text-transform: capitalize">${trade.created_at}</td>
+            <td style="text-transform: capitalize">${new Date(trade.created_at).toLocaleString()}</td>
         `;
 
         tableBody.appendChild(row);
@@ -69,14 +69,14 @@ async function historicalTrades() {
     
 }
 
-async function openTrades() {
+async function openOrders() {
     const openData = await orderGet(pair, "open", 100);
     const partialData = await orderGet(pair, "partial", 100);
     const data = [...openData, ...partialData];
 
     if (!data) return;
 
-    const tableBody = document.getElementById("open-trade-table-body");
+    const tableBody = document.getElementById("open-orders-table-body");
     tableBody.innerHTML = "";
 
     data.forEach(trade => {
@@ -94,13 +94,12 @@ async function openTrades() {
             <td style="text-transform: capitalize">${trade.amount}</td>
             <td style="text-transform: capitalize">${trade.filled}</td>
             <td style="text-transform: capitalize">${trade.status}</td>
-            <td style="text-transform: capitalize">${trade.created_at}</td>
+            <td style="text-transform: capitalize">${new Date(trade.created_at).toLocaleString()}</td>
             <td><button class="btn btn-sm btn-danger" onclick="orderCancel('${trade.id}')">Cancel</button></td>
         `;
 
         tableBody.appendChild(row);
-    });
-    
+    });  
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -112,8 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
     orderbook(pair);
     updateTotals();
     if (token) {
-        openTrades();
-        historicalTrades();
+        openOrders();
+        historicalOrders();
+        myTrades();
     }
 });
 
@@ -122,7 +122,8 @@ setInterval(() => {
     orderbook(pair);
     updateTotals();
     if (token) {
-        openTrades();
-        historicalTrades();
+        openOrders();
+        historicalOrders();
+        myTrades(pair);
     }
 }, 5000);

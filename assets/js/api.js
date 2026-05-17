@@ -52,9 +52,9 @@ async function login() {
     location.href = "./";
 }
 
-// =======================
+// ==========================
 // Funcion de envío de orden
-// =======================
+// ==========================
 async function orderSend(pair, side, type, price, amount) {
     const res = await fetch(API + "/exchange/order", {
         method: "POST",
@@ -80,9 +80,9 @@ async function orderSend(pair, side, type, price, amount) {
     alert("Order sent");
 }
 
-// =======================
+// ===============================
 // Funcion de consulta de ordenes
-// =======================
+// ===============================
 async function orderGet(pair, status, limit) {
 
     let url = API + "/exchange/order?pair=" + pair;
@@ -113,9 +113,9 @@ async function orderGet(pair, status, limit) {
     return data.result;
 }
 
-/* =======================
+/* ===============================
    Funcion de cancelación de orden
-   =======================
+   ===============================
 */
 async function orderCancel(orderId) {
     const res = await fetch(API + "/exchange/order/" + orderId, {
@@ -135,9 +135,78 @@ async function orderCancel(orderId) {
     //alert("Order canceled");
 }
 
-// =======================
-// Funcion de libro de órdenes.
-// =======================
+// ====================================
+// Funcion de consulta de mis trades
+// ====================================
+async function myTrades(pair) {
+    try {
+
+        const res = await fetch(
+            API + "/exchange/trade?pair=" + pair + "&limit=50",
+            {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                    "Authorization": "Bearer " + token
+                }
+            }
+        );
+
+        const data = await res.json();
+
+        const tbody = document.getElementById("my-trades-table-body");
+
+        tbody.innerHTML = "";
+
+        if (!data.result || data.result.length === 0) {
+
+            const tr = document.createElement("tr");
+
+            const td = document.createElement("td");
+
+            td.colSpan = 3;
+            td.textContent = "There is no data.";
+            td.style.textAlign = "center";
+
+            tr.appendChild(td);
+
+            tbody.appendChild(tr);
+
+            return;
+        }
+
+        data.result.forEach((item) => {
+
+            const tr = document.createElement("tr");
+
+            const tdPrice = document.createElement("td");
+            tdPrice.textContent = item.price;
+
+            tr.appendChild(tdPrice);
+
+            const tdQuantity = document.createElement("td");
+            tdQuantity.textContent = item.amount;
+
+            tr.appendChild(tdQuantity);
+
+            const tdTime = document.createElement("td");
+            tdTime.textContent = new Date(item.created_at).toLocaleString();
+
+            tr.appendChild(tdTime);
+
+            tbody.appendChild(tr);
+        });
+
+    } catch (err) {
+
+        console.error("Error retrieving trades:", err);
+
+    } 
+}
+
+// ====================================
+// Funcion de libro de órdenes publico.
+// ====================================
 async function orderbook(pair) {
     try {
         const res = await fetch(
@@ -208,9 +277,9 @@ async function orderbook(pair) {
     }
 }
 
-// =======================
-// Funcion de trades
-// =======================
+// ====================================
+// Funcion de trades publicos.
+// ====================================
 async function trades(pair) {
 
     try {

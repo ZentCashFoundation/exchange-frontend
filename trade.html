@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trade</title>
+  <title>Trade - LibreSwapNet</title>
   <link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/trade.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/"><img loading="lazy" src="assets/img/exchange.png" height="48"></a>
+		<a class="navbar-brand" href="/"><img loading="lazy" src="assets/images/libreswapnet.png" height="48"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<div class="navbar-nav">
@@ -24,6 +25,10 @@
 		</div>
 	</div>
 </nav>
+
+<div class="section-graph-trading">
+</div>
+
 <div class="section-place-order">
 	<h2>Place Order</h2>
 	<div class="section-order-buy">
@@ -46,12 +51,12 @@
 </div>	
 
 <div class="section-open-trade">
-	<h2>Open Trades</h2>
+	<h2>Open Orders</h2>
 	<div class="table-responsive">
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th scope="col">Trade ID</th>
+					<th scope="col">Order ID</th>
 					<th scope="col">Side</th>
 					<th scope="col">Type</th>
 					<th scope="col">Price</th>
@@ -61,18 +66,18 @@
 					<th scope="col">Time</th>
 				</tr>
 			</thead>
-			<tbody id="open-trade-table-body"></tbody>
+			<tbody id="open-orders-table-body"></tbody>
 		</table>
 	</div>
 </div>
 
 <div class="section-trade-history">
-	<h2>Trade History</h2>
+	<h2>Orders History</h2>
 	<div class="table-responsive">
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th scope="col">Trade ID</th>
+					<th scope="col">Order ID</th>
 					<th scope="col">Side</th>
 					<th scope="col">Type</th>
 					<th scope="col">Price</th>
@@ -82,7 +87,7 @@
 					<th scope="col">Time</th>
 				</tr>
 			</thead>
-			<tbody id="my-trade-history-table-body"></tbody>
+			<tbody id="my-orders-history-table-body"></tbody>
 		</table>
 	</div>
 </div>
@@ -113,6 +118,22 @@
 	</div>
 </div>
 
+<div class="section-my-trades">
+	<h2>My Trades</h2>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Price</th>
+					<th scope="col">Amount</th>
+					<th scope="col">Time</th>
+				</tr>
+			</thead>
+			<tbody id="my-trades-table-body"></tbody>
+		</table>
+	</div>
+</div>
+
 <div class="section-alltrades">
 	<h2>All Trades</h2>
 	<div class="table-responsive">
@@ -132,7 +153,7 @@
 
 <section class="footer">
 	<div class="footer-copyright">		     
-		<p>Copyright © <span id="currentyear">2026</span> Exchange. All rights reserved.</p>
+		<p>Copyright © <span id="currentyear">2026</span> LibreSwapNet. All rights reserved.</p>
 	</div>
 </section>
 
