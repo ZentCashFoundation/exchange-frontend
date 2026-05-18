@@ -205,6 +205,33 @@ async function myTrades(pair) {
 }
 
 // ====================================
+// Funcion de consulta de velas
+// ====================================
+async function loadCandles(pair, timeframe) {
+
+    const res =
+      await fetch(
+        API + "/exchange/market/candles?pair=" + pair + "&timeframe=" + timeframe
+      );
+
+    const data =
+      await res.json();
+
+    const candles =
+      data.map(c => ({
+        time: Math.floor(
+          new Date(c.open_time).getTime() / 1000
+        ),
+        open: Number(c.open_price),
+        high: Number(c.high_price),
+        low: Number(c.low_price),
+        close: Number(c.close_price)
+      }));
+
+    candleSeries.setData(candles);
+}
+
+// ====================================
 // Funcion de libro de órdenes publico.
 // ====================================
 async function orderbook(pair) {

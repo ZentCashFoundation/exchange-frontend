@@ -1,5 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const pair = params.get("pair") ?? "ZTC_BTC";
+const timeframe = params.get("timeframe") ?? "5m";
 
 const orderbuyprice = document.getElementById("order-buy-price");
 const orderbuyamount = document.getElementById("order-buy-amount");
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	ordersellamount.addEventListener("input", updateTotals);
     trades(pair);
     orderbook(pair);
+    loadCandles(pair, timeframe);
     updateTotals();
     if (token) {
         openOrders();
@@ -120,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 setInterval(() => {
     trades(pair);
     orderbook(pair);
+    loadCandles(pair, timeframe);
     updateTotals();
     if (token) {
         openOrders();
