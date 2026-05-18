@@ -219,9 +219,7 @@ async function loadCandles(pair, timeframe) {
 
     const candles =
       data.map(c => ({
-        time: Math.floor(
-          new Date(c.open_time).getTime() / 1000
-        ),
+        time: Number(c.open_time),
         open: Number(c.open_price),
         high: Number(c.high_price),
         low: Number(c.low_price),
