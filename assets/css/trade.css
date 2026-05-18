@@ -1,7 +1,28 @@
 .section-graph-trading{
-	height: 400px;
-	width: 60%;
+	min-height: 400px;
 	margin-bottom: 20px;
-	background-color: #1260ad;
 	margin: auto;
+}
+#chart {
+  width: 100%;
+  position: relative;
+  background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 10px 30px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+#chart-info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 20;
+  display: flex;
+  gap: 14px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(15,23,42,0.8);
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
 }

@@ -33,18 +33,16 @@ document.addEventListener("DOMContentLoaded", async() => {
 }
 /** End of session management */
 
-
-
 /** Copyright Automatic Year */
 const getCurrentYear = ()=>{
     return new Date().getFullYear();
 }
 document.getElementById('currentyear').textContent = getCurrentYear()
 
-/** Disable right-click context menu */
-/*document.addEventListener('contextmenu', function (e) {
+/** Disable right-click context menu 
+document.addEventListener('contextmenu', function (e) {
   e.preventDefault();
-});
+});**/
 
 document.addEventListener('keydown', function (e) {
   if (
@@ -55,4 +53,4 @@ document.addEventListener('keydown', function (e) {
   ) {
     e.preventDefault();
   }
-});*/
+});

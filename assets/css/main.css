@@ -2,26 +2,7 @@
     font-family: 'MiFuente';
     src: url('../fonts/BRLNSR.TTF') format('truetype');
 }
-#chart {
-  width: 100%;
-  height: 60vh;
-  min-height: 400px;
 
-  background: linear-gradient(
-    180deg,
-    #0b1220 0%,
-    #0f172a 100%
-  );
-
-  border: 1px solid #1e293b;
-  border-radius: 12px;
-
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.03),
-    0 10px 30px rgba(0,0,0,0.4);
-
-  overflow: hidden;
-}
 .homepage-logo-text {
     font-family: 'MiFuente', sans-serif;
     font-size: 8.25rem;

@@ -26,7 +26,33 @@
 	</div>
 </nav>
 
-<div class="section-graph-trading"><div id="chart"></div>
+<div class="section-markets">
+	<h2>Markets:</h2>
+		<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Pair</th>
+					<th scope="col">Last Price</th>
+				</tr>
+			</thead>
+			<tbody id="markets-in-trade-table-body"></tbody>
+		</table>
+	</div>
+</div>
+
+<div class="section-graph-trading">
+	<h2 id="chart-title">Trading Chart</h2>
+	<p id="chart-pair-name"></p>
+	<div id="chart">
+		<div id="chart-info">
+			<span id="info-open"></span>
+			<span id="info-high"></span>
+			<span id="info-low"></span>
+			<span id="info-close"></span>
+			<span id="info-volume"></span>
+		</div>
+	</div>
 </div>
 
 <div class="section-place-order">

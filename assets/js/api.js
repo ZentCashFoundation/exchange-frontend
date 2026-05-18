@@ -113,10 +113,9 @@ async function orderGet(pair, status, limit) {
     return data.result;
 }
 
-/* ===============================
-   Funcion de cancelación de orden
-   ===============================
-*/
+// ===============================
+// Funcion de cancelación de orden
+// ===============================
 async function orderCancel(orderId) {
     const res = await fetch(API + "/exchange/order/" + orderId, {
         method: "DELETE",
@@ -207,26 +206,51 @@ async function myTrades(pair) {
 // ====================================
 // Funcion de consulta de velas
 // ====================================
-async function loadCandles(pair, timeframe) {
+async function loadChart(pair, timeframe) {
+  const res =
+    await fetch(
+      API + "/exchange/market/candles?pair=" + pair + "&timeframe=" + timeframe
+    );
 
-    const res =
-      await fetch(
-        API + "/exchange/market/candles?pair=" + pair + "&timeframe=" + timeframe
-      );
+  const data = await res.json();
 
-    const data =
-      await res.json();
+  const candles = data.map(c => ({
+    time: Number(c.open_time),
+    open: Number(c.open_price),
+    high: Number(c.high_price),
+    low: Number(c.low_price),
+    close: Number(c.close_price)
+  }));
 
-    const candles =
-      data.map(c => ({
-        time: Number(c.open_time),
-        open: Number(c.open_price),
-        high: Number(c.high_price),
-        low: Number(c.low_price),
-        close: Number(c.close_price)
-      }));
+  const volumes = data.map(c => ({
+    time: Number(c.open_time),
+    value: Number(c.volume),
+    color:
+      Number(c.close_price) >= Number(c.open_price)
+        ? "rgba(34,197,94,0.5)"
+        : "rgba(239,68,68,0.5)"
+  }));
 
-    candleSeries.setData(candles);
+  candleSeries.setData(candles);
+  volumeSeries.setData(volumes);
+}
+
+// ====================================
+// Funcion de actualización de last price
+// ====================================
+async function updateLastPrice(pair) {
+
+  const res = await fetch(API + "/exchange/market/ticker?pair=" + pair);
+  const data = await res.json();
+
+  const price = Number(data.result.last_price);
+
+  if (!price) return;
+
+  lastPriceSeries.update({
+    time: Math.floor(Date.now() / 1000),
+    value: price
+  });
 }
 
 // ====================================

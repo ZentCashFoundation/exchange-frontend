@@ -11,6 +11,8 @@ const ordersellprice = document.getElementById("order-sell-price");
 const ordersellamount = document.getElementById("order-sell-amount");
 const ordersellfee = document.getElementById("order-sell-fee");
 const orderselltotal = document.getElementById("order-sell-total");
+const pairName = document.getElementById("chart-pair-name");
+pairName.textContent = pair.replace("_", "/");
 
 function updateTotals() {
     const buyPrice = parseFloat(orderbuyprice.value) || 0;
@@ -110,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	ordersellamount.addEventListener("input", updateTotals);
     trades(pair);
     orderbook(pair);
-    loadCandles(pair, timeframe);
+    loadChart(pair, timeframe);
     updateTotals();
     if (token) {
         openOrders();
@@ -122,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 setInterval(() => {
     trades(pair);
     orderbook(pair);
-    loadCandles(pair, timeframe);
+    loadChart(pair, timeframe);
     updateTotals();
     if (token) {
         openOrders();
