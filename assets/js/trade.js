@@ -1,6 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const pair = params.get("pair") ?? "ZTC_BTC";
-const timeframe = params.get("timeframe") ?? "5m";
+const timeframe = params.get("timeframe") ?? "4h";
 
 const orderbuyprice = document.getElementById("order-buy-price");
 const orderbuyamount = document.getElementById("order-buy-amount");
@@ -105,6 +105,31 @@ async function openOrders() {
     });  
 }
 
+async function marketsinTrades() {
+    const data = await loadPairs();
+
+    if (!data) return;
+
+    const tableBody = document.getElementById("markets-in-trade-table-body");
+    tableBody.innerHTML = "";
+
+    data.forEach(trade => {
+        const row = document.createElement("tr");
+
+        if (trade.last_price === null) {
+            trade.last_price = 0;
+        }
+
+        row.innerHTML = `
+            <td style="text-transform: capitalize">${trade.pair.replace("_", "/")}</td>
+            <td style="text-transform: capitalize">${trade.last_price}</td>
+
+        `;
+
+        tableBody.appendChild(row);
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 	orderbuyprice.addEventListener("input", updateTotals);
 	orderbuyamount.addEventListener("input", updateTotals);
@@ -113,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     trades(pair);
     orderbook(pair);
     loadChart(pair, timeframe);
+    marketsinTrades();
     updateTotals();
     if (token) {
         openOrders();
@@ -125,6 +151,7 @@ setInterval(() => {
     trades(pair);
     orderbook(pair);
     loadChart(pair, timeframe);
+    marketsinTrades();
     updateTotals();
     if (token) {
         openOrders();

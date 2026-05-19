@@ -3,7 +3,14 @@
 // =======================
 const API = "https://superblockchain.zapto.org/example-api";
 var token = localStorage.getItem("token") || null;
+var tokenDate = localStorage.getItem("token-date") || null;
 let gameSessionId = null;
+
+// Verificar si el token ha expirado (2 horas)
+if (Number(tokenDate) + 7200000 < Date.now()) {  
+    localStorage.removeItem("token");
+    localStorage.removeItem("token-date");
+}
 
 // =======================
 // Funcion de registro
@@ -49,6 +56,7 @@ async function login() {
 
     token = data.token;
     localStorage.setItem("token", token);
+    localStorage.setItem("token-date", Date.now());
     location.href = "./";
 }
 
@@ -394,3 +402,22 @@ async function trades(pair) {
 
     }
 }
+
+// ====================================
+// Funcion de consulta de pares disponibles.
+// ====================================
+async function loadPairs() {
+    try {
+        const res = await fetch(API + "/exchange/market/tickers", {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+        const data = await res.json();
+         console.log(data);
+        return data.result;
+    } catch (err) {
+        console.error("Error retrieving pairs:", err);
+    }
+}        
