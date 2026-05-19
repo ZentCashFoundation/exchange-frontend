@@ -120,9 +120,14 @@ async function marketsinTrades() {
             trade.last_price = 0;
         }
 
+        const variation = parseFloat(trade.variation_24h).toFixed(2);
+        const volume = parseFloat(trade.volume_24h).toFixed(0);
+
         row.innerHTML = `
-            <td style="text-transform: capitalize">${trade.pair.replace("_", "/")}</td>
-            <td style="text-transform: capitalize">${trade.last_price}</td>
+            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.pair.replace("_", "/")}</td>
+            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.last_price}</td>
+            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${variation} %</td>
+            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${volume}</td>
 
         `;
 

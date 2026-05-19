@@ -3,6 +3,9 @@
 	margin-bottom: 20px;
 	margin: auto;
 }
+.table-responsive tbody tr {
+  cursor: pointer;
+}
 #chart {
   width: 100%;
   position: relative;

@@ -25,11 +25,18 @@ async function markets() {
             trade.ask_price = 0;
         }
 
+        const variation = parseFloat(trade.variation_24h).toFixed(2);
+        const volume = parseFloat(trade.volume_24h).toFixed(0);
+
         row.innerHTML = `
             <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize; cursor: pointer">${trade.pair.replace("_", "/")}</td>
             <td onclick="window.location.href='trade.html?pair=${trade.pair}'"style="text-transform: capitalize">${trade.bid_price}</td>
             <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.ask_price}</td>
             <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.last_price}</td>
+            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.low_24h}</td>
+            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.high_24h}</td>
+            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${variation} %</td>
+            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${volume}</td>
         `;
 
         tableBody.appendChild(row);
