@@ -61,7 +61,7 @@ async function renderWallet() {
 		 const row = document.createElement("tr");
 
         row.innerHTML = `
-			<td style="text-transform: capitalize"><img src="${asset.icon}" alt="${asset.ticker}" width="20" height="20"> ${asset.ticker}</td>
+			<td style="text-transform: capitalize"><img src="${asset.icon_url}" alt="${asset.ticker}" width="20" height="20"> ${asset.ticker}</td>
 			<td style="text-transform: capitalize">${asset.name}</td>
             <td style="text-transform: capitalize">${asset.available}</td>
             <td style="text-transform: capitalize">${asset.locked}</td>
@@ -74,5 +74,6 @@ async function renderWallet() {
 
         tableBody.appendChild(row);
     });
-}  
+} 
+ 
 renderWallet()

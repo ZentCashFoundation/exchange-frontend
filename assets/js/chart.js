@@ -60,17 +60,23 @@ const candleSeries =
       borderVisible: true,
       wickUpColor: "#00ff15",
       wickDownColor: "#ff1111",
-      priceScaleId: "right"
-    }
+      priceScaleId: "right",
+
+      priceFormat: {
+        type: "price",
+        precision: 16,
+        minMove: 0.0000000000000001
+      }
+      
+    }  
   );
 
 chart.priceScale("right").applyOptions({
   scaleMargins: {
-    top: 0.2,
-    bottom: 0.3
+    top: 0.1,
+    bottom: 0.2
   }
 });
-
 
 // -----------------------------------
 //  VOLUME SERIES
@@ -82,11 +88,11 @@ const volumeSeries =
       priceFormat: {
         type: "volume"
       },
-      priceScaleId: ""
+      priceScaleId: "left"
     }
   );
 
-chart.priceScale("").applyOptions({
+chart.priceScale("left").applyOptions({
   scaleMargins: {
     top: 0.8,
     bottom: 0
@@ -133,16 +139,16 @@ chart.subscribeCrosshairMove(param => {
   if (!candle) return;
 
   document.getElementById("info-open").innerText =
-    "Open: " + candle.open;
+    "Open: " +  Number(candle.open).toFixed(16);
 
   document.getElementById("info-high").innerText =
-    "High: " + candle.high;
+    "High: " +  Number(candle.high).toFixed(16);
 
   document.getElementById("info-low").innerText =
-    "Low: " + candle.low;
+    "Low: " +  Number(candle.low).toFixed(16);
 
   document.getElementById("info-close").innerText =
-    "Close: " + candle.close;
+    "Close: " +  Number(candle.close).toFixed(16);
 
   document.getElementById("info-volume").innerText =
     "Volume: " + (

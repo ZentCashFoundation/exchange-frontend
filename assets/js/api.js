@@ -415,7 +415,6 @@ async function loadPairs() {
             }
         });
         const data = await res.json();
-         console.log(data);
         return data.result;
     } catch (err) {
         console.error("Error retrieving pairs:", err);
@@ -434,7 +433,6 @@ async function loadAssets() {
             }
         });
         const data = await res.json();
-        console.log(data);
         return data.assets;
     } catch (err) {
         console.error("Error retrieving assets:", err);
@@ -454,7 +452,6 @@ async function loadUserBalances() {
             }
         });
         const data = await res.json();
-        console.log(data);
         return data.balances;
     } catch (err) {
         console.error("Error retrieving user balances:", err);

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Authentication - LibreSwapNet</title>
+  <title>Fees - LibreSwapNet</title>
   <link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/auth.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/fees.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="/"><img alt="libreswapnet" loading="lazy" src="assets/images/libreswapnet.png" height="48"></a>
+		<a class="navbar-brand" href="/"><img alt="LibreSwapNet" loading="lazy" src="assets/images/libreswapnet.png" height="48"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<div class="navbar-nav">
@@ -27,24 +27,40 @@
 		</div>
 	</div>
 </nav>
-	<section class="auth-container">
-		<div id="auth">
-			<h2 class="auth-title">Authentication</h2>
-			<input id="email" placeholder="email">
-			<input id="password" type="password" placeholder="password">
-		<div>
-			<button class="register-btn" onclick="register()">Register</button>
-			<button class="login-btn" onclick="login()">Login</button>
+
+<div class="section-fees">
+	<div class="fees-header">
+			<h1 class="fees-title">Fees</h1>
+			<p class="fees-description">View the current fees for deposits and withdrawals across all supported assets.</p>
+	</div>
+	<div class="fees-content">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">Asset</th>
+						<th scope="col">Name</th>
+						<th scope="col">Withdraw Fee</th>
+						<th scope="col">Minimum Deposit</th>
+						<th scope="col">Minimum Withdraw</th>
+					</tr>
+				</thead>
+				<tbody id="assets-fees-table-body"></tbody>
+			</table>
 		</div>
-		</div>
-	</section>		
-	<section class="footer">
-		<div class="footer-copyright">     
-		<p>Copyright &copy; <span id="currentyear">2026</span> LibreSwapNet. All rights reserved.</p>
-		</div>
-	</section>
-	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="assets/js/api.js"></script>   
-	<script src="assets/js/main.js"></script>
+	</div>	
+</div>
+
+<section class="footer">
+	<div class="footer-copyright">		     
+		<p>Copyright © <span id="currentyear">2026</span> LibreSwapNet. All rights reserved.</p>
+	</div>
+</section>
+
+<script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/api.js"></script>   
+<script src="assets/js/main.js"></script>
+<script src="assets/js/fees.js"></script>
+
 </body>
 </html>

@@ -1,7 +1,3 @@
-const params = new URLSearchParams(window.location.search);
-const pair = params.get("pair") ?? "ZTC_BTC";
-const timeframe = params.get("timeframe") ?? "4h";
-
 async function assets() {
     const data = await loadAssets();
 	
