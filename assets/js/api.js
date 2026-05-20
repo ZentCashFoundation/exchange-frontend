@@ -440,3 +440,23 @@ async function loadAssets() {
         console.error("Error retrieving assets:", err);
     }
 }
+
+// ====================================
+// Funcion de consulta de balances del usuario.
+// ====================================
+async function loadUserBalances() {
+    try {
+        const res = await fetch(API + "/exchange/wallet/balances", {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Authorization": `Bearer ` + token
+            }
+        });
+        const data = await res.json();
+        console.log(data);
+        return data.balances;
+    } catch (err) {
+        console.error("Error retrieving user balances:", err);
+    }
+}

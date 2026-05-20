@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Markets - LibreSwapNet</title>
+  <title>Wallet - LibreSwapNet</title>
   <link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/markets.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/wallet.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
@@ -27,30 +27,27 @@
 	</div>
 </nav>
 
-<div class="section-markets">
-	<div class="markets-header">
-		<h1 class="markets-title">Markets</h1>
-		<p class="markets-description">Browse our available trading pairs and view real-time market data.</p>
+<div class="section-wallet">
+	<div class="wallet-header">
+			<h1 class="wallet-title">Wallet</h1>
+			<p class="wallet-description">Manage your assets and view your transaction history.</p>
 	</div>
-	<div class="markets-content">
+	<div class="wallet-content">
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th scope="col">Pair</th>
-						<th scope="col">Bid Price</th>
-						<th scope="col">Ask Price</th>
-						<th scope="col">Last Price</th>
-						<th scope="col">Low 24h</th>
-						<th scope="col">High 24h</th>
-						<th scope="col">Variation 24h</th>
-						<th scope="col">Volume 24h</th>
+						<th scope="col">Asset</th>
+						<th scope="col">Name</th>
+						<th scope="col">Available</th>
+						<th scope="col">Locked</th>
+						<th scope="col">Actions</th>
 					</tr>
 				</thead>
-				<tbody id="markets-in-trade-table-body"></tbody>
+				<tbody id="assets-in-wallet-table-body"></tbody>
 			</table>
-		</div>	
-	</div>
+		</div>
+	</div>	
 </div>
 
 <section class="footer">
@@ -62,7 +59,7 @@
 <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/api.js"></script>   
 <script src="assets/js/main.js"></script>
-<script src="assets/js/markets.js"></script>
+<script src="assets/js/wallet.js"></script>
 
 </body>
 </html>

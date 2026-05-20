@@ -24,3 +24,19 @@
 .homepage-description {
     font-size: xxx-large;
 }
+@media (max-width: 768px) {
+    .homepage-logo-text {
+        font-size: 4.5rem;
+    }
+    .homepage-description {
+        font-size: x-large;
+    }
+}
+@media (max-width: 540px) {
+    .homepage-logo-text {
+        font-size: 3rem;
+    }
+    .homepage-description {
+        font-size: x-large;
+    }
+}
