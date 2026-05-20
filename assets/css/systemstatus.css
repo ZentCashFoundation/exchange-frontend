@@ -1,0 +1,51 @@
+.system-status-header{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	padding: 2rem;
+	text-align: center;
+	background-color: #2e2358;
+	max-width: max-content;
+	border-radius: 1rem;
+	border: 1px solid #7958db;
+}
+.system-status-title {
+	font-size: 2.5rem;
+	color: #ebebeb;
+	margin-bottom: 0.5rem;
+}
+.system-status-description {
+	font-size: 1.2rem;
+	color: #c0c0c0;
+	margin-bottom: 0;
+}
+.system-status-content{
+	margin-left: 2rem;
+	margin-right: 2rem;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	padding: 2rem;
+	text-align: center;
+	background-color: #2e2358;
+	border-radius: 1rem;
+	border: 1px solid #7958db;
+}
+
+.system-status-content .table thead tr th {
+	background-color: #2e406a;
+	color: #ebebeb;
+}
+
+.system-status-content .table tbody tr td {
+	background-color: #3e72eb7d;
+	color: #ebebeb;
+}
+.system-status-content .table tbody tr:nth-child(odd) td {
+	background-color: #214291;
+	color: #ebebeb;
+}
+.system-status-content .table tbody tr:hover td {
+	background-color: #101d3a;
+	color: #ebebeb;
+}

@@ -420,4 +420,23 @@ async function loadPairs() {
     } catch (err) {
         console.error("Error retrieving pairs:", err);
     }
-}        
+}
+
+// ====================================
+// Funcion de consulta de activos disponibles.
+// ====================================
+async function loadAssets() {
+    try {
+        const res = await fetch(API + "/exchange/asset/getlist", {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+        const data = await res.json();
+        console.log(data);
+        return data.assets;
+    } catch (err) {
+        console.error("Error retrieving assets:", err);
+    }
+}
