@@ -136,6 +136,10 @@ async function recentWithdrawals() {
 			history.address = history.address.length > 20 ? history.address.slice(0, 10) + "..." + history.address.slice(-10) : history.address;
 		}
 
+    if (history.tx_hash) {
+      history.tx_hash = history.tx_hash.length > 20 ? history.tx_hash.slice(0, 10) + "..." + history.tx_hash.slice(-10) : history.tx_hash;
+    }
+
 		if (history.amount ) {
 			history.amount = parseFloat(history.amount).toFixed(8);
 		}	
