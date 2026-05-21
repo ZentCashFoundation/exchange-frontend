@@ -108,6 +108,35 @@ async function recentDepositHistory(ticker, limit) {
 }
 
 // ==========================
+// Funcion de retiro
+// ==========================
+async function withdraw(ticker, amount, address, payment_id = null, integrated_address= null, memo = null , tag = null, network = 'mainnet') {
+    const res = await fetch(API + "/exchange/wallet/withdraw", {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+            ticker: `${ticker}`,
+            amount: `${amount}`,
+            address: `${address}`,
+            payment_id: `${payment_id}`,
+            integrated_address: `${integrated_address}`,
+            memo: `${memo}`,
+            tag: `${tag}`,
+            network: `${network}`
+        })
+    });
+    const data = await res.json();
+    if (data.error) {
+      	alert(data.error);
+       	return null;
+    }
+    return data;
+}
+
+// ==========================
 // Funcion de historial de 
 // retiros recientes
 // ==========================
