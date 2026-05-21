@@ -1,0 +1,55 @@
+.minimum-deposit-amount {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.minimum-deposit-confirmations {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.depositAddress {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.depositPaymentID {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: none;
+}
+.depositIntegratedAddress {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: none;
+}
+.depositMemo {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: none;
+}
+#depositAddress {
+  display: initial;
+}
+#depositPaymentID {
+  display: none;
+}
+#depositIntegratedAddress {
+  display: none;
+}
+#depositMemo {
+  display: none;
+}

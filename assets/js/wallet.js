@@ -66,8 +66,8 @@ async function renderWallet() {
             <td style="text-transform: capitalize">${asset.available}</td>
             <td style="text-transform: capitalize">${asset.locked}</td>
            	<td>
-			  <button onclick="window.location.href='deposit.html?asset=${asset.ticker}'" class="btn btn-success btn-sm">Deposit</button>
-			  <button onclick="window.location.href='withdraw.html?asset=${asset.ticker}'" class="btn btn-danger btn-sm">Withdraw</button>
+			  <button onclick="window.location.href='deposit.html?ticker=${asset.ticker}'" class="btn btn-success btn-sm">Deposit</button>
+			  <button onclick="window.location.href='withdraw.html?ticker=${asset.ticker}'" class="btn btn-danger btn-sm">Withdraw</button>
 			</td>
 
         `;

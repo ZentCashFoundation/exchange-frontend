@@ -61,6 +61,29 @@ async function login() {
 }
 
 // ==========================
+// Funcion de depósito
+// ==========================
+async function deposit(ticker, network) {
+    const res = await fetch(API + "/exchange/wallet/deposit", {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({ 
+            ticker: `${ticker}`, 
+            network: `${network}`
+        })
+    });
+    const data = await res.json();
+    if (data.error) {
+      	alert(data.error);
+       	return null;
+    }
+    return await data;
+}
+
+// ==========================
 // Funcion de envío de orden
 // ==========================
 async function orderSend(pair, side, type, price, amount) {

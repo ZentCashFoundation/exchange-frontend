@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/deposit.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
@@ -26,6 +27,106 @@
 		</div>
 	</div>
 </nav>
+
+<section class="select-currency py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h2 class="select-currency-title">Select Currency</h2>
+            <div class="mb-3">
+              <select id="currencySelect" class="form-select">
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="select-network py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h2 class="select-network-title">Select Network</h2>
+            <div class="mb-3">
+              <select id="networkSelect" class="form-select">
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>	
+</section>
+
+<section class="deposit-details py-5">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12">
+				<div class="card border-0 shadow-sm">
+					<div class="card-body">
+						<h2 class="deposit-details-title">Deposit Details</h2>
+						<div class="row">
+							<div class="col-4">
+								<div id="qrcode-address">								
+								</div>
+								<div class="minimum-deposit">
+									<p><span class="minimum-deposit-amount">Minimum deposit amount: </span><span id="minimum-deposit-amount">....</span></p> 
+									<p><span class="minimum-deposit-confirmations">Minimum deposit confirmations: </span><span id="minimum-deposit-confirmations">....</span></p>
+								</div>
+							</div>
+
+							<div class="col-8">
+								<label for="depositAddress" class="depositAddress">Deposit address</label>
+								<input type="text" id="depositAddress" class="form-control" readonly value=".....">
+								<label for="depositPaymentID" class="depositPaymentID">Payment ID</label>
+								<input type="text" id="depositPaymentID" class="form-control" readonly value=".....">
+								<label for="depositIntegratedAddress" class="depositIntegratedAddress">Integrated address</label>
+								<input type="text" id="depositIntegratedAddress" class="form-control" readonly value=".....">
+								<label for="depositMemo" class="depositMemo">Memo</label>
+								<input type="text" id="depositMemo" class="form-control" readonly value=".....">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</section>
+
+<section class="recent-deposits py-5">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12">
+				<div class="card border-0 shadow-sm">
+					<div class="card-body">
+						<h2 class="recent-deposits-title">Recent Deposits</h2>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Date</th>
+									<th scope="col">Asset</th>
+									<th scope="col">Amount</th>
+									<th scope="col">Destination</th>
+									<th scope="col">TxID</th>
+									<th scope="col">Confirmations</th>
+									<th scope="col">Status</th>
+								</tr>
+							</thead>
+							<tbody id="recentDepositsTableBody"></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 
 <section class="footer">
 	<div class="row">
@@ -58,6 +159,7 @@
 <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/api.js"></script>   
 <script src="assets/js/main.js"></script>
+<script src="assets/js/deposit.js"></script>
 
 </body>
 </html>

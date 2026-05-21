@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/withdraw.css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
@@ -26,6 +27,69 @@
 		</div>
 	</div>
 </nav>
+
+<section class="select-currency py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h2 class="select-currency-title">Select Currency</h2>
+            <div class="mb-3">
+              <select id="currencySelect" class="form-select">
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="select-network py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h2 class="select-network-title">Select Network</h2>
+            <div class="mb-3">
+              <select id="networkSelect" class="form-select">
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>	
+</section>
+
+<section class="recent-deposits py-5">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12">
+				<div class="card border-0 shadow-sm">
+					<div class="card-body">
+						<h2 class="recent-deposits-title">Recent Withdrawals</h2>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">Date</th>
+									<th scope="col">Asset</th>
+									<th scope="col">Amount</th>
+									<th scope="col">To Destination</th>
+									<th scope="col">TxID</th>
+									<th scope="col">Status</th>
+								</tr>
+							</thead>
+							<tbody id="recentWithdrawalsTableBody"></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 <section class="footer">
 	<div class="row">
