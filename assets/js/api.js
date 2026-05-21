@@ -85,6 +85,30 @@ async function deposit(ticker, network) {
 
 // ==========================
 // Funcion de historial de 
+// depósitos recientes
+// ==========================
+async function recentDepositHistory(ticker, limit) {
+    const res = await fetch(API + "/exchange/wallet/deposit/history", {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({ 
+            ticker: `${ticker}`, 
+            limit: Number(limit)
+        })
+    });
+    const data = await res.json();
+    if (data.error) {
+      	alert(data.error);
+       	return null;
+    }
+    return data;
+}
+
+// ==========================
+// Funcion de historial de 
 // retiros recientes
 // ==========================
 async function recentWithdrawHistory(ticker, limit) {

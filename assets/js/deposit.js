@@ -26,6 +26,8 @@ async function init() {
 
   await updateDeposit();
 
+  recentDeposits();
+
 }
 
 
@@ -251,6 +253,47 @@ networkSelect.addEventListener(
   "change",
   updateDeposit
 );
+
+// -----------------------------------
+// RECENT DEPOSIT HISTORY
+// -----------------------------------
+async function recentDeposits() {
+    const data = await recentDepositHistory("BTC", 10);
+
+    if (!data) return;
+
+    const tableBody = document.getElementById("recentDepositsTableBody");
+    tableBody.innerHTML = "";
+
+    data.history.forEach(history => {
+        const row = document.createElement("tr");
+
+		if (history.created_at) {
+			history.created_at = new Date(history.created_at).toLocaleString();
+		}
+
+		if (history.address) {
+			history.address = history.address.length > 20 ? history.address.slice(0, 10) + "..." + history.address.slice(-10) : history.address;
+		}
+
+		if (history.amount ) {
+			history.amount = parseFloat(history.amount).toFixed(8);
+		}	
+
+        row.innerHTML = `            
+          <td>${history.created_at}</td>
+          <td>${history.asset_ticker}</td>
+          <td>${history.amount}</td>
+          <td>${history.address}</td>
+          <td>${history.tx_hash}</td>
+          <td>${history.confirmations}</td>
+          <td style="font-weight: bold; text-transform: capitalize; color: ${history.status === 'confirmed'  ? '#2bff00':'red' }">${history.status}</td>
+        `;
+
+        tableBody.appendChild(row);
+    });
+}
+
 
 
 // -----------------------------------
