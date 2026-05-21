@@ -50,3 +50,10 @@
 	background-color: #151e30;
 	color: #ebebeb;
 }
+
+@media (max-width: 540px) {
+	.wallet-content{
+		margin-left: 0rem;
+		margin-right: 0rem;
+	}
+}

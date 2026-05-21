@@ -71,19 +71,21 @@
 				<div class="card border-0 shadow-sm">
 					<div class="card-body">
 						<h2 class="recent-deposits-title">Recent Withdrawals</h2>
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th scope="col">Date</th>
-									<th scope="col">Asset</th>
-									<th scope="col">Amount</th>
-									<th scope="col">To Destination</th>
-									<th scope="col">TxID</th>
-									<th scope="col">Status</th>
-								</tr>
-							</thead>
-							<tbody id="recentWithdrawalsTableBody"></tbody>
-						</table>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Date</th>
+                      <th scope="col">Asset</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">To Destination</th>
+                      <th scope="col">TxID</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recentWithdrawalsTableBody"></tbody>
+                </table>
+              </div>  
 					</div>
 				</div>
 			</div>
@@ -122,6 +124,7 @@
 <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/api.js"></script>   
 <script src="assets/js/main.js"></script>
+<script src="assets/js/withdraw.js"></script>
 
 </body>
 </html>

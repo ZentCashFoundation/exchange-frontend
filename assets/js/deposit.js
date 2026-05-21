@@ -223,7 +223,7 @@ function renderDeposit(data) {
   document.getElementById(
     "minimum-deposit-amount"
   ).innerText =
-    data.min_deposit ?? "0";
+    Number(data.min_deposit || 0).toFixed(data.decimals || 0) ?? "0";
 
   document.getElementById(
     "minimum-deposit-confirmations"

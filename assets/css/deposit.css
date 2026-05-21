@@ -53,3 +53,6 @@
 #depositMemo {
   display: none;
 }
+#networkSelect {
+  text-transform: capitalize;
+}

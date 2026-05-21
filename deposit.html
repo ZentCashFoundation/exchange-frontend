@@ -72,8 +72,8 @@
 					<div class="card-body">
 						<h2 class="deposit-details-title">Deposit Details</h2>
 						<div class="row">
-							<div class="col-4">
-								<div id="qrcode-address">								
+							<div class="col-12 col-sm-12 col-xl-4">
+								<div class="text-center" id="qrcode-address">								
 								</div>
 								<div class="minimum-deposit">
 									<p><span class="minimum-deposit-amount">Minimum deposit amount: </span><span id="minimum-deposit-amount">....</span></p> 
@@ -81,7 +81,7 @@
 								</div>
 							</div>
 
-							<div class="col-8">
+							<div class="col-12 col-sm-12 col-xl-8">
 								<label for="depositAddress" class="depositAddress">Deposit address</label>
 								<input type="text" id="depositAddress" class="form-control" readonly value=".....">
 								<label for="depositPaymentID" class="depositPaymentID">Payment ID</label>
@@ -106,20 +106,22 @@
 				<div class="card border-0 shadow-sm">
 					<div class="card-body">
 						<h2 class="recent-deposits-title">Recent Deposits</h2>
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th scope="col">Date</th>
-									<th scope="col">Asset</th>
-									<th scope="col">Amount</th>
-									<th scope="col">Destination</th>
-									<th scope="col">TxID</th>
-									<th scope="col">Confirmations</th>
-									<th scope="col">Status</th>
-								</tr>
-							</thead>
-							<tbody id="recentDepositsTableBody"></tbody>
-						</table>
+							<div class="table-responsive">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th scope="col">Date</th>
+											<th scope="col">Asset</th>
+											<th scope="col">Amount</th>
+											<th scope="col">Destination</th>
+											<th scope="col">TxID</th>
+											<th scope="col">Confirmations</th>
+											<th scope="col">Status</th>
+										</tr>
+									</thead>
+									<tbody id="recentDepositsTableBody"></tbody>
+								</table>
+							</div>	
 					</div>
 				</div>
 			</div>
