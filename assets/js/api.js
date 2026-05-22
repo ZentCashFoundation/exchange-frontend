@@ -119,7 +119,7 @@ async function withdraw(ticker, amount, address, payment_id = null, integrated_a
         },
         body: JSON.stringify({
             ticker: `${ticker}`,
-            amount: `${amount}`,
+            amount: amount,
             address: `${address}`,
             payment_id: `${payment_id}`,
             integrated_address: `${integrated_address}`,

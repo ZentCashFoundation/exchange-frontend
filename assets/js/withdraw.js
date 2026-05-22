@@ -1,7 +1,11 @@
-const coinSelect =  document.getElementById("currencySelect");
+const coinSelect =
+  document.getElementById("currencySelect");
 
 const networkSelect =
   document.getElementById("networkSelect");
+
+const withdrawButton =
+  document.getElementById("withdrawButton");
 
 let assets = [];
 
@@ -21,11 +25,38 @@ async function init() {
   setTickerFromUrl();
 
   renderNetworks();
-/**
-  await updateDeposit();
 
-  **/
- recentWithdrawals();
+  await loadWithdrawData();
+
+  await recentWithdrawals();
+
+  // EVENTS
+  coinSelect.addEventListener(
+    "change",
+    async () => {
+
+      renderNetworks();
+
+      await loadWithdrawData();
+
+      await recentWithdrawals();
+
+    }
+  );
+
+  networkSelect.addEventListener(
+    "change",
+    async () => {
+
+      await loadWithdrawData();
+
+    }
+  );
+
+  withdrawButton.addEventListener(
+    "click",
+    handleWithdraw
+  );
 
 }
 
@@ -34,10 +65,11 @@ async function init() {
 // -----------------------------------
 function renderCoins() {
 
-  const tickers =
-    [...new Set(
+  const tickers = [
+    ...new Set(
       assets.map(a => a.ticker)
-    )];
+    )
+  ];
 
   coinSelect.innerHTML =
     tickers.map(t => `
@@ -84,16 +116,23 @@ function renderNetworks() {
   const ticker =
     coinSelect.value;
 
-  const networks =
-    assets.filter(a =>
-      a.ticker === ticker
-    );
+  const networks = [
+    ...new Set(
+      assets
+        .filter(a =>
+          a.ticker === ticker
+        )
+        .map(a =>
+          a.network_default
+        )
+    )
+  ];
 
   networkSelect.innerHTML =
-    networks.map(a => `
+    networks.map(network => `
 
-      <option value="${a.network_default}">
-        ${a.network_default}
+      <option value="${network}">
+        ${network}
       </option>
 
     `).join("");
@@ -114,11 +153,10 @@ function getCurrentAsset() {
 
 }
 
+// -----------------------------------
+// LOAD ASSET + BALANCE
+// -----------------------------------
 async function getInformationAssetAndBalance(ticker) {
-
-  // -----------------------------------
-  // LOAD DATA
-  // -----------------------------------
 
   const [
     assetResponse,
@@ -130,11 +168,7 @@ async function getInformationAssetAndBalance(ticker) {
 
   ]);
 
-  // -----------------------------------
-  // EXTRACT DATA
-  // -----------------------------------
-
-  const assets =
+  const assetsData =
     assetResponse.asset || [];
 
   const balances =
@@ -142,20 +176,12 @@ async function getInformationAssetAndBalance(ticker) {
       ? balanceResponse
       : [balanceResponse];
 
-  // -----------------------------------
-  // BALANCE MAP
-  // -----------------------------------
-
   const balanceMap =
     new Map(
       balances.map(b => [b.asset, b])
     );
 
-  // -----------------------------------
-  // MERGE
-  // -----------------------------------
-
-  return assets.map(asset => {
+  return assetsData.map(asset => {
 
     const balance =
       balanceMap.get(asset.ticker);
@@ -173,91 +199,261 @@ async function getInformationAssetAndBalance(ticker) {
       total:
         balance?.total || "0"
     };
+
   });
+
 }
 
 // -----------------------------------
-// WITHDRAW REQUERIMENTS
+// LOAD WITHDRAW DATA
+// -----------------------------------
+async function loadWithdrawData() {
+
+  const ticker =
+    coinSelect.value;
+
+  await withdrawRequeriments(ticker);
+
+}
+
+// -----------------------------------
+// WITHDRAW REQUIREMENTS
 // -----------------------------------
 async function withdrawRequeriments(ticker) {
 
-  const assets =
+  const assetsData =
     await getInformationAssetAndBalance(ticker);
 
-  if (!assets || assets.length === 0) {
+  if (!assetsData || assetsData.length === 0) {
 
     alert("Error retrieving asset information");
+
     return;
+
   }
 
-  const assetInfo = assets[0];
+  const assetInfo =
+    assetsData.find(a =>
+
+      a.ticker === ticker &&
+      a.network_default === networkSelect.value
+
+    );
+
+  if (!assetInfo) {
+
+    alert("Asset not found");
+
+    return;
+
+  }
+
+  // UPDATE GLOBAL ASSET
+  const index =
+    assets.findIndex(a =>
+
+      a.ticker === assetInfo.ticker &&
+      a.network_default === assetInfo.network_default
+
+    );
+
+  if (index !== -1) {
+
+    assets[index] = {
+      ...assets[index],
+      ...assetInfo
+    };
+
+  }
 
   const minAmount =
-    Number(assetInfo.min_withdraw).toFixed(assetInfo.decimals).toString();
+    Number(assetInfo.min_withdraw)
+      .toFixed(assetInfo.decimals);
 
   const fee =
-    Number(assetInfo.withdraw_fee).toFixed(assetInfo.decimals).toString();
+    Number(assetInfo.withdraw_fee)
+      .toFixed(assetInfo.decimals);
 
   const available =
-    Number(assetInfo.available).toFixed(assetInfo.decimals).toString();
+    Number(assetInfo.available)
+      .toFixed(assetInfo.decimals);
 
-  minimumWithdrawAmount = document.getElementById("minimum-withdraw-amount");  
-  minimumWithdrawAmount.textContent = minAmount + " " + assetInfo.ticker;
+  document.getElementById(
+    "minimum-withdraw-amount"
+  ).textContent =
+    `${minAmount} ${assetInfo.ticker}`;
 
-  withdrawFee = document.getElementById("withdraw-fee");  
-  withdrawFee.textContent = fee + " " + assetInfo.ticker;
+  document.getElementById(
+    "withdraw-fee"
+  ).textContent =
+    `${fee} ${assetInfo.ticker}`;
 
-  availableBalance = document.getElementById("available-balance");  
-  availableBalance.textContent = available + " " + assetInfo.ticker;
+  document.getElementById(
+    "available-balance"
+  ).textContent =
+    `${available} ${assetInfo.ticker}`;
 
-  totalConfirmations = document.getElementById("minimum-withdraw-confirmations");  
-  totalConfirmations.textContent = assetInfo.confirmations_required;
+  document.getElementById(
+    "minimum-withdraw-confirmations"
+  ).textContent =
+    assetInfo.confirmations_required;
 
 }
 
+// -----------------------------------
+// HANDLE WITHDRAW
+// -----------------------------------
+async function handleWithdraw() {
+
+  const asset =
+    getCurrentAsset();
+
+  if (!asset) {
+
+    alert("Asset not found");
+
+    return;
+
+  }
+
+  const address =
+    document
+      .getElementById("withdrawAddress")
+      .value
+      .trim();
+
+  const amount =
+    parseFloat(
+      document
+        .getElementById("withdrawAmount")
+        .value
+    );
+
+  if (!address) {
+
+    alert("Invalid address");
+
+    return;
+
+  }
+
+  if (!amount || amount <= 0) {
+
+    alert("Invalid amount");
+
+    return;
+
+  }
+
+  const fee = parseFloat(asset.withdraw_fee);
+  const min = parseFloat(asset.min_withdraw);
+  const available = parseFloat(asset.available || 0);
+
+  if (amount < min) {
+
+    alert(`Minimum withdraw is ${min}`
+    );
+
+    return;
+
+  }
+
+  withdrawButton.disabled = true;
+
+  try {
+
+    const response =
+      await withdraw(asset.ticker, amount, address, null, null, null, null, asset.network_default);
+
+    if (!response) {
+
+      withdrawButton.disabled = false;
+
+      return;
+
+    }
+
+    alert("Withdrawal submitted");
+
+    document.getElementById("withdrawAddress").value = "";
+
+    document.getElementById("withdrawAmount").value = "";
+
+    await loadWithdrawData();
+
+    await recentWithdrawals();
+
+  }
+
+  catch (err) {
+
+    console.error(err);
+
+    alert("Withdrawal failed");
+
+  }
+
+  withdrawButton.disabled = false;
+
+}
 
 // -----------------------------------
 // RECENT WITHDRAWALS
 // -----------------------------------
 async function recentWithdrawals() {
-    const data = await recentWithdrawHistory("BTC", 10); 
 
-    if (!data) return;
+  const ticker = coinSelect.value;
 
-    const tableBody = document.getElementById("recentWithdrawalsTableBody");
-    tableBody.innerHTML = "";
+  const data = await recentWithdrawHistory(ticker, 10);
 
-    data.history.forEach(history => {
-        const row = document.createElement("tr");
+  if (!data) return;
 
-		if (history.created_at) {
-			history.created_at = new Date(history.created_at).toLocaleString();
-		}
+  const tableBody = document.getElementById("recentWithdrawalsTableBody");
+  tableBody.innerHTML = "";
 
-		if (history.address) {
-			history.address = history.address.length > 20 ? history.address.slice(0, 10) + "..." + history.address.slice(-10) : history.address;
-		}
+  data.history.forEach(history => {
+    const row = document.createElement("tr");
+
+    if (history.created_at) {
+      history.created_at = new Date(history.created_at).toLocaleString();
+    }
+
+    if (history.address) {
+      history.address = history.address.length > 20 ? history.address.slice(0, 10) + "..." + history.address.slice(-10) : history.address;
+    }
 
     if (history.tx_hash) {
       history.tx_hash = history.tx_hash.length > 20 ? history.tx_hash.slice(0, 10) + "..." + history.tx_hash.slice(-10) : history.tx_hash;
     }
 
-		if (history.amount ) {
-			history.amount = parseFloat(history.amount).toFixed(8);
-		}	
+    if (history.tx_hash === null) {
+      history.tx_hash = '-'
+    }
 
-        row.innerHTML = `            
-			<td>${history.created_at}</td>
-			<td>${history.asset_ticker}</td>
-			<td>${history.amount}</td>
-			<td>${history.address}</td>
-			<td>${history.tx_hash}</td>
-			<td style="font-weight: bold; text-transform: capitalize; color: ${history.status === 'confirmed'  ? '#2bff00':'red' }">${history.status}</td>
+    if (history.amount) {
+      history.amount = parseFloat(history.amount).toFixed(8);
+    }
 
-        `;
+    if (history.fee) {
+      history.fee = parseFloat(history.amount).toFixed(6);
+    }
 
-        tableBody.appendChild(row);
-    });
+    row.innerHTML = `
+      <td>${history.created_at}</td>
+      <td>${history.asset_ticker}</td>
+      <td>${history.amount}</td>
+      <td>${history.fee}
+      <td>${history.address}</td>
+      <td>${history.tx_hash}</td>
+      <td style="font-weight: bold; text-transform: capitalize; color: ${history.status === "confirmed" ? "#2bff00" : history.status === "pending" ? "orange" : history.status === "broadcasted" ? "#00bcd4" : "red"}">
+        ${history.status}
+      </td>
+    `;
+
+    tableBody.appendChild(row);
+
+  });
+
 }
 
 init();

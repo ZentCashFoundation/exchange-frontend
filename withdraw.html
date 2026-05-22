@@ -78,8 +78,11 @@
 								<div class="minimum-withdraw">
                                     <p><span class="available-balance">Available Balance: </span><span id="available-balance">....</span></p>
                                     <p><span class="withdraw-fee">Withdraw Fee: </span><span id="withdraw-fee">....</span></p> 
-									<p><span class="minimum-withdraw-amount">Minimum withdraw amount: </span><span id="minimum-withdraw-amount">....</span></p> 
+									<p><span class="minimum-withdraw-amount">Minimum Withdraw Amount (Ex.Fee): </span><span id="minimum-withdraw-amount">....</span></p> 
 									<p><span class="minimum-withdraw-confirmations">Minimum withdraw confirmations: </span><span id="minimum-withdraw-confirmations">....</span></p>
+                  <div class="mt-4">
+                    <button id="withdrawButton" class="btn btn-primary w-100">Send Withdrawal</button>
+                  </div>
 								</div>
 							</div>
 
@@ -111,6 +114,7 @@
                       <th scope="col">Date</th>
                       <th scope="col">Asset</th>
                       <th scope="col">Amount</th>
+                      <th scope="col">Fee</th>
                       <th scope="col">To Destination</th>
                       <th scope="col">TxID</th>
                       <th scope="col">Status</th>
