@@ -363,7 +363,7 @@ async function handleWithdraw() {
   try {
 
     const response =
-      await withdraw(asset.ticker, amount, address, null, null, null, null, asset.network_default);
+      await withdraw(asset.ticker, amount, address, paymentId ?? null, null, null, null, asset.network_default);
 
     if (!response) {
 
@@ -435,7 +435,7 @@ async function recentWithdrawals() {
     }
 
     if (history.fee) {
-      history.fee = parseFloat(history.amount).toFixed(6);
+      history.fee = parseFloat(history.fee).toFixed(6);
     }
 
     row.innerHTML = `
