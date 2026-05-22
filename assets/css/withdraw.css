@@ -1,3 +1,27 @@
+.available-balance {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.withdraw-fee {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.minimum-withdraw-amount {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.minimum-withdraw-confirmations {
+  font-size: 1rem;
+  color: #000000;
+  text-transform: capitalize;
+  font-weight: bold;
+}
 #networkSelect {
   text-transform: capitalize;
 }

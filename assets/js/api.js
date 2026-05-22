@@ -522,6 +522,24 @@ async function loadPairs() {
 }
 
 // ====================================
+// Funcion de consulta un activos.
+// ====================================
+async function loadAsset(ticker) {
+    try {
+        const res = await fetch(API + "/exchange/asset/info?ticker=" + ticker, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("Error retrieving assets:", err);
+    }
+}
+
+// ====================================
 // Funcion de consulta de activos disponibles.
 // ====================================
 async function loadAssets() {
@@ -536,6 +554,25 @@ async function loadAssets() {
         return data.assets;
     } catch (err) {
         console.error("Error retrieving assets:", err);
+    }
+}
+
+// ====================================
+// Funcion de consulta de balance del usuario.
+// ====================================
+async function loadUserBalance(ticker) {
+    try {
+        const res = await fetch(API + "/exchange/wallet/balance?asset=" + ticker, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Authorization": `Bearer ` + token
+            }
+        });
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("Error retrieving user balances:", err);
     }
 }
 

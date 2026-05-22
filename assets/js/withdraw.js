@@ -114,6 +114,108 @@ function getCurrentAsset() {
 
 }
 
+async function getInformationAssetAndBalance(ticker) {
+
+  // -----------------------------------
+  // LOAD DATA
+  // -----------------------------------
+
+  const [
+    assetResponse,
+    balanceResponse
+  ] = await Promise.all([
+
+    loadAsset(ticker),
+    loadUserBalance(ticker)
+
+  ]);
+
+  // -----------------------------------
+  // EXTRACT DATA
+  // -----------------------------------
+
+  const assets =
+    assetResponse.asset || [];
+
+  const balances =
+    Array.isArray(balanceResponse)
+      ? balanceResponse
+      : [balanceResponse];
+
+  // -----------------------------------
+  // BALANCE MAP
+  // -----------------------------------
+
+  const balanceMap =
+    new Map(
+      balances.map(b => [b.asset, b])
+    );
+
+  // -----------------------------------
+  // MERGE
+  // -----------------------------------
+
+  return assets.map(asset => {
+
+    const balance =
+      balanceMap.get(asset.ticker);
+
+    return {
+
+      ...asset,
+
+      available:
+        balance?.available || "0",
+
+      locked:
+        balance?.locked || "0",
+
+      total:
+        balance?.total || "0"
+    };
+  });
+}
+
+// -----------------------------------
+// WITHDRAW REQUERIMENTS
+// -----------------------------------
+async function withdrawRequeriments(ticker) {
+
+  const assets =
+    await getInformationAssetAndBalance(ticker);
+
+  if (!assets || assets.length === 0) {
+
+    alert("Error retrieving asset information");
+    return;
+  }
+
+  const assetInfo = assets[0];
+
+  const minAmount =
+    Number(assetInfo.min_withdraw).toFixed(assetInfo.decimals).toString();
+
+  const fee =
+    Number(assetInfo.withdraw_fee).toFixed(assetInfo.decimals).toString();
+
+  const available =
+    Number(assetInfo.available).toFixed(assetInfo.decimals).toString();
+
+  minimumWithdrawAmount = document.getElementById("minimum-withdraw-amount");  
+  minimumWithdrawAmount.textContent = minAmount + " " + assetInfo.ticker;
+
+  withdrawFee = document.getElementById("withdraw-fee");  
+  withdrawFee.textContent = fee + " " + assetInfo.ticker;
+
+  availableBalance = document.getElementById("available-balance");  
+  availableBalance.textContent = available + " " + assetInfo.ticker;
+
+  totalConfirmations = document.getElementById("minimum-withdraw-confirmations");  
+  totalConfirmations.textContent = assetInfo.confirmations_required;
+
+}
+
+
 // -----------------------------------
 // RECENT WITHDRAWALS
 // -----------------------------------
