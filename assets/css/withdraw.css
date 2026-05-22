@@ -25,3 +25,11 @@
 #networkSelect {
   text-transform: capitalize;
 }
+
+#paymentID {
+  display: none;
+}
+
+.paymentID {
+  display: none;
+}

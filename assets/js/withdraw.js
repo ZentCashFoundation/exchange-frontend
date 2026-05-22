@@ -266,6 +266,18 @@ async function withdrawRequeriments(ticker) {
 
   }
 
+  if (assetInfo.type === "TURTLENOTE") {
+  const inputPaymentID = document.getElementById("paymentID");
+  inputPaymentID.style.display = "initial";
+  const inputPaymentIDLabel = document.querySelector(".paymentID");
+  inputPaymentIDLabel.style.display = "initial"
+  } else {
+    const inputPaymentID = document.getElementById("paymentID");
+    inputPaymentID.style.display = "none";
+    const inputPaymentIDLabel = document.querySelector(".paymentID");
+    inputPaymentIDLabel.style.display = "none"
+  }
+
   const minAmount =
     Number(assetInfo.min_withdraw)
       .toFixed(assetInfo.decimals);
@@ -362,9 +374,12 @@ async function handleWithdraw() {
 
   try {
 
-    const response =
-      await withdraw(asset.ticker, amount, address, paymentId ?? null, null, null, null, asset.network_default);
+    let paymentId = document.getElementById("paymentID");
+    paymentId = paymentId?.value ?? null;
 
+    const response =
+      await withdraw(asset.ticker, amount, address, paymentId, null, null, null, asset.network_default);
+      
     if (!response) {
 
       withdrawButton.disabled = false;
@@ -378,6 +393,10 @@ async function handleWithdraw() {
     document.getElementById("withdrawAddress").value = "";
 
     document.getElementById("withdrawAmount").value = "";
+
+    document.getElementById("paymentID").value = "";
+
+
 
     await loadWithdrawData();
 
