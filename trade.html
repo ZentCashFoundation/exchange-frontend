@@ -212,45 +212,49 @@
 
 				<div class="card-body content">
 
-					<!-- OPEN ORDERS -->
-					<div id="open-panel" class="orders-panel">
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>Order ID</th>
-										<th>Side</th>
-										<th>Type</th>
-										<th>Price</th>
-										<th>Amount</th>
-										<th>Filled</th>
-										<th>Status</th>
-										<th>Time</th>
-									</tr>
-								</thead>
-								<tbody id="open-orders-table-body"></tbody>
-							</table>
+						<!-- OPEN ORDERS -->
+						<div id="open-panel" class="orders-panel">
+							<div class="orders-container">
+
+								<!-- Header -->
+								<div class="order-row order-header">
+									<div>Order ID</div>
+									<div>Side</div>
+									<div>Type</div>
+									<div>Price</div>
+									<div>Amount</div>
+									<div>Filled</div>
+									<div>Status</div>
+									<div>Time</div>
+									<div>Action</div>
+								</div>
+
+								<!-- Body -->
+								<div id="open-orders-container"></div>
+
+							</div>
 						</div>
-					</div>
+					
 
 					<!-- HISTORY -->
 					<div id="history-panel" class="orders-panel">
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>Order ID</th>
-										<th>Side</th>
-										<th>Type</th>
-										<th>Price</th>
-										<th>Amount</th>
-										<th>Filled</th>
-										<th>Status</th>
-										<th>Time</th>
-									</tr>
-								</thead>
-								<tbody id="my-orders-history-table-body"></tbody>
-							</table>
+						<div class="orders-container">
+
+							<!-- Header -->
+							<div class="order-row order-header">
+								<div>Order ID</div>
+								<div>Side</div>
+								<div>Type</div>
+								<div>Price</div>
+								<div>Amount</div>
+								<div>Filled</div>
+								<div>Status</div>
+								<div>Time</div>
+							</div>
+
+							<!-- Body -->
+							<div id="my-orders-history-container"></div>
+
 						</div>
 					</div>
 

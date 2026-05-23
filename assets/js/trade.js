@@ -42,67 +42,79 @@ function sellOrderMarket() {
 }
 
 async function historicalOrders() {
+
     const data = await orderGet(pair, null, 100);
 
     if (!data) return;
 
-    const tableBody = document.getElementById("my-orders-history-table-body");
-    tableBody.innerHTML = "";
+    const container = document.getElementById("my-orders-history-container");
+    container.innerHTML = "";
 
     data.forEach(trade => {
-        const row = document.createElement("tr");
 
         if (trade.price === null) {
             trade.price = "Market Price";
         }
 
+        const row = document.createElement("div");
+        row.className = "order-row";
+
         row.innerHTML = `
-            <td style="text-transform: capitalize">${trade.id}</td>
-            <td style="text-transform: capitalize">${trade.side}</td>
-            <td style="text-transform: capitalize">${trade.type}</td>
-            <td style="text-transform: capitalize">${trade.price}</td>
-            <td style="text-transform: capitalize">${trade.amount}</td>
-            <td style="text-transform: capitalize">${trade.filled}</td>
-            <td style="text-transform: capitalize">${trade.status}</td>
-            <td style="text-transform: capitalize">${new Date(trade.created_at).toLocaleString()}</td>
+            <div>${trade.id}</div>
+            <div>${trade.side}</div>
+            <div>${trade.type}</div>
+            <div>${trade.price}</div>
+            <div>${trade.amount}</div>
+            <div>${trade.filled}</div>
+            <div>${trade.status}</div>
+            <div>${new Date(trade.created_at).toLocaleString()}</div>
         `;
 
-        tableBody.appendChild(row);
+        container.appendChild(row);
     });
-    
 }
 
 async function openOrders() {
     const openData = await orderGet(pair, "open", 100);
     const partialData = await orderGet(pair, "partial", 100);
+
     const data = [...openData, ...partialData];
 
     if (!data) return;
 
-    const tableBody = document.getElementById("open-orders-table-body");
-    tableBody.innerHTML = "";
+    const container = document.getElementById("open-orders-container");
+    container.innerHTML = "";
 
     data.forEach(trade => {
-        const row = document.createElement("tr");
 
         if (trade.price === null) {
             trade.price = "Market Price";
         }
 
+        const row = document.createElement("div");
+        row.className = "order-row";
+
         row.innerHTML = `
-            <td style="text-transform: capitalize">${trade.id}</td>
-            <td style="text-transform: capitalize">${trade.side}</td>
-            <td style="text-transform: capitalize">${trade.type}</td>
-            <td style="text-transform: capitalize">${trade.price}</td>
-            <td style="text-transform: capitalize">${trade.amount}</td>
-            <td style="text-transform: capitalize">${trade.filled}</td>
-            <td style="text-transform: capitalize">${trade.status}</td>
-            <td style="text-transform: capitalize">${new Date(trade.created_at).toLocaleString()}</td>
-            <td><button class="btn btn-sm btn-danger" onclick="orderCancel('${trade.id}')">Cancel</button></td>
+            <div>${trade.id}</div>
+            <div>${trade.side}</div>
+            <div>${trade.type}</div>
+            <div>${trade.price}</div>
+            <div>${trade.amount}</div>
+            <div>${trade.filled}</div>
+            <div>${trade.status}</div>
+            <div>${new Date(trade.created_at).toLocaleString()}</div>
+            <div>
+                <button 
+                    class="btn btn-sm btn-danger"
+                    onclick="orderCancel('${trade.id}')"
+                >
+                    Cancel
+                </button>
+            </div>
         `;
 
-        tableBody.appendChild(row);
-    });  
+        container.appendChild(row);
+    });
 }
 
 async function marketsinTrades() {
