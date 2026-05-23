@@ -28,157 +28,237 @@
 	</div>
 </nav>
 
-<div class="section-markets">
-	<h2>Markets:</h2>
-		<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">Pair</th>
-					<th scope="col">Last Price</th>
-					<th scope="col">Variation 24h</th>
-					<th scope="col">Volume 24h</th>
-				</tr>
-			</thead>
-			<tbody id="markets-in-trade-table-body"></tbody>
-		</table>
-	</div>
-</div>
+<section class="trade">
+	<div class="row">
+		<div class="col-12 col-xl-4 col-xxl-3">
+			<div class="section-markets">
+				<h2 class="section-markets-title">Markets</h2>
+					<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Pair</th>
+								<th scope="col">Last Price</th>
+								<th scope="col">Variation 24h</th>
+								<th scope="col">Volume 24h</th>
+							</tr>
+						</thead>
+						<tbody id="markets-in-trade-table-body"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>	
 
-<div class="section-graph-trading">
-	<h2 id="chart-title">Trading Chart</h2>
-	<p id="chart-pair-name"></p>
-	<div id="chart">
-		<div id="chart-info">
-			<span id="info-open"></span>
-			<span id="info-high"></span>
-			<span id="info-low"></span>
-			<span id="info-close"></span>
-			<span id="info-volume"></span>
+		<div class="col-12 col-xl-8 col-xxl-6">
+			<div class="section-graph-trading">
+				<p id="chart-pair-name"></p>
+				<div id="chart">
+					<div id="chart-info">
+						<span id="info-open"></span>
+						<span id="info-high"></span>
+						<span id="info-low"></span>
+						<span id="info-close"></span>
+						<span id="info-volume"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12 col-xl-6">
+					<div class="card place-order">
+
+						<div class="card-header">
+							<h2 class="mb-0">Place Order</h2>
+
+							<ul class="nav nav-tabs card-header-tabs mt-2">
+								<li class="nav-item">
+									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#buy-tab">
+										Buy
+									</button>
+								</li>
+								<li class="nav-item">
+									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#sell-tab">
+										Sell
+									</button>
+								</li>
+							</ul>
+						</div>
+
+						<div class="card-body">
+
+							<div class="tab-content">
+
+								<!-- BUY -->
+								<div class="tab-pane fade show active" id="buy-tab">
+									<input class="form-control mb-2" id="order-buy-amount" placeholder="Amount">
+									<input class="form-control mb-2" id="order-buy-price" placeholder="Price">
+									<input class="form-control mb-2" id="order-buy-fee" placeholder="Fee" disabled>
+									<input class="form-control mb-3" id="order-buy-total" placeholder="Total" disabled>
+
+									<button class="btn btn-success w-100" onclick="buyOrderLimit()">Buy Limit</button>
+									<button class="btn btn-outline-success w-100 mt-2" onclick="buyOrderMarket()">Buy Market</button>
+								</div>
+
+								<!-- SELL -->
+								<div class="tab-pane fade" id="sell-tab">
+									<input class="form-control mb-2" id="order-sell-amount" placeholder="Amount">
+									<input class="form-control mb-2" id="order-sell-price" placeholder="Price">
+									<input class="form-control mb-2" id="order-sell-fee" placeholder="Fee" disabled>
+									<input class="form-control mb-3" id="order-sell-total" placeholder="Total" disabled>
+
+									<button class="btn btn-danger w-100" onclick="sellOrderLimit()">Sell Limit</button>
+									<button class="btn btn-outline-danger w-100 mt-2" onclick="sellOrderMarket()">Sell Market</button>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 col-xl-6">
+					<div class="section-orderbook">
+						<h2 class="section-orderbook-title">Order Book</h2>
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th scope="col">Price</th>
+										<th scope="col">Amount</th>
+									</tr>
+								</thead>
+								<tbody id="orderbook-ask-table-body"></tbody>
+							</table>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th scope="col">Price</th>
+										<th scope="col">Amount </th>
+									</tr>
+								</thead>
+								<tbody id="orderbook-bid-table-body"></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 
-<div class="section-place-order">
-	<h2>Place Order</h2>
-	<div class="section-order-buy">
-		<input type="text" class="form-control" id="order-buy-amount" placeholder="Amount">
-		<input type="text" class="form-control" id="order-buy-price" placeholder="Price">
-		<input type="text" class="form-control" id="order-buy-fee" placeholder="Fee" disabled>
-		<input type="text" class="form-control" id="order-buy-total" placeholder="Total" disabled>
-		<button class="btn btn-success" onclick="buyOrderLimit()" id="order-buy-button">Buy Limit</button>
-		<button class="btn btn-success" onclick="buyOrderMarket()" id="order-buy-market-button">Buy Market</button>
-	</div>
+		<div class="col-12 col-xl-12 col-xxl-3">
+			<div class="card tradeslist">
 
-	<div class="section-order-sell">
-		<input type="text" class="form-control" id="order-sell-amount" placeholder="Amount">
-		<input type="text" class="form-control" id="order-sell-price" placeholder="Price">
-		<input type="text" class="form-control" id="order-sell-fee" placeholder="Fee" disabled>
-		<input type="text" class="form-control" id="order-sell-total" placeholder="Total" disabled>
-		<button class="btn btn-danger" onclick="sellOrderLimit()" id="order-sell-button">Sell Limit</button>
-		<button class="btn btn-danger" onclick="sellOrderMarket()" id="order-sell-market-button">Sell Market</button>
-	</div>
-</div>	
+				<!-- state -->
+				<input type="radio" name="trade-tab" id="all" checked>
+				<input type="radio" name="trade-tab" id="mine">
 
-<div class="section-open-trade">
-	<h2>Open Orders</h2>
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">Order ID</th>
-					<th scope="col">Side</th>
-					<th scope="col">Type</th>
-					<th scope="col">Price</th>
-					<th scope="col">Amount</th>
-					<th scope="col">Filled</th>
-					<th scope="col">Status</th>
-					<th scope="col">Time</th>
-				</tr>
-			</thead>
-			<tbody id="open-orders-table-body"></tbody>
-		</table>
-	</div>
-</div>
+				<!-- HEADER 50/50 -->
+				<div class="trade-toggle">
+					<label for="all" class="all-label">All Trades</label>
+					<label for="mine" class="mine-label">My Trades</label>
+				</div>
 
-<div class="section-trade-history">
-	<h2>Orders History</h2>
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">Order ID</th>
-					<th scope="col">Side</th>
-					<th scope="col">Type</th>
-					<th scope="col">Price</th>
-					<th scope="col">Amount</th>
-					<th scope="col">Filled</th>
-					<th scope="col">Status</th>
-					<th scope="col">Time</th>
-				</tr>
-			</thead>
-			<tbody id="my-orders-history-table-body"></tbody>
-		</table>
-	</div>
-</div>
+				<div class="card-body content">
 
-<div class="section-orderbook">
-	<h2>Order Book</h2>
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">Price</th>
-					<th scope="col">Amount</th>
-				</tr>
-			</thead>
-			<tbody id="orderbook-ask-table-body"></tbody>
-		</table>
-	</div>
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">Price</th>
-					<th scope="col">Amount </th>
-				</tr>
-			</thead>
-			<tbody id="orderbook-bid-table-body"></tbody>
-		</table>
-	</div>
-</div>
+					<!-- ALL TRADES -->
+					<div id="all-panel" class="trade-panel">
+						<div class="table-responsive alltrades">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Price</th>
+										<th>Amount</th>
+										<th>Time</th>
+									</tr>
+								</thead>
+								<tbody id="trades-table-body"></tbody>
+							</table>
+						</div>
+					</div>
 
-<div class="section-my-trades">
-	<h2>My Trades</h2>
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">Price</th>
-					<th scope="col">Amount</th>
-					<th scope="col">Time</th>
-				</tr>
-			</thead>
-			<tbody id="my-trades-table-body"></tbody>
-		</table>
-	</div>
-</div>
+					<!-- MY TRADES -->
+					<div id="mine-panel" class="trade-panel">
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Price</th>
+										<th>Amount</th>
+										<th>Time</th>
+									</tr>
+								</thead>
+								<tbody id="my-trades-table-body"></tbody>
+							</table>
+						</div>
+					</div>
 
-<div class="section-alltrades">
-	<h2>All Trades</h2>
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th scope="col">Price</th>
-					<th scope="col">Amount</th>
-					<th scope="col">Time</th>
-				</tr>
-			</thead>
-			<tbody id="trades-table-body"></tbody>
-		</table>
-	</div>
-</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-12 col-xl-12">
+			<div class="card orderslist">
+
+				<!-- radios -->
+				<input type="radio" name="orders-tab" id="open" checked>
+				<input type="radio" name="orders-tab" id="history">
+
+				<!-- HEADER 50/50 -->
+				<div class="orders-toggle">
+					<label for="open" class="open-label">Open Orders</label>
+					<label for="history" class="history-label">Orders History</label>
+				</div>
+
+				<div class="card-body content">
+
+					<!-- OPEN ORDERS -->
+					<div id="open-panel" class="orders-panel">
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Order ID</th>
+										<th>Side</th>
+										<th>Type</th>
+										<th>Price</th>
+										<th>Amount</th>
+										<th>Filled</th>
+										<th>Status</th>
+										<th>Time</th>
+									</tr>
+								</thead>
+								<tbody id="open-orders-table-body"></tbody>
+							</table>
+						</div>
+					</div>
+
+					<!-- HISTORY -->
+					<div id="history-panel" class="orders-panel">
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Order ID</th>
+										<th>Side</th>
+										<th>Type</th>
+										<th>Price</th>
+										<th>Amount</th>
+										<th>Filled</th>
+										<th>Status</th>
+										<th>Time</th>
+									</tr>
+								</thead>
+								<tbody id="my-orders-history-table-body"></tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>	
+</section>
 
 <section class="footer">
 	<div class="row">

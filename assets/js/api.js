@@ -249,7 +249,7 @@ async function myTrades(pair) {
     try {
 
         const res = await fetch(
-            API + "/exchange/trade?pair=" + pair + "&limit=50",
+            API + "/exchange/trade?pair=" + pair + "&limit=15",
             {
                 method: "GET",
                 headers: {
@@ -442,7 +442,7 @@ async function trades(pair) {
     try {
 
         const res = await fetch(
-            API + "/exchange/market/trades?pair=" + pair + "&limit=50",
+            API + "/exchange/market/trades?pair=" + pair + "&limit=15",
             {
                 method: "GET",
                 headers: {
@@ -479,12 +479,12 @@ async function trades(pair) {
             const tr = document.createElement("tr");
 
             const tdPrice = document.createElement("td");
-            tdPrice.textContent = item.price;
+            tdPrice.textContent = Number(item.price).toFixed(8).toString();
 
             tr.appendChild(tdPrice);
 
             const tdQuantity = document.createElement("td");
-            tdQuantity.textContent = item.amount;
+            tdQuantity.textContent = Number(item.amount).toFixed(8).toString();
 
             tr.appendChild(tdQuantity);
 
