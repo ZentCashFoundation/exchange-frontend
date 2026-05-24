@@ -1,55 +1,83 @@
-.markets-header{
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 3rem;
+.section-markets{
 	margin-bottom: 3rem;
-	padding: 2rem;
-	text-align: center;
-	background-color: #2e2358;
-	max-width: max-content;
-	border-radius: 1rem;
-	border: 1px solid #7958db;
-}
-.markets-title {
-	font-size: 2.5rem;
-	color: #ebebeb;
-	margin-bottom: 0.5rem;
-}
-.markets-description {
-	font-size: 1.2rem;
-	color: #c0c0c0;
-	margin-bottom: 0;
-}
-.markets-content{
-	margin-left: 2rem;
 	margin-right: 2rem;
-	margin-top: 3rem;
-	margin-bottom: 3rem;
-	padding: 2rem;
+    margin-left: 2rem;
+}
+.markets-top-header{
+    padding:24px 22px;
+    background:linear-gradient(180deg, #161a25 0%, #0f1320 100%);
+    border:1px solid #1e2636;
+    border-radius:18px;
+	margin-top: 2rem;
+    margin-bottom:16px;
 	text-align: center;
-	background-color: #2e2358;
-	border-radius: 1rem;
-	border: 1px solid #7958db;
 }
+.markets-title{
+    margin:0;
+    font-size:24px;
+    font-weight:800;
+    color:#fff;
+}
+.markets-description{
+    margin:6px 0 0 0;
+    color:#8a93a6;
+    font-size:14px;
+    line-height:1.4;
+}
+.markets-card{
+    background:#0f1320;
+    border:1px solid #1e2636;
+    border-radius:18px;
+    overflow:hidden;
+}
+.market-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-height:64px;
+    padding:0 20px;
+    border-bottom:1px solid #1a2233;
+    transition:background .2s ease;
+}
+.market-row:not(.market-header):hover{
+    background:#161d2b;
+}
+.market-header{
+    background:#161a25;
+    min-height:56px;
+}
+.market-header div{
+    color:#7e8aa3 !important;
+    font-size:13px;
+    font-weight:700;
+}
+.market-row > div{
+    flex:1;
+    color:#d7dce5;
+    font-size:14px;
+    cursor:pointer;
+    transition:color .2s ease;
+}
+.market-row > div:first-child{
+    font-weight:700;
+}
+.positive-market{
+    color:#00c076 !important;
+    font-weight:700;
+}
+.negative-market{
+    color:#ff4d4f !important;
+    font-weight:700;
+}
+@media(max-width:768px){
+    .markets-card{
+        overflow:auto;
+    }
+    .market-row{
+        min-width:1200px;
+    }
+    .markets-title{
+        font-size:20px;
+    }
 
-.markets-content .table thead tr th {
-	background-color: #2e406a;
-	color: #ebebeb;
-}
-
-.markets-content .table tbody tr {
-  cursor: pointer;
-}
-
-.markets-content .table tbody tr td {
-	background-color: #3e72eb7d;
-	color: #ebebeb;
-}
-.markets-content .table tbody tr:nth-child(odd) td {
-	background-color: #214291;
-	color: #ebebeb;
-}
-.markets-content .table tbody tr:hover td {
-	background-color: #101d3a;
-	color: #ebebeb;
 }

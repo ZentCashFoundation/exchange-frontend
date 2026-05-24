@@ -39,6 +39,10 @@ body {
     font-weight:700;
     color:#fff;
 }
+#markets-in-trade-container{
+    height: 900px;
+    overflow-y: auto;
+}
 .markets-row{
     display:flex;
     align-items:center;
@@ -349,6 +353,8 @@ input[type="radio"] {
 .orderbook-panel {
     width:100%;
     margin-top: 2rem;
+    border-left:1px solid #161a25;
+    border-right:1px solid #161a25;
 }
 .orderbook-section {
     margin-bottom: 12px;
@@ -368,6 +374,14 @@ input[type="radio"] {
     background:#161a25;
     color:#fff;
     font-weight:600;
+}
+#orderbook-ask-container{
+    height: 220px;
+    overflow-y: auto;
+}
+#orderbook-bid-container{
+    height: 220px;
+    overflow-y: auto;
 }
 .ask-row {
     background:rgba(255,77,79,.08);
@@ -517,10 +531,6 @@ input[type="radio"] {
     /* ------ */
     .markets-card{
         overflow:auto;
-    }
-
-    .markets-row{
-        min-width:700px;
     }
 
   /* PLACE ORDER */

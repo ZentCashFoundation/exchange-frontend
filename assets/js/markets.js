@@ -3,15 +3,22 @@ const pair = params.get("pair") ?? "ZTC_BTC";
 const timeframe = params.get("timeframe") ?? "4h";
 
 async function markets() {
+
     const data = await loadPairs();
 
     if (!data) return;
 
-    const tableBody = document.getElementById("markets-in-trade-table-body");
-    tableBody.innerHTML = "";
+    const container = document.getElementById(
+        "markets-in-trade-container"
+    );
+
+    container.innerHTML = "";
 
     data.forEach(trade => {
-        const row = document.createElement("tr");
+
+        const row = document.createElement("div");
+
+        row.className = "market-row";
 
         if (trade.last_price === null) {
             trade.last_price = 0;
@@ -25,21 +32,53 @@ async function markets() {
             trade.ask_price = 0;
         }
 
-        const variation = parseFloat(trade.variation_24h).toFixed(2);
-        const volume = parseFloat(trade.volume_24h).toFixed(0);
+        const variation = parseFloat(
+            trade.variation_24h
+        ).toFixed(2);
+
+        const volume = parseFloat(
+            trade.volume_24h
+        ).toFixed(0);
 
         row.innerHTML = `
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize; cursor: pointer">${trade.pair.replace("_", "/")}</td>
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'"style="text-transform: capitalize">${trade.bid_price}</td>
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.ask_price}</td>
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.last_price}</td>
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.low_24h}</td>
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.high_24h}</td>
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${variation} %</td>
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${volume}</td>
+            <div onclick="window.location.href='trade.html?pair=${trade.pair}'">
+                ${trade.pair.replace("_", "/")}
+            </div>
+
+            <div onclick="window.location.href='trade.html?pair=${trade.pair}'">
+                ${trade.bid_price}
+            </div>
+
+            <div onclick="window.location.href='trade.html?pair=${trade.pair}'">
+                ${trade.ask_price}
+            </div>
+
+            <div onclick="window.location.href='trade.html?pair=${trade.pair}'">
+                ${trade.last_price}
+            </div>
+
+            <div onclick="window.location.href='trade.html?pair=${trade.pair}'">
+                ${trade.low_24h}
+            </div>
+
+            <div onclick="window.location.href='trade.html?pair=${trade.pair}'">
+                ${trade.high_24h}
+            </div>
+
+            <div
+                class="${variation >= 0 ? 'positive-market' : 'negative-market'}"
+                onclick="window.location.href='trade.html?pair=${trade.pair}'"
+            >
+                ${variation} %
+            </div>
+
+            <div onclick="window.location.href='trade.html?pair=${trade.pair}'">
+                ${volume}
+            </div>
         `;
 
-        tableBody.appendChild(row);
+        container.appendChild(row);
+
     });
 }
 

@@ -29,29 +29,31 @@
 </nav>
 
 <div class="section-markets">
-	<div class="markets-header">
-		<h1 class="markets-title">Markets</h1>
-		<p class="markets-description">Browse our available trading pairs and view real-time market data.</p>
-	</div>
-	<div class="markets-content">
-		<div class="table-responsive">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th scope="col">Pair</th>
-						<th scope="col">Bid Price</th>
-						<th scope="col">Ask Price</th>
-						<th scope="col">Last Price</th>
-						<th scope="col">Low 24h</th>
-						<th scope="col">High 24h</th>
-						<th scope="col">Variation 24h</th>
-						<th scope="col">Volume 24h</th>
-					</tr>
-				</thead>
-				<tbody id="markets-in-trade-table-body"></tbody>
-			</table>
-		</div>	
-	</div>
+    <!-- HEADER -->
+    <div class="markets-top-header">
+        <h1 class="markets-title">
+            Markets
+        </h1>
+        <p class="markets-description">
+            Browse our available trading pairs and view real-time market data.
+        </p>
+    </div>
+    <!-- CARD -->
+    <div class="markets-card">
+        <!-- TABLE HEADER -->
+        <div class="market-row market-header">
+            <div>Pair</div>
+            <div>Bid Price</div>
+            <div>Ask Price</div>
+            <div>Last Price</div>
+            <div>Low 24h</div>
+            <div>High 24h</div>
+            <div>Variation 24h</div>
+            <div>Volume 24h</div>
+        </div>
+        <!-- BODY -->
+        <div id="markets-in-trade-container"></div>
+    </div>
 </div>
 
 <section class="footer">

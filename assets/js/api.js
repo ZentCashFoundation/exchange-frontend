@@ -401,7 +401,7 @@ async function orderbook(pair) {
 
             askContainer.innerHTML = `
                 <div class="orderbook-row empty-orderbook">
-                    <div>There are no asks</div>
+                    <div class="text-center">There are no asks</div>
                 </div>
             `;
 
@@ -432,7 +432,7 @@ async function orderbook(pair) {
 
             bidContainer.innerHTML = `
                 <div class="orderbook-row empty-orderbook">
-                    <div>There are no bids</div>
+                    <div class="text-center">There are no bids</div>
                 </div>
             `;
 
