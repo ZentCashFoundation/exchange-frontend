@@ -118,15 +118,16 @@ async function openOrders() {
 }
 
 async function marketsinTrades() {
+
     const data = await loadPairs();
 
     if (!data) return;
 
-    const tableBody = document.getElementById("markets-in-trade-table-body");
-    tableBody.innerHTML = "";
+    const container = document.getElementById("markets-in-trade-container");
+
+    container.innerHTML = "";
 
     data.forEach(trade => {
-        const row = document.createElement("tr");
 
         if (trade.last_price === null) {
             trade.last_price = 0;
@@ -136,15 +137,33 @@ async function marketsinTrades() {
         const volume = parseFloat(trade.volume_24h).toFixed(0);
         const lastPrice = parseFloat(trade.last_price).toFixed(8);
 
-        row.innerHTML = `
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${trade.pair.replace("_", "/")}</td>
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${lastPrice}</td>
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${variation} %</td>
-            <td onclick="window.location.href='trade.html?pair=${trade.pair}'" style="text-transform: capitalize">${volume}</td>
+        const row = document.createElement("div");
 
+        row.className = "markets-row";
+
+        row.innerHTML = `
+            <div onclick="window.location.href='trade.html?pair=${trade.pair}'">
+                ${trade.pair.replace("_", "/")}
+            </div>
+
+            <div onclick="window.location.href='trade.html?pair=${trade.pair}'">
+                ${lastPrice}
+            </div>
+
+            <div 
+                class="${variation >= 0 ? 'market-positive' : 'market-negative'}"
+                onclick="window.location.href='trade.html?pair=${trade.pair}'"
+            >
+                ${variation} %
+            </div>
+
+            <div onclick="window.location.href='trade.html?pair=${trade.pair}'">
+                ${volume}
+            </div>
         `;
 
-        tableBody.appendChild(row);
+        container.appendChild(row);
+
     });
 }
 
@@ -166,10 +185,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 setInterval(() => {
-    trades(pair);
+   // trades(pair);
     orderbook(pair);
     loadChart(pair, timeframe);
-    marketsinTrades();
+    //marketsinTrades();
     updateTotals();
     if (token) {
         openOrders();

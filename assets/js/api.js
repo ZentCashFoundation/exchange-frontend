@@ -246,10 +246,11 @@ async function orderCancel(orderId) {
 // Funcion de consulta de mis trades
 // ====================================
 async function myTrades(pair) {
+
     try {
 
         const res = await fetch(
-            API + "/exchange/trade?pair=" + pair + "&limit=15",
+            API + "/exchange/trade?pair=" + pair + "&limit=50",
             {
                 method: "GET",
                 headers: {
@@ -261,54 +262,56 @@ async function myTrades(pair) {
 
         const data = await res.json();
 
-        const tbody = document.getElementById("my-trades-table-body");
+        const container = document.getElementById("my-trades-container");
 
-        tbody.innerHTML = "";
+        container.innerHTML = "";
 
         if (!data.result || data.result.length === 0) {
 
-            const tr = document.createElement("tr");
+            const emptyRow = document.createElement("div");
 
-            const td = document.createElement("td");
+            emptyRow.className = "mytrade-row";
 
-            td.colSpan = 3;
-            td.textContent = "There is no data.";
-            td.style.textAlign = "center";
+            emptyRow.innerHTML = `
+                <div class="empty-trades">
+                    There is no data.
+                </div>
+            `;
 
-            tr.appendChild(td);
-
-            tbody.appendChild(tr);
+            container.appendChild(emptyRow);
 
             return;
         }
 
         data.result.forEach((item) => {
 
-            const tr = document.createElement("tr");
+            const row = document.createElement("div");
 
-            const tdPrice = document.createElement("td");
-            tdPrice.textContent = item.price;
+            row.className = "mytrade-row";
 
-            tr.appendChild(tdPrice);
+            row.innerHTML = `
+                <div class="${item.side === 'buy' ? 'positive' : 'negative'}">
+                    ${Number(item.price).toFixed(8)}
+                </div>
 
-            const tdQuantity = document.createElement("td");
-            tdQuantity.textContent = item.amount;
+                <div>
+                    ${Number(item.amount).toFixed(8)}
+                </div>
 
-            tr.appendChild(tdQuantity);
+                <div>
+                    ${new Date(item.created_at).toLocaleString()}
+                </div>
+            `;
 
-            const tdTime = document.createElement("td");
-            tdTime.textContent = new Date(item.created_at).toLocaleString();
+            container.appendChild(row);
 
-            tr.appendChild(tdTime);
-
-            tbody.appendChild(tr);
         });
 
     } catch (err) {
 
         console.error("Error retrieving trades:", err);
 
-    } 
+    }
 }
 
 // ====================================
@@ -365,7 +368,9 @@ async function updateLastPrice(pair) {
 // Funcion de libro de órdenes publico.
 // ====================================
 async function orderbook(pair) {
+
     try {
+
         const res = await fetch(
             API + "/exchange/market/orderbook?pair=" + pair,
             {
@@ -378,59 +383,75 @@ async function orderbook(pair) {
 
         const data = await res.json();
 
-        const tbodyask = document.getElementById("orderbook-ask-table-body");
-        const tbodybid = document.getElementById("orderbook-bid-table-body");
+        const askContainer = document.getElementById("orderbook-ask-container");
+        const bidContainer = document.getElementById("orderbook-bid-container");
 
         // ASK
-        tbodyask.innerHTML = "";
+
+        askContainer.innerHTML = "";
 
         if (!data.asks || data.asks.length === 0) {
-            tbodyask.innerHTML = `
-                <tr>
-                    <td colspan="2" style="text-align:center">
-                        There are no asks
-                    </td>
-                </tr>
-            `;
-        } else {
-            [...data.asks].reverse().forEach(item => {
-                const tr = document.createElement("tr");
 
-                tr.innerHTML = `
-                    <td>${item[0]}</td>
-                    <td>${item[1]}</td>
+            askContainer.innerHTML = `
+                <div class="orderbook-row empty-orderbook">
+                    <div>There are no asks</div>
+                </div>
+            `;
+
+        } else {
+
+            [...data.asks].reverse().forEach(item => {
+
+                const row = document.createElement("div");
+
+                row.className = "orderbook-row ask-row";
+
+                row.innerHTML = `
+                    <div>${item[0]}</div>
+                    <div>${item[1]}</div>
                 `;
 
-                tbodyask.appendChild(tr);
+                askContainer.appendChild(row);
+
             });
+
         }
 
         // BID
-        tbodybid.innerHTML = "";
+
+        bidContainer.innerHTML = "";
 
         if (!data.bids || data.bids.length === 0) {
-            tbodybid.innerHTML = `
-                <tr>
-                    <td colspan="2" style="text-align:center">
-                        There are no bids
-                    </td>
-                </tr>
-            `;
-        } else {
-            data.bids.forEach(item => {
-                const tr = document.createElement("tr");
 
-                tr.innerHTML = `
-                    <td>${item[0]}</td>
-                    <td>${item[1]}</td>
+            bidContainer.innerHTML = `
+                <div class="orderbook-row empty-orderbook">
+                    <div>There are no bids</div>
+                </div>
+            `;
+
+        } else {
+
+            data.bids.forEach(item => {
+
+                const row = document.createElement("div");
+
+                row.className = "orderbook-row bid-row";
+
+                row.innerHTML = `
+                    <div>${item[0]}</div>
+                    <div>${item[1]}</div>
                 `;
 
-                tbodybid.appendChild(tr);
+                bidContainer.appendChild(row);
+
             });
+
         }
 
     } catch (err) {
+
         console.error("Error retrieving orderbook:", err);
+
     }
 }
 
@@ -442,7 +463,7 @@ async function trades(pair) {
     try {
 
         const res = await fetch(
-            API + "/exchange/market/trades?pair=" + pair + "&limit=15",
+            API + "/exchange/market/trades?pair=" + pair + "&limit=50",
             {
                 method: "GET",
                 headers: {
@@ -453,47 +474,49 @@ async function trades(pair) {
 
         const data = await res.json();
 
-        const tbody = document.getElementById("trades-table-body");
+        const container = document.getElementById("trades-container");
 
-        tbody.innerHTML = "";
+        container.innerHTML = "";
 
         if (!data.result || data.result.length === 0) {
 
-            const tr = document.createElement("tr");
+            const emptyRow = document.createElement("div");
 
-            const td = document.createElement("td");
+            emptyRow.className = "alltrade-row";
 
-            td.colSpan = 3;
-            td.textContent = "There is no data.";
-            td.style.textAlign = "center";
+            emptyRow.innerHTML = `
+                <div class="empty-trades">
+                    There is no data.
+                </div>
+            `;
 
-            tr.appendChild(td);
-
-            tbody.appendChild(tr);
+            container.appendChild(emptyRow);
 
             return;
         }
 
         data.result.forEach((item) => {
 
-            const tr = document.createElement("tr");
+            const row = document.createElement("div");
 
-            const tdPrice = document.createElement("td");
-            tdPrice.textContent = Number(item.price).toFixed(8).toString();
+            row.className = "alltrade-row";
 
-            tr.appendChild(tdPrice);
+            row.innerHTML = `
+                <div class="${item.side === 'buy' ? 'positive' : 'negative'}">
+                    ${Number(item.price).toFixed(8)}
+                </div>
 
-            const tdQuantity = document.createElement("td");
-            tdQuantity.textContent = Number(item.amount).toFixed(8).toString();
+                <div>
+                    ${Number(item.amount).toFixed(8)}
+                </div>
 
-            tr.appendChild(tdQuantity);
+                <div>
+                    ${new Date(item.created_at).toLocaleString()}
+                </div>
+            `;
 
-            const tdTime = document.createElement("td");
-            tdTime.textContent = new Date(item.created_at).toLocaleString();
+            container.appendChild(row);
 
-            tr.appendChild(tdTime);
-
-            tbody.appendChild(tr);
         });
 
     } catch (err) {

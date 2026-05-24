@@ -32,19 +32,22 @@
 	<div class="row">
 		<div class="col-12 col-xl-4 col-xxl-3">
 			<div class="section-markets">
-				<h2 class="section-markets-title">Markets</h2>
-					<div class="table-responsive">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th scope="col">Pair</th>
-								<th scope="col">Last Price</th>
-								<th scope="col">Variation 24h</th>
-								<th scope="col">Volume 24h</th>
-							</tr>
-						</thead>
-						<tbody id="markets-in-trade-table-body"></tbody>
-					</table>
+				<div class="markets-card">
+					<!-- HEADER -->
+					<div class="markets-card-header">
+						<h2 class="section-markets-title">
+							Markets
+						</h2>
+					</div>
+					<!-- TABLE HEADER -->
+					<div class="markets-row markets-header">
+						<div>Pair</div>
+						<div>Last Price</div>
+						<div>Variation 24h</div>
+						<div>Volume 24h</div>
+					</div>
+					<!-- BODY -->
+					<div id="markets-in-trade-container"></div>
 				</div>
 			</div>
 		</div>	
@@ -65,82 +68,157 @@
 
 			<div class="row">
 				<div class="col-12 col-xl-6">
-					<div class="card place-order">
+					<div class="card placeorder-card">
 
-						<div class="card-header">
-							<h2 class="mb-0">Place Order</h2>
+    <!-- RADIOS -->
+    <input type="radio" name="placeorder-tab" id="buy-order" checked>
+    <input type="radio" name="placeorder-tab" id="sell-order">
 
-							<ul class="nav nav-tabs card-header-tabs mt-2">
-								<li class="nav-item">
-									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#buy-tab">
-										Buy
-									</button>
-								</li>
-								<li class="nav-item">
-									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#sell-tab">
-										Sell
-									</button>
-								</li>
-							</ul>
-						</div>
+    <!-- HEADER -->
+    <div class="placeorder-toggle">
+        <label for="buy-order" class="buy-label">
+            Buy
+        </label>
 
-						<div class="card-body">
+        <label for="sell-order" class="sell-label">
+            Sell
+        </label>
+    </div>
 
-							<div class="tab-content">
+    <!-- CONTENT -->
+    <div class="card-body placeorder-content">
 
-								<!-- BUY -->
-								<div class="tab-pane fade show active" id="buy-tab">
-									<input class="form-control mb-2" id="order-buy-amount" placeholder="Amount">
-									<input class="form-control mb-2" id="order-buy-price" placeholder="Price">
-									<input class="form-control mb-2" id="order-buy-fee" placeholder="Fee" disabled>
-									<input class="form-control mb-3" id="order-buy-total" placeholder="Total" disabled>
+        <!-- BUY PANEL -->
+        <div class="placeorder-panel buy-panel">
 
-									<button class="btn btn-success w-100" onclick="buyOrderLimit()">Buy Limit</button>
-									<button class="btn btn-outline-success w-100 mt-2" onclick="buyOrderMarket()">Buy Market</button>
-								</div>
+            <input
+                class="form-control"
+                id="order-buy-amount"
+                placeholder="Amount"
+            >
 
-								<!-- SELL -->
-								<div class="tab-pane fade" id="sell-tab">
-									<input class="form-control mb-2" id="order-sell-amount" placeholder="Amount">
-									<input class="form-control mb-2" id="order-sell-price" placeholder="Price">
-									<input class="form-control mb-2" id="order-sell-fee" placeholder="Fee" disabled>
-									<input class="form-control mb-3" id="order-sell-total" placeholder="Total" disabled>
+            <input
+                class="form-control"
+                id="order-buy-price"
+                placeholder="Price"
+            >
 
-									<button class="btn btn-danger w-100" onclick="sellOrderLimit()">Sell Limit</button>
-									<button class="btn btn-outline-danger w-100 mt-2" onclick="sellOrderMarket()">Sell Market</button>
-								</div>
+            <input
+                class="form-control"
+                id="order-buy-fee"
+                placeholder="Fee"
+                disabled
+            >
 
-							</div>
+            <input
+                class="form-control"
+                id="order-buy-total"
+                placeholder="Total"
+                disabled
+            >
 
-						</div>
-					</div>
+            <div class="placeorder-buttons">
+
+                <button
+                    class="btn buy-btn"
+                    onclick="buyOrderLimit()"
+                >
+                    Buy Limit
+                </button>
+
+                <button
+                    class="btn buy-outline-btn"
+                    onclick="buyOrderMarket()"
+                >
+                    Buy Market
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- SELL PANEL -->
+        <div class="placeorder-panel sell-panel">
+
+            <input
+                class="form-control"
+                id="order-sell-amount"
+                placeholder="Amount"
+            >
+
+            <input
+                class="form-control"
+                id="order-sell-price"
+                placeholder="Price"
+            >
+
+            <input
+                class="form-control"
+                id="order-sell-fee"
+                placeholder="Fee"
+                disabled
+            >
+
+            <input
+                class="form-control"
+                id="order-sell-total"
+                placeholder="Total"
+                disabled
+            >
+
+            <div class="placeorder-buttons">
+
+                <button
+                    class="btn sell-btn"
+                    onclick="sellOrderLimit()"
+                >
+                    Sell Limit
+                </button>
+
+                <button
+                    class="btn sell-outline-btn"
+                    onclick="sellOrderMarket()"
+                >
+                    Sell Market
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 				</div>
 
 				<div class="col-12 col-xl-6">
-					<div class="section-orderbook">
-						<h2 class="section-orderbook-title">Order Book</h2>
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th scope="col">Price</th>
-										<th scope="col">Amount</th>
-									</tr>
-								</thead>
-								<tbody id="orderbook-ask-table-body"></tbody>
-							</table>
+					<!-- ORDERBOOK -->
+					<div class="orderbook-panel">
+
+						<!-- ASKS -->
+						<div class="orderbook-section">
+
+							<div class="orderbook-row orderbook-header">
+								<div>Price</div>
+								<div>Amount</div>
+							</div>
+
+							<div id="orderbook-ask-container"></div>
+
 						</div>
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th scope="col">Price</th>
-										<th scope="col">Amount </th>
-									</tr>
-								</thead>
-								<tbody id="orderbook-bid-table-body"></tbody>
-							</table>
+
+						<!-- BIDS -->
+						<div class="orderbook-section">
+
+							<div class="orderbook-row orderbook-header">
+								<div>Price</div>
+								<div>Amount</div>
+							</div>
+
+							<div id="orderbook-bid-container"></div>
+
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -163,34 +241,32 @@
 
 					<!-- ALL TRADES -->
 					<div id="all-panel" class="trade-panel">
-						<div class="table-responsive alltrades">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>Price</th>
-										<th>Amount</th>
-										<th>Time</th>
-									</tr>
-								</thead>
-								<tbody id="trades-table-body"></tbody>
-							</table>
+
+						<!-- HEADER -->
+						<div class="alltrade-row alltrade-header">
+							<div>Price</div>
+							<div>Amount</div>
+							<div>Time</div>
 						</div>
+
+						<!-- BODY -->
+						<div id="trades-container"></div>
+
 					</div>
 
 					<!-- MY TRADES -->
 					<div id="mine-panel" class="trade-panel">
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>Price</th>
-										<th>Amount</th>
-										<th>Time</th>
-									</tr>
-								</thead>
-								<tbody id="my-trades-table-body"></tbody>
-							</table>
+
+						<!-- HEADER -->
+						<div class="mytrade-row mytrade-header">
+							<div>Price</div>
+							<div>Amount</div>
+							<div>Time</div>
 						</div>
+
+						<!-- BODY -->
+						<div id="my-trades-container"></div>
+
 					</div>
 
 				</div>
@@ -235,28 +311,27 @@
 							</div>
 						</div>
 					
+						<!-- HISTORY -->
+						<div id="history-panel" class="orders-panel">
+							<div class="orders-container">
 
-					<!-- HISTORY -->
-					<div id="history-panel" class="orders-panel">
-						<div class="orders-container">
+								<!-- Header -->
+								<div class="order-row order-header">
+									<div>Order ID</div>
+									<div>Side</div>
+									<div>Type</div>
+									<div>Price</div>
+									<div>Amount</div>
+									<div>Filled</div>
+									<div>Status</div>
+									<div>Time</div>
+								</div>
 
-							<!-- Header -->
-							<div class="order-row order-header">
-								<div>Order ID</div>
-								<div>Side</div>
-								<div>Type</div>
-								<div>Price</div>
-								<div>Amount</div>
-								<div>Filled</div>
-								<div>Status</div>
-								<div>Time</div>
+								<!-- Body -->
+								<div id="my-orders-history-container"></div>
+
 							</div>
-
-							<!-- Body -->
-							<div id="my-orders-history-container"></div>
-
 						</div>
-					</div>
 
 				</div>
 			</div>
