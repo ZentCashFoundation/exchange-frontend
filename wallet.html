@@ -29,26 +29,28 @@
 </nav>
 
 <div class="section-wallet">
-	<div class="wallet-header">
-			<h1 class="wallet-title">Wallet</h1>
+	<div class="wallet-header-description">
+			<h1 class="wallet-title">Wallets</h1>
 			<p class="wallet-description">Manage your assets and view your transaction history.</p>
 	</div>
-	<div class="wallet-content">
-		<div class="table-responsive">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th scope="col">Asset</th>
-						<th scope="col">Name</th>
-						<th scope="col">Available</th>
-						<th scope="col">Locked</th>
-						<th scope="col">Actions</th>
-					</tr>
-				</thead>
-				<tbody id="assets-in-wallet-table-body"></tbody>
-			</table>
+		<div class="wallet-content">
+			<div class="wallet-card">
+
+				<!-- HEADER -->
+				<div class="wallet-row wallet-header">
+					<div>Asset</div>
+					<div>Name</div>
+					<div>Available</div>
+					<div>Locked</div>
+					<div>Actions</div>
+				</div>
+
+				<!-- BODY -->
+				<div id="assets-in-wallet-container"></div>
+
+			</div>
+
 		</div>
-	</div>	
 </div>
 
 <section class="footer">

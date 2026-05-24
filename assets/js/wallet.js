@@ -53,33 +53,51 @@ async function getPortfolio() {
 }
 
 async function renderWallet() {
-  const portfolio = await getPortfolio();
-  
-  const tableBody = document.getElementById("assets-in-wallet-table-body");
-    tableBody.innerHTML = "";
-	  portfolio.forEach(asset => {
-		    const row = document.createElement("tr");
+
+    const portfolio = await getPortfolio();
+
+    const container = document.getElementById("assets-in-wallet-container");
+
+    container.innerHTML = "";
+
+    portfolio.forEach(asset => {
+
+        const row = document.createElement("div");
+        row.className = "wallet-row";
 
         if (asset.available) {
-          asset.available = parseFloat(asset.available).toFixed(asset.decimals);
+            asset.available = parseFloat(asset.available).toFixed(asset.decimals);
         }
+
         if (asset.locked) {
-          asset.locked = parseFloat(asset.locked).toFixed(asset.decimals);
+            asset.locked = parseFloat(asset.locked).toFixed(asset.decimals);
         }
 
         row.innerHTML = `
-          <td style="text-transform: capitalize"><img src="${asset.icon_url}" alt="${asset.ticker}" width="20" height="20"> ${asset.ticker}</td>
-          <td style="text-transform: capitalize">${asset.name}</td>
-          <td style="text-transform: capitalize">${asset.available}</td>
-          <td style="text-transform: capitalize">${asset.locked}</td>
-          <td>
-            <button onclick="window.location.href='deposit.html?ticker=${asset.ticker}'" class="btn btn-success btn-sm">Deposit</button>
-            <button onclick="window.location.href='withdraw.html?ticker=${asset.ticker}'" class="btn btn-danger btn-sm">Withdraw</button>
-          </td>
+            <div class="wallet-asset">
+                <img src="${asset.icon_url}" alt="${asset.ticker}">
+                <span>${asset.ticker}</span>
+            </div>
+
+            <div>${asset.name}</div>
+
+            <div>${asset.available}</div>
+
+            <div>${asset.locked}</div>
+
+            <div class="wallet-actions">
+                <button onclick="window.location.href='deposit.html?ticker=${asset.ticker}'" class="wallet-btn deposit">
+                    Deposit
+                </button>
+
+                <button onclick="window.location.href='withdraw.html?ticker=${asset.ticker}'" class="wallet-btn withdraw">
+                    Withdraw
+                </button>
+            </div>
         `;
 
-        tableBody.appendChild(row);
+        container.appendChild(row);
     });
-} 
+}
  
 renderWallet()
