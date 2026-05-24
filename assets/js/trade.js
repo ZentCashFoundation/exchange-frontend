@@ -185,10 +185,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 setInterval(() => {
-   // trades(pair);
+    trades(pair);
     orderbook(pair);
     loadChart(pair, timeframe);
-    //marketsinTrades();
+    marketsinTrades();
     updateTotals();
     if (token) {
         openOrders();

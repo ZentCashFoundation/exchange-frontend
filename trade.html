@@ -69,126 +69,125 @@
 			<div class="row">
 				<div class="col-12 col-xl-6">
 					<div class="card placeorder-card">
+						<!-- RADIOS -->
+						<input type="radio" name="placeorder-tab" id="buy-order" checked>
+						<input type="radio" name="placeorder-tab" id="sell-order">
 
-    <!-- RADIOS -->
-    <input type="radio" name="placeorder-tab" id="buy-order" checked>
-    <input type="radio" name="placeorder-tab" id="sell-order">
+						<!-- HEADER -->
+						<div class="placeorder-toggle">
+							<label for="buy-order" class="buy-label">
+								Buy
+							</label>
 
-    <!-- HEADER -->
-    <div class="placeorder-toggle">
-        <label for="buy-order" class="buy-label">
-            Buy
-        </label>
+							<label for="sell-order" class="sell-label">
+								Sell
+							</label>
+						</div>
 
-        <label for="sell-order" class="sell-label">
-            Sell
-        </label>
-    </div>
+						<!-- CONTENT -->
+						<div class="card-body placeorder-content">
 
-    <!-- CONTENT -->
-    <div class="card-body placeorder-content">
+							<!-- BUY PANEL -->
+							<div class="placeorder-panel buy-panel">
 
-        <!-- BUY PANEL -->
-        <div class="placeorder-panel buy-panel">
+								<input
+									class="form-control"
+									id="order-buy-amount"
+									placeholder="Amount"
+								>
 
-            <input
-                class="form-control"
-                id="order-buy-amount"
-                placeholder="Amount"
-            >
+								<input
+									class="form-control"
+									id="order-buy-price"
+									placeholder="Price"
+								>
 
-            <input
-                class="form-control"
-                id="order-buy-price"
-                placeholder="Price"
-            >
+								<input
+									class="form-control"
+									id="order-buy-fee"
+									placeholder="Fee"
+									disabled
+								>
 
-            <input
-                class="form-control"
-                id="order-buy-fee"
-                placeholder="Fee"
-                disabled
-            >
+								<input
+									class="form-control"
+									id="order-buy-total"
+									placeholder="Total"
+									disabled
+								>
 
-            <input
-                class="form-control"
-                id="order-buy-total"
-                placeholder="Total"
-                disabled
-            >
+								<div class="placeorder-buttons">
 
-            <div class="placeorder-buttons">
+									<button
+										class="btn buy-btn"
+										onclick="buyOrderLimit()"
+									>
+										Buy Limit
+									</button>
 
-                <button
-                    class="btn buy-btn"
-                    onclick="buyOrderLimit()"
-                >
-                    Buy Limit
-                </button>
+									<button
+										class="btn buy-outline-btn"
+										onclick="buyOrderMarket()"
+									>
+										Buy Market
+									</button>
 
-                <button
-                    class="btn buy-outline-btn"
-                    onclick="buyOrderMarket()"
-                >
-                    Buy Market
-                </button>
+								</div>
 
-            </div>
+							</div>
 
-        </div>
+							<!-- SELL PANEL -->
+							<div class="placeorder-panel sell-panel">
 
-        <!-- SELL PANEL -->
-        <div class="placeorder-panel sell-panel">
+								<input
+									class="form-control"
+									id="order-sell-amount"
+									placeholder="Amount"
+								>
 
-            <input
-                class="form-control"
-                id="order-sell-amount"
-                placeholder="Amount"
-            >
+								<input
+									class="form-control"
+									id="order-sell-price"
+									placeholder="Price"
+								>
 
-            <input
-                class="form-control"
-                id="order-sell-price"
-                placeholder="Price"
-            >
+								<input
+									class="form-control"
+									id="order-sell-fee"
+									placeholder="Fee"
+									disabled
+								>
 
-            <input
-                class="form-control"
-                id="order-sell-fee"
-                placeholder="Fee"
-                disabled
-            >
+								<input
+									class="form-control"
+									id="order-sell-total"
+									placeholder="Total"
+									disabled
+								>
 
-            <input
-                class="form-control"
-                id="order-sell-total"
-                placeholder="Total"
-                disabled
-            >
+								<div class="placeorder-buttons">
 
-            <div class="placeorder-buttons">
+									<button
+										class="btn sell-btn"
+										onclick="sellOrderLimit()"
+									>
+										Sell Limit
+									</button>
 
-                <button
-                    class="btn sell-btn"
-                    onclick="sellOrderLimit()"
-                >
-                    Sell Limit
-                </button>
+									<button
+										class="btn sell-outline-btn"
+										onclick="sellOrderMarket()"
+									>
+										Sell Market
+									</button>
 
-                <button
-                    class="btn sell-outline-btn"
-                    onclick="sellOrderMarket()"
-                >
-                    Sell Market
-                </button>
+								</div>
 
-            </div>
+							</div>
 
-        </div>
+						</div>
 
-    </div>
-
-</div>
+					</div>
 				</div>
 
 				<div class="col-12 col-xl-6">
