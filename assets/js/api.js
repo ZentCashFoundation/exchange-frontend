@@ -12,6 +12,13 @@ if (Number(tokenDate) + 7200000 < Date.now()) {
     localStorage.removeItem("token-date");
 }
 
+async function outSession() {
+    if (Number(tokenDate) + 7200000 < Date.now()) {  
+    localStorage.removeItem("token");
+    localStorage.removeItem("token-date");
+    }
+}
+
 // =======================
 // Funcion de registro
 // =======================

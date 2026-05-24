@@ -177,6 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadChart(pair, timeframe);
     marketsinTrades();
     updateTotals();
+    outSession();
     if (token) {
         openOrders();
         historicalOrders();
@@ -194,5 +195,6 @@ setInterval(() => {
         openOrders();
         historicalOrders();
         myTrades(pair);
+        outSession();
     }
 }, 5000);
