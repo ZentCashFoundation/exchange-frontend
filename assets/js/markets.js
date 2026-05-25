@@ -32,6 +32,26 @@ async function markets() {
             trade.ask_price = 0;
         }
 
+        if (trade.bid_price) {
+            trade.bid_price = Number(trade.bid_price).toFixed(8).toString();
+        }
+
+        if (trade.ask_price) {
+            trade.ask_price = Number(trade.ask_price).toFixed(8).toString();
+        }
+
+        if (trade.last_price) {
+            trade.last_price = Number(trade.last_price).toFixed(8).toString();
+        }
+
+        if (trade.low_24h) {
+            trade.low_24h = Number(trade.low_24h).toFixed(8).toString();
+        }
+
+        if (trade.high_24h) {
+            trade.high_24h = Number(trade.high_24h).toFixed(8).toString();
+        }
+
         const variation = parseFloat(
             trade.variation_24h
         ).toFixed(2);

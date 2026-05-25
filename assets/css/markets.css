@@ -2,6 +2,7 @@
 	margin-bottom: 3rem;
 	margin-right: 2rem;
     margin-left: 2rem;
+    text-align: center;
 }
 .markets-top-header{
     padding:24px 22px;
@@ -70,14 +71,68 @@
     font-weight:700;
 }
 @media(max-width:768px){
-    .markets-card{
-        overflow:auto;
-    }
-    .market-row{
-        min-width:1200px;
-    }
     .markets-title{
         font-size:20px;
     }
-
+    .markets-card{
+        overflow:visible;
+        border:none;
+        background:transparent;
+    }
+    .market-header{
+        display:none;
+    }
+    #markets-in-trade-container{
+        display:flex;
+        flex-direction:column;
+        gap:14px;
+        padding:0;
+    }
+    .market-row{
+        min-width:100%;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+        padding:18px;
+        border:1px solid #1e2636;
+        border-radius:18px;
+        background:#0f1320;
+    }
+    .market-row > div{
+        width:100%;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        font-size:14px;
+    }
+    .market-row > div::before{
+        color:#7e8aa3;
+        font-size:12px;
+        font-weight:600;
+    }
+    .market-row > div:nth-child(1)::before{
+        content:"Pair";
+    }
+    .market-row > div:nth-child(2)::before{
+        content:"Bid";
+    }
+    .market-row > div:nth-child(3)::before{
+        content:"Ask";
+    }
+    .market-row > div:nth-child(4)::before{
+        content:"Last";
+    }
+    .market-row > div:nth-child(5)::before{
+        content:"Low 24h";
+    }
+    .market-row > div:nth-child(6)::before{
+        content:"High 24h";
+    }
+    .market-row > div:nth-child(7)::before{
+        content:"Variation";
+    }
+    .market-row > div:nth-child(8)::before{
+        content:"Volume";
+    }
 }
+
