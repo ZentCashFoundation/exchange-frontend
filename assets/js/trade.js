@@ -188,7 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
 setInterval(() => {
     trades(pair);
     orderbook(pair);
-    loadChart(pair, timeframe);
+    // Usar el timeframe activo del selector del gráfico (window._currentTF)
+    // para no resetear el gráfico si el usuario cambió el timeframe
+    loadChart(pair, window._currentTF || timeframe);
     marketsinTrades();
     updateTotals();
     if (token) {

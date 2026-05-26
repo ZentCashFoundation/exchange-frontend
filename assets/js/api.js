@@ -245,8 +245,6 @@ async function orderCancel(orderId) {
       	alert(data.error);
        	return;
     }
-
-    //alert("Order canceled");
 }
 
 // ====================================
@@ -325,32 +323,30 @@ async function myTrades(pair) {
 // Funcion de consulta de velas
 // ====================================
 async function loadChart(pair, timeframe) {
-  const res =
-    await fetch(
-      API + "/exchange/market/candles?pair=" + pair + "&timeframe=" + timeframe
-    );
+    try {
+        const res = await fetch(
+            API + "/exchange/market/candles?pair=" + pair + "&timeframe=" + timeframe
+        );
 
-  const data = await res.json();
+        const data = await res.json();
 
-  const candles = data.map(c => ({
-    time: Number(c.open_time),
-    open: Number(c.open_price),
-    high: Number(c.high_price),
-    low: Number(c.low_price),
-    close: Number(c.close_price)
-  }));
+        // Formato unificado con volumen — chart.js calcula los indicadores internamente
+        const candles = data.map(c => ({
+            time:   Number(c.open_time),
+            open:   Number(c.open_price),
+            high:   Number(c.high_price),
+            low:    Number(c.low_price),
+            close:  Number(c.close_price),
+            volume: Number(c.volume)
+        }));
 
-  const volumes = data.map(c => ({
-    time: Number(c.open_time),
-    value: Number(c.volume),
-    color:
-      Number(c.close_price) >= Number(c.open_price)
-        ? "rgba(30, 255, 0, 0.66)"
-        : "rgba(239, 68, 68, 0.33)"
-  }));
+        if (typeof window.setChartData === "function") {
+            window.setChartData(candles);
+        }
 
-  candleSeries.setData(candles);
-  volumeSeries.setData(volumes);
+    } catch (err) {
+        console.error("Error loading chart:", err);
+    }
 }
 
 // ====================================
@@ -365,10 +361,16 @@ async function updateLastPrice(pair) {
 
   if (!price) return;
 
-  lastPriceSeries.update({
-    time: Math.floor(Date.now() / 1000),
-    value: price
-  });
+  if (typeof window.updateLastCandle === "function") {
+    window.updateLastCandle({
+      time: Math.floor(Date.now() / 1000),
+      open: price,
+      high: price,
+      low: price,
+      close: price,
+      volume: 0
+    });
+  }
 }
 
 // ====================================
@@ -419,6 +421,8 @@ async function orderbook(pair) {
                 `;
 
                 askContainer.appendChild(row);
+
+                askContainer.scrollTop = askContainer.scrollHeight;
 
             });
 

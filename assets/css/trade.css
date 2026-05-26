@@ -298,7 +298,7 @@ input[type="radio"] {
     word-break: break-word;
 }       
 /* ----- */
-/* CHATS */
+/* CHART */
 /* ----- */
 
 #chart-pair-name{
@@ -307,6 +307,8 @@ input[type="radio"] {
   color: rgb(236, 236, 236);
   font-weight: bold;
 }
+
+/* ── El contenedor principal crece con sus hijos (main + RSI) ── */
 #chart {
   width: 100%;
   position: relative;
@@ -316,7 +318,33 @@ input[type="radio"] {
   border-bottom-left-radius: 12px;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 10px 30px rgba(0,0,0,0.4);
   overflow: hidden;
+  /* Sin height fija: se adapta al flex interno (main 340 + rsi 100 + gap) */
 }
+
+/* Sub-paneles creados por chart.js */
+#chart-main {
+  width: 100%;
+  height: 340px;
+  position: relative;
+}
+#chart-rsi {
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #1e293b;
+}
+
+/* Etiqueta RSI en la esquina */
+#chart-rsi::before {
+  content: "RSI 14";
+  position: absolute;
+  top: 4px;
+  left: 10px;
+  font-size: 11px;
+  color: #e879f966;
+  pointer-events: none;
+  z-index: 10;
+}
+
 #chart-info {
   position: absolute;
   top: 10px;
@@ -332,7 +360,7 @@ input[type="radio"] {
   color: white;
 }
 .section-graph-trading{
-  min-height: 400px;
+  /* sin min-height fija: deja que el #chart dicte la altura */
   margin-bottom: 20px;
   margin: auto;
   background-color: #0e1629;
