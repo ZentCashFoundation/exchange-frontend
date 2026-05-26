@@ -345,8 +345,8 @@ async function loadChart(pair, timeframe) {
     value: Number(c.volume),
     color:
       Number(c.close_price) >= Number(c.open_price)
-        ? "rgba(34,197,94,0.5)"
-        : "rgba(239,68,68,0.5)"
+        ? "rgba(30, 255, 0, 0.66)"
+        : "rgba(239, 68, 68, 0.33)"
   }));
 
   candleSeries.setData(candles);
