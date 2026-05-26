@@ -45,7 +45,7 @@ document.getElementById('currentyear').textContent = getCurrentYear()
 /** Disable right-click context menu 
 document.addEventListener('contextmenu', function (e) {
   e.preventDefault();
-});**/
+});
 
 document.addEventListener('keydown', function (e) {
   if (
@@ -56,4 +56,4 @@ document.addEventListener('keydown', function (e) {
   ) {
     e.preventDefault();
   }
-});
+});**/

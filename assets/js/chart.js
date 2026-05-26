@@ -4,7 +4,7 @@
 //  Timeframe selector + Pantalla completa
 // ============================================================
 
-const TIMEFRAMES = ["1m","5m","15m","30m","1h","4h","1d","1w"];
+const TIMEFRAMES = ["1m","5m","15m","30m","1h","4h","1d"];
 
 const _urlParams = new URLSearchParams(window.location.search);
 window._currentTF  = _urlParams.get("timeframe") ?? "4h";
@@ -350,7 +350,7 @@ const candleSeries = chart.addSeries(LightweightCharts.CandlestickSeries, {
   borderUpColor: "#22c55e", borderDownColor: "#ef4444",
   wickUpColor: "#22c55e", wickDownColor: "#ef4444",
   priceScaleId: "right",
-  priceFormat: { type: "price", precision: 16, minMove: 0.0000000000000001 }
+  priceFormat: { type: "price", precision: 10, minMove: 0.0000000001 }
 });
 
 const volumeSeries = chart.addSeries(LightweightCharts.HistogramSeries, {

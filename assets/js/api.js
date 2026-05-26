@@ -6,6 +6,18 @@ var token = localStorage.getItem("token") || null;
 var tokenDate = localStorage.getItem("token-date") || null;
 let gameSessionId = null;
 
+const toast = document.getElementById("toast");
+function showToast(text, type = "success") {
+    toast.textContent = text;
+
+    toast.className = "";
+    toast.classList.add("show", type);
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
+
 // Verificar si el token ha expirado (2 horas)
 if (Number(tokenDate) + 7200000 < Date.now()) {  
     localStorage.removeItem("token");
@@ -35,11 +47,11 @@ async function register() {
     const data = await res.json();
 
     if (data.error) {
-        alert(data.error);
+        showToast(data.error, "error");
         return;
     }
 
-    alert("Registered");
+    showToast("Registered", "success");
 }
 
 // =======================
@@ -57,7 +69,7 @@ async function login() {
 
     const data = await res.json();
     if (data.error) {
-      	alert(data.error);
+      	showToast(data.error, "error");
        	return;
     }
 
@@ -84,7 +96,7 @@ async function deposit(ticker, network) {
     });
     const data = await res.json();
     if (data.error) {
-      	alert(data.error);
+      	showToast(data.error, "error");
        	return null;
     }
     return data;
@@ -108,7 +120,7 @@ async function recentDepositHistory(ticker, limit) {
     });
     const data = await res.json();
     if (data.error) {
-      	alert(data.error);
+      	showToast(data.error, "error");
        	return null;
     }
     return data;
@@ -137,7 +149,7 @@ async function withdraw(ticker, amount, address, payment_id = null, integrated_a
     });
     const data = await res.json();
     if (data.error) {
-      	alert(data.error);
+      	showToast(data.error, "error");
        	return null;
     }
     return data;
@@ -161,7 +173,7 @@ async function recentWithdrawHistory(ticker, limit) {
     });
     const data = await res.json();
     if (data.error) {
-      	alert(data.error);
+      	showToast(data.error, "error");
        	return null;
     }
     return data;
@@ -188,11 +200,11 @@ async function orderSend(pair, side, type, price, amount) {
 
     const data = await res.json();
     if (data.error) {
-      	alert(data.error);
+      	showToast(data.error, "error");
        	return;
     }
 
-    alert("Order sent");
+    showToast("Order sent", "success");
 }
 
 // ===============================
@@ -221,7 +233,7 @@ async function orderGet(pair, status, limit) {
     const data = await res.json();
 
     if (data.error) {
-        alert(data.error);
+        showToast(data.error, "error");
         return null;
     }
 
@@ -242,7 +254,7 @@ async function orderCancel(orderId) {
 
     const data = await res.json();
     if (data.error) {
-      	alert(data.error);
+      	showToast(data.error, "error");
        	return;
     }
 }
