@@ -5,13 +5,8 @@
     color: #ffffff;
     margin-right: 1.5rem;
 }
-.homepage-logo-text-p1 {
-    color: rgb(32 138 247);
-}
-
-.homepage-logo-text-p2 {
-    color: rgb(168 221 68);
-}
+.homepage-logo-text-p1 { color: rgb(32 138 247); }
+.homepage-logo-text-p2 { color: rgb(168 221 68); }
 
 .homepage-content {
     display: flex;
@@ -21,22 +16,174 @@
     flex-wrap: nowrap;
     background: linear-gradient(45deg, #000000, #212597);
 }
-.homepage-description {
-    font-size: xxx-large;
+.homepage-description { 
+    font-size: xxx-large; 
+}
+.markets-in-homepage-title{
+    margin-top: 2rem;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: 'brlnsr';
+}
+#markets-in-homepage-container {
+    width: 100%;
+    overflow: hidden;
+    background: #0d1117;
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+    padding: 0;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+}
+#markets-in-homepage-container:hover .ticker-track {
+    animation-play-state: paused;
+}
+.ticker-track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: max-content;
+    animation: ticker-scroll 40s linear infinite;
+}
+
+.market-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 10px 18px;
+    margin: 8px 8px;
+    background: #161d2b;
+    border-radius: 10px;
+    border: 1px solid #1e293b;
+    cursor: pointer;
+    white-space: nowrap;
+    min-width: 160px;
+    transition: background .2s, border-color .2s, transform .2s;
+    flex-shrink: 0;
+}
+.market-row:hover {
+    background: #263044;
+    border-color: #213658;
+    transform: translateY(-2px);
+}
+
+.namepair {
+    font-weight: 700;
+    font-size: 13px;
+    color: #e2e8f0;
+    letter-spacing: .3px;
+}
+.market-price {
+    font-size: 12px;
+    color: #cbd5e1;
+    font-variant-numeric: tabular-nums;
+}
+.positive-market {
+    color: #22c55e !important;
+    font-weight: 700;
+    font-size: 12px;
+}
+.negative-market {
+    color: #ef4444 !important;
+    font-weight: 700;
+    font-size: 12px;
+}
+.volumepair { font-weight: 600; }
+.market-vol {
+    font-size: 11px;
+    color: #64748b;
+}
+.markets-in-homepage-markets{
+    width: max-content;
+    height: 3rem;
+    border-radius: 1rem;
+    background: darkkhaki;
+    font-family: 'brlnsr';
+    font-size: x-large;
+    color: #f0f8ffc9;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+.markets-in-homepage-markets:hover {
+    background: #6e6a38;
+    color: aliceblue;
+    transform: scale(1.05);
+}
+.features-homepage{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.feature-homepage-title {
+    font-style: italic;
+    font-size: x-large;
+    font-family: 'brlnsr';
+    text-transform: capitalize;
+    font-weight: bold;
+}
+.features-homepage-title {
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: 'brlnsr';
+}
+.features-homepage-description {
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: 'brlnsr';
+}
+.feature-homepage-content {
+    background: #1d2638;
+    border: 1px solid #000000;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.feature-homepage-content:hover {
+    background: #2f3f5e;
+    border: 1px solid #706e6e;
+    transform: scale(1.01);
+}
+.feature-homepage-description{
+    font-style: italic;
+    font-family: 'brlnsr';
+}
+.features-homepage-register{
+    width: max-content;
+}
+.features-homepage-register {
+    width: max-content;
+    height: 3rem;
+    border-radius: 1rem;
+    background: darkkhaki;
+    font-family: 'brlnsr';
+    font-size: x-large;
+    color: #f0f8ffc9;
+    margin: auto;
+}
+.features-homepage-register:hover {
+    background: #6e6a38;
+    color: aliceblue;
+    transform: scale(1.05);
 }
 @media (max-width: 768px) {
-    .homepage-logo-text {
-        font-size: 4.5rem;
-    }
-    .homepage-description {
-        font-size: x-large;
-    }
+    .homepage-logo-text { font-size: 4.5rem; }
+    .homepage-description { font-size: x-large; }
+    .ticker-track { animation-duration: 25s; }
 }
 @media (max-width: 540px) {
-    .homepage-logo-text {
-        font-size: 3rem;
-    }
-    .homepage-description {
-        font-size: x-large;
-    }
+    .homepage-logo-text { font-size: 3rem; }
+    .homepage-description { font-size: x-large; }
+}
+
+@keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
