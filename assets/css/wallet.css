@@ -108,17 +108,7 @@
 }
 
 /* MOBILE */
-
-@media(max-width:768px){
-
-    .wallet-card{
-        overflow:auto;
-    }
-
-    .wallet-row{
-        min-width:900px;
-    }
-
+@media (max-width: 768px) {
 	.wallet-header-description{
         padding:18px 16px;
     }
@@ -129,5 +119,57 @@
 
     .wallet-description{
         font-size:13px;
+    }
+    .wallet-card{
+        overflow: visible;
+    }
+
+    /* OCULTAR HEADER (ya no sirve en cards) */
+    .wallet-header{
+        display: none;
+    }
+
+    /* CONVERTIR ROW EN CARD */
+    .wallet-row{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        min-width: auto;
+        padding: 16px;
+        margin: 12px;
+        border-radius: 14px;
+        border: 1px solid #1a2233;
+        background: #0f1320;
+    }
+
+    /* cada columna como línea */
+    .wallet-row > div{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+    }
+
+    /* labels automáticos (clave del diseño card) */
+    .wallet-row > div::before{
+        content: attr(data-label);
+        color: #7e8aa3;
+        font-size: 12px;
+    }
+
+    /* asset destacado */
+    .wallet-asset{
+        justify-content: flex-start;
+        font-size: 15px;
+    }
+
+    .wallet-actions{
+        display:flex;
+        gap:10px;
+        width:100%;
+    }
+
+    .wallet-btn{
+        flex: 1;
     }
 }

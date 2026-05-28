@@ -74,16 +74,16 @@ async function renderWallet() {
         }
 
         row.innerHTML = `
-            <div class="wallet-asset">
+            <div class="wallet-asset" data-label="Asset">
                 <img src="${asset.icon_url}" alt="${asset.ticker}">
                 <span>${asset.ticker}</span>
             </div>
 
-            <div>${asset.name}</div>
+            <div data-label="Name">${asset.name}</div>
 
-            <div>${asset.available}</div>
+            <div data-label="Available">${asset.available}</div>
 
-            <div>${asset.locked}</div>
+            <div data-label="Locked">${asset.locked}</div>
 
             <div class="wallet-actions">
                 <button onclick="window.location.href='deposit.html?ticker=${asset.ticker}'" class="wallet-btn deposit">
