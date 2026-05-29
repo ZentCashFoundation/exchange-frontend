@@ -640,3 +640,43 @@ async function loadUserBalances() {
         console.error("Error retrieving user balances:", err);
     }
 }
+
+// ====================================
+// Funcion de consulta de transacciones
+// ====================================
+async function transactions(ticker, type, limit = 50) {
+    try {
+        let base = API + "/exchange/wallet/transactions";
+        const params = [];
+
+        if (ticker) {
+            params.push("asset=" + ticker);
+        }
+
+        if (type) {
+            params.push("type=" + type);
+        }
+
+        if (limit) {
+            params.push("limit=" + limit);
+        }
+
+        if (params.length > 0) {
+            base += "?" + params.join("&");
+        }
+
+        const res = await fetch(base, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        });
+
+        const data = await res.json();
+        return data;
+
+    } catch (err) {
+        console.error("Error obteniendo transacciones:", err);
+    }
+}
