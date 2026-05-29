@@ -28,6 +28,7 @@ async function outSession() {
     if (Number(tokenDate) + 7200000 < Date.now()) {  
     localStorage.removeItem("token");
     localStorage.removeItem("token-date");
+    window.location.href = "auth.html";
     }
 }
 
@@ -428,8 +429,8 @@ async function orderbook(pair) {
                 row.className = "orderbook-row ask-row";
 
                 row.innerHTML = `
-                    <div>${item[0]}</div>
-                    <div>${item[1]}</div>
+                    <div>${Number(item[0]).toFixed(8).toString()}</div>
+                    <div>${Number(item[1]).toFixed(8).toString()}</div>
                 `;
 
                 askContainer.appendChild(row);
@@ -461,8 +462,8 @@ async function orderbook(pair) {
                 row.className = "orderbook-row bid-row";
 
                 row.innerHTML = `
-                    <div>${item[0]}</div>
-                    <div>${item[1]}</div>
+                    <div>${Number(item[0]).toFixed(8).toString()}</div>
+                    <div>${Number(item[1]).toFixed(8).toString()}</div>
                 `;
 
                 bidContainer.appendChild(row);

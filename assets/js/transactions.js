@@ -232,3 +232,8 @@ document
 /* INIT */
 
 renderTransactions();
+outSession()
+setInterval(() => {
+    outSession()
+    renderTransactions();
+}, 5000);
