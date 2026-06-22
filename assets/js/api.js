@@ -260,6 +260,34 @@ async function orderCancel(orderId) {
     }
 }
 
+// ===============================
+// Función de cancelación de órdenes
+// ===============================
+async function ordersCancel(pair = null) {
+    let url = API + "/exchange/order";
+
+    if (pair) {
+        url += `?pair=${encodeURIComponent(pair)}`;
+    }
+
+    const res = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const data = await res.json();
+
+    if (data.error) {
+        showToast(data.error, "error");
+        return;
+    }
+
+    return data;
+}
+
 // ====================================
 // Funcion de consulta de mis trades
 // ====================================
