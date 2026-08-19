@@ -171,7 +171,7 @@ async function updateDeposit() {
 // -----------------------------------
 function renderDeposit(data) {
 
-  if (data.type === "TURTLENOTE") {
+  if (data.type === "TURTLENOTE" || data.type === "ZANONOTE") {
 
     paymentidtitleActive = document.querySelector(".depositPaymentID");
     paymentidtitleActive.style.display = "initial";
@@ -184,7 +184,7 @@ function renderDeposit(data) {
 
   }
 
-  if (data.type != "TURTLENOTE") {
+  if (data.type != "TURTLENOTE" || data.type != "ZANONOTE") {
 
     paymentidtitleActive = document.querySelector(".depositPaymentID");
     paymentidtitleActive.style.display = "none";
