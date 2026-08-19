@@ -184,7 +184,7 @@ function renderDeposit(data) {
 
   }
 
-  if (data.type != "TURTLENOTE" || data.type != "ZANONOTE") {
+  if (data.type != "TURTLENOTE" && data.type != "ZANONOTE") {
 
     paymentidtitleActive = document.querySelector(".depositPaymentID");
     paymentidtitleActive.style.display = "none";
