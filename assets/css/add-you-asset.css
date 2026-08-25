@@ -1,0 +1,218 @@
+.section-listing{
+	margin-bottom: 3rem;
+	margin-right: 2rem;
+    margin-left: 2rem;
+    text-align: center;
+}
+.add-you-assets{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-you-asset-title{
+    margin:0;
+    font-size:24px;
+    font-weight:800;
+    color:#fff;
+}
+.add-you-asset-description{
+    margin:0;
+    color:#8a93a6;
+}
+.add-you-assets button{
+    padding:22px 22px;
+    background:linear-gradient(180deg, #464f66 0%, #0f1320 100%);
+    border:1px solid #3f434b;
+    border-radius:18px;
+	margin-top: 10px;
+    margin-bottom:22px;
+	text-align: center;
+    color: #f2f2f2;
+    font-weight: 500;
+    font-size: large;
+}
+
+.add-you-assets button:hover{
+    transform: scale(1.05);
+    background:linear-gradient(180deg, #3a425a 0%, #0f1320 100%);
+}
+
+.listing-top-header{
+    padding:24px 22px;
+    background:linear-gradient(180deg, #161a25 0%, #0f1320 100%);
+    border:1px solid #1e2636;
+    border-radius:18px;
+	margin-top: 2rem;
+    margin-bottom:16px;
+	text-align: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.listing-title{
+    margin:0;
+    font-size:24px;
+    font-weight:800;
+    color:#fff;
+}
+.listing-description{
+    margin:6px 0 0 0;
+    color:#8a93a6;
+    font-size:14px;
+    line-height:1.4;
+}
+.listing-card{
+    background:#0f1320;
+    border:1px solid #1e2636;
+    border-radius:18px;
+    overflow:hidden;
+    margin: 2rem;
+    padding: 2rem;
+}
+
+.row-part {
+    display: flex;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.listing-card label{
+    font-size: 1.3rem;
+    color: #d7dce5;
+}
+
+.listing-card select{
+    max-width: 80%;
+    min-height: 45px;
+    padding:0 20px;
+    margin: auto;
+    border-bottom:1px solid #0b0f16;
+}
+
+.listing-card input{
+    max-width: 80%;
+    min-height: 45px;
+    padding:0 20px;
+    margin: auto;
+    border-bottom:1px solid #0b0f16;
+}
+.listing-card input[type=checkbox]{
+  -ms-transform: scale(2); 
+  -moz-transform: scale(2); 
+  -webkit-transform: scale(2); 
+  -o-transform: scale(2); 
+}
+.listing-row:not(.market-header):hover{
+    background:#161d2b;
+}
+.market-header{
+    background:#161a25;
+    min-height:56px;
+}
+.market-header div{
+    color:#7e8aa3 !important;
+    font-size:13px;
+    font-weight:700;
+}
+.listing-row > div{
+    flex:1;
+    color:#d7dce5;
+    font-size:14px;
+    cursor:pointer;
+    transition:color .2s ease;
+}
+.listing-row > div:first-child{
+    font-weight:700;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}
+.column{
+    margin: 0;
+}
+.column a{
+    text-decoration: none;
+    color: #f2f2f2;
+}
+@media(max-width:768px){
+    .row-part {
+        display: block;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .listing-title{
+        font-size:20px;
+    }
+    .markets-card{
+        overflow:visible;
+        border:none;
+        background:transparent;
+    }
+    .market-header{
+        display:none;
+    }
+    #markets-in-trade-container{
+        display:flex;
+        flex-direction:column;
+        gap:14px;
+        padding:0;
+    }
+    .listing-row{
+        min-width:100%;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+        padding:18px;
+        border:1px solid #1e2636;
+        border-radius:18px;
+        background:#0f1320;
+    }
+    .listing-row > div{
+        width:100%;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        font-size:14px;
+    }
+    .listing-row > div::before{
+        color:#7e8aa3;
+        font-size:12px;
+        font-weight:600;
+    }
+    .listing-row > div:nth-child(1)::before{
+        content:"Name";
+    }
+    .listing-row > div:nth-child(2)::before{
+        content:"Ticker";
+    }
+    .listing-row > div:nth-child(3)::before{
+        content:"Type";
+    }
+    .listing-row > div:nth-child(4)::before{
+        content:"Payment Address";
+    }
+    .listing-row > div:nth-child(5)::before{
+        content:"Total Revenue";
+    }
+    .listing-row > div:nth-child(6)::before{
+        content:"Total Outstanding";
+    }
+    .listing-row > div:nth-child(7)::before{
+        content:"Total Cost";
+    }
+    .listing-row > div:nth-child(8)::before{
+        content:"Update Date";
+    }
+    .listing-row > div:nth-child(9)::before{
+        content:"Status";
+    }   
+    .listing-row > div:nth-child(10)::before{
+        content:"More Info";
+    } 
+    .column {
+        display: inline-grid;
+    }
+}
+

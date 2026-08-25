@@ -671,6 +671,64 @@ async function loadUserBalances() {
 }
 
 // ====================================
+// Funcion de consulta lista de monedas 
+// para listar.
+// ====================================
+async function loadListingList() {
+    try {
+        const res = await fetch(API + "/exchange/listing", {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+            }
+        });
+        const data = await res.json();
+        return data.result;
+    } catch (err) {
+        console.error("Error retrieving listing list:", err);
+    }
+}
+
+// =======================================
+// Funcion para añadir un asset a la lista
+// de monedas para listar.
+// =======================================
+async function addAssetListingList(ticker, name_asset, type, decimals, contract_address, requires_memo, confirmations_required, explorer_url, explorer_tx_url, explorer_address_url, network_fee, icon_url, website, coinmarketcap, coingecko, github) {
+    try {
+        const res = await fetch(API + "/exchange/listing", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ 
+                ticker: `${ticker}`, 
+                name: `${name_asset}`,
+                type: `${type}`,
+                decimals: Number(decimals),
+                contract_address: `${contract_address}`,
+                requires_memo: Number(requires_memo),
+                confirmations_required: Number(confirmations_required),
+                explorer_url: `${explorer_url}`,
+                explorer_tx_url: `${explorer_tx_url}`,
+                explorer_address_url: `${explorer_address_url}`,
+                network_fee: Number(network_fee),
+                icon_url: `${icon_url}`,
+                website: `${website}`,
+                coinmarketcap: `${coinmarketcap}`,
+                coingecko: `${coingecko}`,
+                github: `${github}`
+
+            })
+        });
+        const data = await res.json();
+        return data.result;
+    } catch (err) {
+        console.error("Error retrieving listing list:", err);
+    }
+}
+
+// ====================================
 // Funcion de consulta de transacciones
 // ====================================
 async function transactions(ticker, type, limit = 50) {
