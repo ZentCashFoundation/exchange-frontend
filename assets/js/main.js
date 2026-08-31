@@ -13,11 +13,13 @@ document.addEventListener("DOMContentLoaded", async() => {
     const closesessionbtn = document.querySelector('.close-session-btn');
     const authuser = document.querySelector('.auth-container');
     const walletuserlink = document.getElementById('wallet-user-link');
+    const transationsuserlink = document.getElementById('transactions-link');
     
     if (!token) {
         registerloginbtn.style.display = "initial";
 		    closesessionbtn.style.display = "none";
         walletuserlink.style.display = "none";
+        transationsuserlink.style.display = "none";
     } else {
         if (authuser) {
             authuser.style.display = "none";
@@ -25,6 +27,7 @@ document.addEventListener("DOMContentLoaded", async() => {
         registerloginbtn.style.display = "none";  
 		    closesessionbtn.style.display = "initial";
         walletuserlink.style.display = "initial";
+        transationsuserlink.style.display = "initial";
       }  
     });
 
