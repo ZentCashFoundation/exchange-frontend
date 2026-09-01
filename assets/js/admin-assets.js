@@ -4,7 +4,7 @@ function sendAsset() {
     const type = document.getElementById('type').value;
     const network_default = document.getElementById('network_default').value;
     const rpc_url = document.getElementById('rpc_url').value;
-    const decimals = document.getElementById('decimal').value;
+    const decimals = document.getElementById('decimals').value;
     const contract_address = document.getElementById('contract_address').value;
     const requires_memo = document.getElementById('requires_memo');
     const requiresmemovalor = requires_memo.checked ? 1 : 0;
@@ -34,4 +34,12 @@ function sendAsset() {
                         depositenabled, withdrawenabled, tradeenabled, maintenancemode, min_deposit, min_withdraw, 
                         withdraw_fee,  network_fee, usd_value, icon_url, website, coinmarketcap, coingecko
     );
+}
+
+function sendModifyAsset() {
+    const ticker = document.getElementById('ticker_mod').value;
+    const field = document.getElementById('field').value;
+    const value = document.getElementById('value').value;
+        
+    modifyAsset(ticker, field, value);
 }

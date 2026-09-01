@@ -33,7 +33,7 @@ async function listing() {
             <div>${listingAsset.name}</div>
             <div>${listingAsset.ticker}</div>
             <div>${listingAsset.type}</div>
-            <div>${listingAsset.payment_address_per_listing}</div>
+            <div class="crytoaddress">${listingAsset.payment_address_per_listing}</div>
             <div>${listingAsset.total_revenue}</div>
             <div>${listingAsset.total_outstanding}</div>
             <div>${listingAsset.total_cost}</div>
@@ -53,4 +53,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 setInterval(() => {
     listing();
-}, 5000);
+}, 50000);

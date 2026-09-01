@@ -1,5 +1,4 @@
 async function addAsset(ticker, name_asset, type, network_default, rpc_url, decimals, contract_address, requires_memo, confirmations_required, explorer_tx_url, explorer_address_url, deposit_enabled, withdraw_enabled, trade_enabled, maintenance_mode, min_deposit, min_withdraw, withdraw_fee, network_fee, usd_value, icon_url, website, coinmarketcap, coingecko) {
-    try {
         const res = await fetch(API + "/exchange/admin/asset/add", {
             method: "POST",
             headers: {
@@ -34,15 +33,39 @@ async function addAsset(ticker, name_asset, type, network_default, rpc_url, deci
                 coingecko: `${coingecko}`
             })
         });
+
         const data = await res.json();
+        if (data.error) {
+            showToast(data.error, "error");
+        };
         return data.result;
-    } catch (err) {
-        console.error("Error:", err);
-    }
-}
+
+}   
+
+async function modifyAsset(ticker, field, value) {
+        const res = await fetch(API + "/exchange/admin/asset/modify", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ` + token
+            },
+            body: JSON.stringify({ 
+                ticker: `${ticker}`, 
+                field: `${field}`,
+                value: `${value}`
+            })    
+        });
+
+        const data = await res.json();
+        if (data.error) {
+            showToast(data.error, "error");
+        };
+        return data.result;
+
+} 
 
 async function getAssetList() {
-    try {
         const res = await fetch(API + "/exchange/admin/asset/getlist", {
             method: "GET",
             headers: {
@@ -52,8 +75,8 @@ async function getAssetList() {
             }
         });
         const data = await res.json();
+        if (data.error) {
+            showToast(data.error, "error");
+        };
         return data.assets;
-    } catch (err) {
-        console.error("Error retrieving listing list:", err);
-    }
 }

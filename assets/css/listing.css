@@ -61,6 +61,9 @@
     border-bottom:1px solid #1a2233;
     transition:background .2s ease;
 }
+.crytoaddress {
+    word-break: break-word;
+}
 .listing-row:not(.listing-header):hover{
     background:#161d2b;
 }
@@ -145,6 +148,7 @@
     }
     .listing-row > div:nth-child(4)::before{
         content:"Payment Address";
+        text-align: left;
     }
     .listing-row > div:nth-child(5)::before{
         content:"Total Revenue";

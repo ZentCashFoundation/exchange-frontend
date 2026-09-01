@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Asset - LibreSwapNet</title>
+  <title>Asset Manager - Administration Portal - LibreSwapNet</title>
   <link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="../assets/css/fonts.css">
   <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
@@ -33,111 +33,155 @@
     <!-- HEADER -->
     <div class="listing-top-header">
         <h1 class="listing-title">
-            List Your Asset
+            Asset Manager
         </h1>
-        <p class="listing-description">
-            Select a listing type and the source code or code string your resource runs on; the integration fee will be calculated automatically. You must be a member of the official team or have their authorization to submit your request.
-        </p>
     </div>
     <!-- CARD -->  
         <div class="listing-card">
-        
             <div class="row">
-                <p class="add-you-asset-title">Add Asset</p>
-                <p class="add-you-asset-description">Please fill out the following form with your asset information.</p>
-                <div class="row-part">
-                    <div class="col-12 col-xl-6">
-                        <label for="name">Name:</label>
-                        <input class="form-control"	id="name" placeholder="Name">
-                        <label for="ticker">Ticker:</label>
-                        <input class="form-control" id="ticker" placeholder="Ticker">
-                        <label for="type">Type:</label>
-                        <select class="form-control" id="type" placeholder="Type">
-                            <option>UTXO</option>
-                            <option>CRYPTONOTE</option>
-                            <option>TURTLENOTE</option>
-                            <option>ZANONOTE</option>
-                        </select>
-                        <label for="network_default">Network Default:</label>
-                        <select class="form-control" id="network_default" placeholder="Network Default">
-                            <option>Mainnet</option>
-                        </select>  
-                        <label for="decimals">Decimals:</label>
-                        <input class="form-control"	id="decimals" placeholder="Decimals">
-                        <label for="network_fee">Default Network Fee:</label>
-                        <input class="form-control"	id="network_fee" placeholder="Default Network Fee">
-                        <label for="confirmations_required">Confirmations:</label>
-                        <input class="form-control"	id="confirmations_required" placeholder="Confirmations Required">
-                        <label for="rpc_url">RPC URL:</label>
-                        <input class="form-control"	id="rpc_url" placeholder="RPC URL">
-                    </div>
-                    <div class="col-12 col-xl-6">
-                        <label for="min_deposit">Min Deposit:</label>
-                        <input class="form-control"	id="min_deposit" placeholder="Min Deposit">
-                        <label for="min_withdraw">Min Withdraw:</label>
-                        <input class="form-control"	id="min_withdraw" placeholder="Min Withdraw">
-                        <label for="withdraw_fee">Withdraw Fee:</label>
-                        <input class="form-control"	id="withdraw_fee" placeholder="Withdraw Fee">
-                        <label for="network_fee">Network Fee:</label>
-                        <input class="form-control"	id="network_fee" placeholder="Network Fee">
-                        <label for="usd_value">USD Value:</label>
-                        <input class="form-control"	id="usd_value" placeholder="USD Value">
-                        <label for="contract_address">Contract Address:</label>
-                        <input class="form-control"	id="contract_address" placeholder="Contract Address">
-                        <legend>Requires Memo:<legend>
-                        <input type="checkbox" name="requires_memo" value="0" id="requires_memo">
-                    </div>
+                <details name="asset-manager">
+                    <summary>
+                        <span class="add-you-asset-title">Add Asset</span>
+                    </summary>
+                    <div class="row-part">
+                        <div class="col-12 col-xl-6">
+                            <label for="name">Name:</label>
+                            <input class="form-control"	id="name" placeholder="Name">
+                            <label for="ticker">Ticker:</label>
+                            <input class="form-control" id="ticker" placeholder="Ticker">
+                            <label for="type">Type:</label>
+                            <select class="form-control" id="type" placeholder="Type">
+                                <option>UTXO</option>
+                                <option>CRYPTONOTE</option>
+                                <option>TURTLENOTE</option>
+                                <option>ZANONOTE</option>
+                            </select>
+                            <label for="network_default">Network Default:</label>
+                            <select class="form-control" id="network_default" placeholder="Network Default">
+                                <option>Mainnet</option>
+                            </select>  
+                            <label for="decimals">Decimals:</label>
+                            <input class="form-control"	id="decimals" placeholder="Decimals">
+                            <label for="network_fee">Default Network Fee:</label>
+                            <input class="form-control"	id="network_fee" placeholder="Default Network Fee">
+                            <label for="confirmations_required">Confirmations:</label>
+                            <input class="form-control"	id="confirmations_required" placeholder="Confirmations Required">
+                            <label for="rpc_url">RPC URL:</label>
+                            <input class="form-control"	id="rpc_url" placeholder="RPC URL">
+                        </div>
+                        <div class="col-12 col-xl-6">
+                            <label for="min_deposit">Min Deposit:</label>
+                            <input class="form-control"	id="min_deposit" placeholder="Min Deposit">
+                            <label for="min_withdraw">Min Withdraw:</label>
+                            <input class="form-control"	id="min_withdraw" placeholder="Min Withdraw">
+                            <label for="withdraw_fee">Withdraw Fee:</label>
+                            <input class="form-control"	id="withdraw_fee" placeholder="Withdraw Fee">
+                            <label for="network_fee">Network Fee:</label>
+                            <input class="form-control"	id="network_fee" placeholder="Network Fee">
+                            <label for="usd_value">USD Value:</label>
+                            <input class="form-control"	id="usd_value" placeholder="USD Value">
+                            <label for="contract_address">Contract Address:</label>
+                            <input class="form-control"	id="contract_address" placeholder="Contract Address">
+                            <legend>Requires Memo:<legend>
+                            <input type="checkbox" name="requires_memo" value="0" id="requires_memo">
+                        </div>
 
-                    <div class="col-12 col-xl-6">
-                        <label for="website">Website:</label>
-                        <input class="form-control"	id="website" placeholder="Website">
-                        <label for="icon_url">Logo URL:</label>
-                        <input class="form-control"	id="icon_url" placeholder="Logo URL">
-                        <label for="explorer_tx_url">Explorer TX URL:</label>
-                        <input class="form-control"	id="explorer_tx_url" placeholder="Explorer TX URL">
-                        <label for="explorer_address_url">Explorer Address URL:</label>
-                        <input class="form-control"	id="explorer_address_url" placeholder="Explorer Address">
-                    </div>
-                </div>
-                <div class="row-part">    
-                    <div class="col-12 col-xl-6">
-                        <div class="row">
-                            <div class="col-12 col-xl-6">   
-                            <legend>Deposit Enabled:<legend>
-                            <input type="checkbox" name="deposit_enabled" value="0" id="deposit_enabled">
-                            </div>
-                            <div class="col-12 col-xl-6">
-                            <legend>Withdraw Enabled:<legend>
-                            <input type="checkbox" name="withdraw_enabled" value="0" id="withdraw_enabled">
-                            </div>
-                            <div class="col-12 col-xl-6">
-                            <legend>Trade Enabled:<legend>
-                            <input type="checkbox" name="trade_enabled" value="0" id="trade_enabled">
-                            </div>
-                            <div class="col-12 col-xl-6">
-                            <legend>Maintenance Enabled:<legend>
-                            <input type="checkbox" name="maintenance_mode" value="0" id="maintenance_mode">
-                            </div>
+                        <div class="col-12 col-xl-6">
+                            <label for="website">Website:</label>
+                            <input class="form-control"	id="website" placeholder="Website">
+                            <label for="icon_url">Logo URL:</label>
+                            <input class="form-control"	id="icon_url" placeholder="Logo URL">
+                            <label for="explorer_tx_url">Explorer TX URL:</label>
+                            <input class="form-control"	id="explorer_tx_url" placeholder="Explorer TX URL">
+                            <label for="explorer_address_url">Explorer Address URL:</label>
+                            <input class="form-control"	id="explorer_address_url" placeholder="Explorer Address">
                         </div>
                     </div>
-                    <div class="col-12 col-xl-6">     
-                        <label for="coinmarketcap">Coinmarketcap:</label>
-                        <input class="form-control"	id="coinmarketcap" placeholder="Coinmarketcap">
-                        <label for="coingecko">Coingecko:</label>
-                        <input class="form-control"	id="coingecko" placeholder="Coingecko">
+                    <div class="row-part">    
+                        <div class="col-12 col-xl-6">
+                            <div class="row">
+                                <div class="col-12 col-xl-6">   
+                                <legend>Deposit Enabled:<legend>
+                                <input type="checkbox" name="deposit_enabled" value="0" id="deposit_enabled">
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                <legend>Withdraw Enabled:<legend>
+                                <input type="checkbox" name="withdraw_enabled" value="0" id="withdraw_enabled">
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                <legend>Trade Enabled:<legend>
+                                <input type="checkbox" name="trade_enabled" value="0" id="trade_enabled">
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                <legend>Maintenance Enabled:<legend>
+                                <input type="checkbox" name="maintenance_mode" value="0" id="maintenance_mode">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-xl-6">     
+                            <label for="coinmarketcap">Coinmarketcap:</label>
+                            <input class="form-control"	id="coinmarketcap" placeholder="Coinmarketcap">
+                            <label for="coingecko">Coingecko:</label>
+                            <input class="form-control"	id="coingecko" placeholder="Coingecko">
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="add-you-assets">
-                <button  onclick="sendAsset()"> Send</button>
+                    <div class="add-you-assets">
+                        <button  onclick="sendAsset()"> Add Asset</button>
+                    </div>
+                </details>
+                <details name="asset-manager">
+                    <summary>
+                        <span class="add-you-asset-title">Modify Asset</span>
+                    </summary> 
+                            <label for="ticker_mod">Ticker:</label>
+                            <input class="form-control" id="ticker_mod" placeholder="Ticker">
+                            <label for="field">Field:</label>
+                            <select class="form-control" id="type" placeholder="Field">
+                                <option>network_fee</option>
+                            </select>
+                            <label for="value">Value:</label>
+                            <input class="form-control"	id="value" placeholder="Value">
+                            <div class="add-you-assets">
+                                <button  onclick="sendModifyAsset()"> Add Asset</button>
+                            </div>
+                </details>
             </div>
     </div>
+</div>    
+
+<section class="footer">
+	<div class="row">
+	    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+            <img class="footer-logo" loading="lazy"  alt="libreswapnet-wordmark" src="../assets/images/libreswapnet-wordmark.png">
+            <p class="footer-description"></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                  <h4>Resources</h4>
+				  <a class="footer-item" href="../system-status.html">System Status</a>
+                  <a class="footer-item" href="../fees.html">Fees</a>
+				  <a class="footer-item" href="../listing.html">Listing</a>                
+				</div>   
+				<div class="col-12 col-sm-6 col-md-6 col-lg-6"> 
+                  <h4>Legal</h4>
+                  <a class="footer-item" href="../cookie-policy.html">Cookie Policy</a>
+                  <a class="footer-item" href="../privacy-policy.html">Privacy Policy</a>
+                  <a class="footer-item" href="../terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>  
+        </div>
+		<hr>
+		<div class="footer-copyright">		     
+		<p>Copyright © <span id="currentyear">2026</span> LibreSwapNet. All rights reserved.</p>
+		</div>
+	</div>		
+</section>
 
     <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/api.js"></script> 
     <script src="../assets/js/admin-api.js"></script>  
     <script src="../assets/js/admin-assets.js"></script>
     <script src="../assets/js/main.js"></script>
-
 </body>
 </html>
