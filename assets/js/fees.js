@@ -3,11 +3,12 @@ async function assetsFees() {
 	
     if (!data) return;
 
-    const tableBody = document.getElementById("assets-fees-table-body");
-    tableBody.innerHTML = "";
+    const container = document.getElementById("assets-fees-container-body");
+    container.innerHTML = "";
 
     data.forEach(asset => {
-        const row = document.createElement("tr");
+        const row = document.createElement("div");
+        row.className = "fee-row";
 
         if (asset.withdraw_fee ) {
 			asset.withdraw_fee = parseFloat(asset.withdraw_fee).toFixed(asset.decimals);
@@ -20,14 +21,13 @@ async function assetsFees() {
 		}          
 
         row.innerHTML = `
-            <td style="text-transform: capitalize"><img src="${asset.icon_url}" alt="${asset.ticker}" width="20" height="20"> ${asset.ticker}</td>
-			<td style="text-transform: capitalize; cursor: pointer">${asset.name}</td>
-			<td style="font-weight: bold; text-transform: capitalize; cursor: pointer">${asset.withdraw_fee}</td>
-            <td style="font-weight: bold; text-transform: capitalize; cursor: pointer">${asset.min_deposit}</td>
-            <td style="font-weight: bold; text-transform: capitalize; cursor: pointer">${asset.min_withdraw}</td>
+            <div data-label="Ticker" style="text-transform: capitalize"><img src="${asset.icon_url}" alt="${asset.ticker}" width="20" height="20"> ${asset.ticker}</div>
+			<div data-label="Name" style="text-transform: capitalize; cursor: pointer">${asset.name}</div>
+			<div data-label="Withdraw Fee" style="font-weight: bold; text-transform: capitalize; cursor: pointer">${asset.withdraw_fee}</div>
+            <div data-label="Minimum Deposit" style="font-weight: bold; text-transform: capitalize; cursor: pointer">${asset.min_deposit}</div>
+            <div data-label="Minimum Withdraw" style="font-weight: bold; text-transform: capitalize; cursor: pointer">${asset.min_withdraw}</div>
         `;
-
-        tableBody.appendChild(row);
+        container.appendChild(row);
     });
 }
 

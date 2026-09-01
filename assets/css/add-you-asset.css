@@ -16,8 +16,10 @@
     color:#fff;
 }
 .add-you-asset-description{
-    margin:0;
     color:#8a93a6;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-bottom: 0px;
 }
 .add-you-assets button{
     padding:22px 22px;
@@ -55,7 +57,6 @@
     color:#fff;
 }
 .listing-description{
-    margin:6px 0 0 0;
     color:#8a93a6;
     font-size:14px;
     line-height:1.4;
@@ -71,8 +72,8 @@
 
 .row-part {
     display: flex;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .listing-card label{
@@ -113,6 +114,18 @@
     color: #f2f2f2;
 }
 @media(max-width:768px){
+    .section-listing{
+        margin: 1rem;
+    }
+    .listing-top-header{
+        margin-left: 0px;
+        margin-left: 0px;
+        width: 100%;
+    }
+    .listing-card{
+        margin: 0px;
+        padding: 0px;
+    }
     .row-part {
         display: block;
         margin-top: 1.5rem;

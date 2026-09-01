@@ -1,3 +1,7 @@
+body {
+    background: radial-gradient(ellipse at bottom, #1b2735 5%, #080606 95%);
+    color: #FFFFFF;
+}
 .homepage-logo-text {
     font-family: 'brlnsr', sans-serif;
     font-size: 8.25rem;
