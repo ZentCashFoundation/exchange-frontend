@@ -32,13 +32,38 @@
 <div class="section-listing">
     <!-- HEADER -->
     <div class="listing-top-header">
-        <h1 class="listing-title">
-            Asset Manager
-        </h1>
+        <h1 class="listing-title">Asset Manager</h1>
     </div>
     <!-- CARD -->  
         <div class="listing-card">
             <div class="row">
+                <details name="asset-manager" open>    
+                    <summary>
+                        <span class="assets-list-full-title">Assets List</span>
+                    </summary>    
+                        
+                    <div class="assets-list-full-row assets-list-full-header">
+                        <div>Ticker</div>
+                        <div>Name</div>
+                        <div>Type</div>
+                        <div>Network Default</div>
+                        <div>Decimals</div>
+                        <div>Contract Address</div>
+                        <div>Requires Memo</div>
+                        <div>Confirmations Required</div>
+                        <div>Maintenance Mode</div>
+                        <div>Deposit Enabled</div>
+                        <div>Withdraw Enabled</div>
+                        <div>Trade Enabled</div>
+                        <div>Min Deposit</div>
+                        <div>Min Withdraw</div>
+                        <div>Network Fee</div>
+                        <div>Withdraw Fee</div>
+                        <div>CoinMarketCap</div>
+                        <div>Coingecko</div>
+                    </div>    
+                    <div id="assets-list-full-container-body"></div>
+                </details>
                 <details name="asset-manager">
                     <summary>
                         <span class="add-you-asset-title">Add Asset</span>
