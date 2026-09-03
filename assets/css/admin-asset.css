@@ -162,6 +162,42 @@
     
 }
 
+.section-return-page {
+    min-height: 3rem;
+    min-width: 3rem;
+    height: 3rem;
+    width: 3rem;
+    background: #ff4800;
+    border-radius: 3rem;
+    border: 1px solid #f2f2f2;
+    margin-left: auto;
+    margin-right: 4%;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.section-return-page::before {
+    content: "\2190";
+    font-size: 2rem;
+    color: #ffffff;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: -0.4rem;
+}
+
+.section-return-page:hover {
+    background: #4c00ff;
+    border-radius: 3rem;
+    border: 1px solid #6d6d6d;
+    margin-left: auto;
+    margin-right: 4%;
+    margin-bottom: 2rem;
+    transform: scale(1.50);
+}
 
 @media(max-width:768px){
     .section-listing{

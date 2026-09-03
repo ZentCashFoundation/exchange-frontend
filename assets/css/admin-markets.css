@@ -1,3 +1,6 @@
+body {
+    min-height: 100dvh;
+}
 .section-markets{
 	margin-bottom: 3rem;
 	margin-right: 2rem;
@@ -31,11 +34,60 @@
     padding: 2rem;
 }
 
+details {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.markets-card input{
+    max-width: 80%;
+    min-height: 45px;
+    padding:0 20px;
+    margin: auto;
+    border-bottom:1px solid #0b0f16;
+}
+
+.markets-card select{
+    max-width: 80%;
+    min-height: 45px;
+    padding:0 20px;
+    margin: auto;
+    border-bottom:1px solid #0b0f16;
+}
+
+.markets-card input[type=checkbox]{
+  -ms-transform: scale(2); 
+  -moz-transform: scale(2); 
+  -webkit-transform: scale(2); 
+  -o-transform: scale(2); 
+}
+
+.row-part {
+    display: flex;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
 .markets-list-full-title{
     margin:0;
     font-size:24px;
     font-weight:800;
     color:#fff;   
+}
+
+.markets-list-full-header{
+    background:#161a25;
+    min-height:56px;
+    font-weight:700;
+    margin-top: 2rem;
+}
+
+.markets-list-full-header div{
+    color:#7e8aa3;
+    font-size:13px;
+}
+.markets-list-full-row:not(.markets-list-full-header):hover{
+    background:#161d2b;
 }
 
 .markets-list-full-row{
@@ -62,9 +114,142 @@
     color:#fff;   
 }
 
+.add-market button{
+    padding:22px 22px;
+    background:linear-gradient(180deg, #464f66 0%, #0f1320 100%);
+    border:1px solid #3f434b;
+    border-radius:18px;
+	margin-top: 10px;
+    margin-bottom:22px;
+	text-align: center;
+    color: #f2f2f2;
+    font-weight: 500;
+    font-size: large;
+}
+
+.add-market button:hover{
+    transform: scale(1.05);
+    background:linear-gradient(180deg, #3a425a 0%, #0f1320 100%);
+}
+
 .modify-market-title{
     margin:0;
     font-size:24px;
     font-weight:800;
     color:#fff;   
+}
+
+.modify-market button{
+    padding:22px 22px;
+    background:linear-gradient(180deg, #464f66 0%, #0f1320 100%);
+    border:1px solid #3f434b;
+    border-radius:18px;
+	margin-top: 10px;
+    margin-bottom:22px;
+	text-align: center;
+    color: #f2f2f2;
+    font-weight: 500;
+    font-size: large;
+}
+
+.modify-market button:hover{
+    transform: scale(1.05);
+    background:linear-gradient(180deg, #3a425a 0%, #0f1320 100%);
+}
+
+.section-return-page {
+    min-height: 3rem;
+    min-width: 3rem;
+    height: 3rem;
+    width: 3rem;
+    background: #ff4800;
+    border-radius: 3rem;
+    border: 1px solid #f2f2f2;
+    margin-left: auto;
+    margin-right: 4%;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.section-return-page::before {
+    content: "\2190";
+    font-size: 2rem;
+    color: #ffffff;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: -0.4rem;
+}
+
+.section-return-page:hover {
+    background: #4c00ff;
+    border-radius: 3rem;
+    border: 1px solid #6d6d6d;
+    margin-left: auto;
+    margin-right: 4%;
+    margin-bottom: 2rem;
+    transform: scale(1.50);
+}
+
+@media(max-width:1900px){
+    .section-markets{
+        margin: 1rem;
+    }
+    .markets-top-header{
+        margin-left: 0px;
+        margin-left: 0px;
+        width: 100%;
+    }
+    .markets-card{
+        margin: 0px;
+        padding: 0px;
+    }
+    .row-part {
+        display: block;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .markets-title{
+        font-size:20px;
+    }
+
+    .column {
+        display: inline-grid;
+    }
+
+    .markets-list-full-header{
+        display: none;
+    }
+
+    .markets-list-full-row{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        min-width: auto;
+        padding: 16px;
+        margin: 12px;
+        margin-top: 1rem;
+        border-radius: 14px;
+        border: 1px solid #1a2233;
+        background: #0f1320;
+    }
+
+    .markets-list-full-row > div{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+    }
+
+    .markets-list-full-row > div::before{
+        content: attr(data-label);
+        color: #7e8aa3;
+        font-size: 12px;
+    }
+
 }

@@ -55,6 +55,7 @@
     border-radius:1rem;
     overflow:hidden;
     padding: 2rem;
+    min-width: 200px;
 }
 
 .quick-access-content a{
