@@ -114,7 +114,7 @@ async function addMarket(pair, base_asset, quote_asset, is_active, maker_fee, ta
 
 } 
 
-async function modifyAsset(pair, field, value) {
+async function modifyMarket(pair, field, value) {
         const res = await fetch(API + "/exchange/admin/market/modify", {
             method: "POST",
             headers: {
@@ -135,4 +135,20 @@ async function modifyAsset(pair, field, value) {
         };
         return data.result;
 
+}
+
+async function getMarketList() {
+        const res = await fetch(API + "/exchange/admin/market/getlist", {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ` + token
+            }
+        });
+        const data = await res.json();
+        if (data.error) {
+            showToast(data.error, "error");
+        };
+        return data.markets;
 }
