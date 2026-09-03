@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markets Manager - Administration Portal - LibreSwapNet</title>
+  <link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/fonts.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/admin-markets.css">
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href=".../"><img alt="LibreSwapNet" loading="lazy" src="../assets/images/libreswapnet.png" height="48"> <span class="logo-text">Libre<span class="logo-text-p1">Sw</span><span class="logo-text-p2">ap</span>Net</span></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<div class="navbar-nav">
+				<a class="nav-item" href="../">Home</a>
+				<a class="nav-item" href="../markets.html">Markets</a>
+				<a class="nav-item" href="../trade.html">Trade</a>
+			</div>
+			<a id="wallet-user-link" class="nav-item" href="../wallet.html">Wallet</a>
+            <a id="transactions-link" class="nav-item" href="../transactions.html">Transactions</a>
+       		<button class="register-login-btn" onclick="window.location.href='../auth.html'" style="display: initial;">Register / Login</button>
+       		<button class="close-session-btn" onclick="closeSession()" style="display: none;">Close Session</button>
+		</div>
+	</div>
+</nav>
+<div id="toast"></div>
+<div class="section-markets">
+    <!-- HEADER -->
+    <div class="markets-top-header">
+        <h1 class="markets-title">Markets Manager</h1>
+    </div>
+    <!-- CARD -->  
+        <div class="markets-card">
+            <div class="row">
+                <details name="markets-manager" open>    
+                    <summary>
+                        <span class="markets-list-full-title">Markets List</span>
+                    </summary>    
+                        
+                    <div class="markets-list-full-row markets-list-full-header">
+                        <div>Pair</div>
+                        <div>Base Asset</div>
+                        <div>Quote Asset</div>
+                        <div>Is Active</div>
+                        <div>Maker Fee</div>
+                        <div>Taker Fee</div>
+                        <div>Min Order Size</div>
+                        <div>Min Order Price</div>
+                        <div>Price Precision</div>
+                        <div>Amount Precision</div>
+                        <div>Bid Price</div>
+                        <div>Ask Price</div>
+                        <div>Last Price</div>
+                        <div>Spread</div>
+                        <div>Low 24h</div>
+                        <div>High 24h</div>
+                        <div>Variation 24h</div>
+                        <div>Volume 24h</div>
+                    </div>    
+                    <div id="markets-list-full-container-body"></div>
+                </details>
+                <details name="markets-manager">
+                    <summary>
+                        <span class="add-market-title">Add Market</span>
+                    </summary>
+                    <div class="row-part">
+                        <div class="col-12 col-xl-6">
+                            <label for="pair">Pair:</label>
+                            <input class="form-control"	id="pair" placeholder="Pair">
+                            <label for="base_asset">Base Asset:</label>
+                            <input class="form-control" id="base_asset" placeholder="Base Asset">  
+                            <label for="quote_asset">Quote Asset:</label>
+                            <input class="form-control"	id="quote_asset" placeholder="Quote Asset">
+                            <label for="is_active">Is Active:</label>
+                            <input class="form-control"	id="is_active" placeholder="Is Active">
+                            <label for="maker_fee">Maker Fee:</label>
+                            <input class="form-control"	id="maker_fee" placeholder="Maker Fee">
+                            <label for="taker_fee">Taker Fee:</label>
+                            <input class="form-control"	id="taker_fee" placeholder="Taker Fee">
+                        </div>
+                        <div class="col-12 col-xl-6">
+                            <label for="min_order_size">Min Order Size:</label>
+                            <input class="form-control"	id="min_order_size" placeholder="Min Order Size">
+                            <label for="min_order_price">Min Order Price:</label>
+                            <input class="form-control"	id="min_order_price" placeholder="Min Order Price">
+                            <label for="price_precision">Price Precision:</label>
+                            <input class="form-control"	id="price_precision" placeholder="Price Precision">
+                            <label for="amount_precision">Amount Precision:</label>
+                            <input class="form-control"	id="amount_precision" placeholder="Amount Precision">
+                        </div>
+
+                    </div>
+                    <div class="add-market">
+                        <button  onclick="sendMarket()">Add Market</button>
+                    </div>
+                </details>
+                <details name="markets-manager">
+                    <summary>
+                        <span class="modify-market-title">Modify Market</span>
+                    </summary> 
+                            <label for="pair_mod">Pair:</label>
+                            <input class="form-control" id="pair_mod" placeholder="Pair">
+                            <label for="field">Field:</label>
+                            <select class="form-control" id="field" placeholder="Field">
+                                <option>pair</option>
+                                <option>base_asset</option>
+                                <option>quote_asset</option>
+                                <option>is_active</option>
+                                <option>maker_fee</option>
+                                <option>taker_fee</option>
+                                <option>Min_order_size</option>
+                                <option>min_order_price</option>
+                                <option>price_precision</option>
+                                <option>amount_precision</option>
+                                <option>bid_price</option>
+                                <option>ask_price</option>
+                                <option>last_price</option>
+                                <option>spread</option>
+                                <option>low_24h</option>
+                                <option>high_24h</option>
+                                <option>variation_24h</option>
+                                <option>volume_24h</option>                                                               
+                            </select>
+                            <label for="value">Value:</label>
+                            <input class="form-control"	id="value" placeholder="Value">
+                            <div class="modify-market">
+                                <button  onclick="sendModifyMarket()">Modify Market</button>
+                            </div>
+                </details>
+            </div>
+    </div>
+</div>    
+
+<section class="footer">
+	<div class="row">
+	    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+            <img class="footer-logo" loading="lazy"  alt="libreswapnet-wordmark" src="../assets/images/libreswapnet-wordmark.png">
+            <p class="footer-description"></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                  <h4>Resources</h4>
+				  <a class="footer-item" href="../system-status.html">System Status</a>
+                  <a class="footer-item" href="../fees.html">Fees</a>
+				  <a class="footer-item" href="../listing.html">Listing</a>                
+				</div>   
+				<div class="col-12 col-sm-6 col-md-6 col-lg-6"> 
+                  <h4>Legal</h4>
+                  <a class="footer-item" href="../cookie-policy.html">Cookie Policy</a>
+                  <a class="footer-item" href="../privacy-policy.html">Privacy Policy</a>
+                  <a class="footer-item" href="../terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>  
+        </div>
+		<hr>
+		<div class="footer-copyright">		     
+		<p>Copyright © <span id="currentyear">2026</span> LibreSwapNet. All rights reserved.</p>
+		</div>
+	</div>		
+</section>
+
+    <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/api.js"></script> 
+    <script src="../assets/js/admin-api.js"></script>  
+    <script src="../assets/js/admin-markets.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

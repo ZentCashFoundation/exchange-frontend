@@ -9,18 +9,18 @@ async function assetsListFull() {
     data.forEach(asset => {
 
         if (asset.withdraw_fee ) {
-			asset.withdraw_fee = parseFloat(asset.withdraw_fee).toFixed(asset.decimals);
+			asset.withdraw_fee = parseFloat(asset.withdraw_fee).toFixed(asset.facial_decimals);
 		}
 
         if (asset.network_fee ) {
-			asset.network_fee = parseFloat(asset.network_fee).toFixed(asset.decimals);
+			asset.network_fee = parseFloat(asset.network_fee).toFixed(asset.facial_decimals);
 		}
 
         if (asset.min_deposit ) {
-			asset.min_deposit = parseFloat(asset.min_deposit).toFixed(asset.decimals);
+			asset.min_deposit = parseFloat(asset.min_deposit).toFixed(asset.facial_decimals);
 		}
         if (asset.min_withdraw ) {
-			asset.min_withdraw = parseFloat(asset.min_withdraw).toFixed(asset.decimals);
+			asset.min_withdraw = parseFloat(asset.min_withdraw).toFixed(asset.facial_decimals);
 		} 
 
         const row = document.createElement("div");
@@ -57,6 +57,7 @@ function sendAsset() {
     const network_default = document.getElementById('network_default').value;
     const rpc_url = document.getElementById('rpc_url').value;
     const decimals = document.getElementById('decimals').value;
+    const facial_decimals = document.getElementById('facial_decimals').value;
     const contract_address = document.getElementById('contract_address').value;
     const requires_memo = document.getElementById('requires_memo');
     const requiresmemovalor = requires_memo.checked ? 1 : 0;
@@ -81,7 +82,7 @@ function sendAsset() {
     const coinmarketcap = document.getElementById('coinmarketcap').value;
     const coingecko = document.getElementById('coingecko').value;
         
-    addAsset(ticker, name_asset, type, network_default, rpc_url, decimals, contract_address, 
+    addAsset(ticker, name_asset, type, network_default, rpc_url, decimals, facial_decimals, contract_address, 
                         requiresmemovalor, confirmations_required, explorer_tx_url, explorer_address_url,
                         depositenabled, withdrawenabled, tradeenabled, maintenancemode, min_deposit, min_withdraw, 
                         withdraw_fee,  network_fee, usd_value, icon_url, website, coinmarketcap, coingecko
@@ -92,7 +93,7 @@ function sendModifyAsset() {
     const ticker = document.getElementById('ticker_mod').value;
     const field = document.getElementById('field').value;
     const value = document.getElementById('value').value;
-        
+    
     modifyAsset(ticker, field, value);
 }
 
