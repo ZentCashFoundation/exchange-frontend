@@ -1,11 +1,9 @@
-body {
-    min-height: 100dvh;
-}
 .section-markets{
 	margin-bottom: 3rem;
 	margin-right: 2rem;
     margin-left: 2rem;
     text-align: center;
+    min-height: 90vh;
 }
 .markets-top-header{
     padding:24px 22px;

@@ -3,6 +3,7 @@
 	margin-right: 2rem;
     margin-left: 2rem;
     text-align: center;
+    min-height: 90vh;
 }
 .add-you-assets{
     display: flex;

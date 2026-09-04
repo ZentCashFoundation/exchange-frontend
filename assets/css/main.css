@@ -2,6 +2,10 @@
 body {
     background: radial-gradient(ellipse at bottom, #1b2735 5%, #595959 95%);
     color: #FFFFFF;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 #toast {
     position: fixed;
@@ -92,6 +96,7 @@ body {
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 1rem;
+    margin-top: auto;
 }
 .footer-logo {
     max-width: 60%;

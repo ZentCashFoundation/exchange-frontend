@@ -1,25 +1,40 @@
+.card{
+    width: 100%;
+    padding: 24px 22px;
+    background: linear-gradient(180deg, #161a25 0%, #0f1320 100%);
+    border: 1px solid #1e2636;
+    border-radius: 18px;
+    margin-top: 2rem;
+    margin-bottom: 16px;
+}
 .minimum-deposit-amount {
   font-size: 1rem;
-  color: #000000;
+  color: #ffffff;
   text-transform: capitalize;
   font-weight: bold;
+}
+#minimum-deposit-amount {
+  color: #ffffff;
 }
 .minimum-deposit-confirmations {
   font-size: 1rem;
-  color: #000000;
+  color: #ffffff;
   text-transform: capitalize;
   font-weight: bold;
 }
+#minimum-deposit-confirmations {
+  color: #ffffff;
+}
 .depositAddress {
   font-size: 1rem;
-  color: #000000;
+  color: #ffffff;
   text-transform: capitalize;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
 .depositPaymentID {
   font-size: 1rem;
-  color: #000000;
+  color: #ffffff;
   text-transform: capitalize;
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -27,7 +42,7 @@
 }
 .depositIntegratedAddress {
   font-size: 1rem;
-  color: #000000;
+  color: #ffffff;
   text-transform: capitalize;
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -35,7 +50,7 @@
 }
 .depositMemo {
   font-size: 1rem;
-  color: #000000;
+  color: #ffffff;
   text-transform: capitalize;
   font-weight: bold;
   margin-bottom: 0.5rem;
@@ -52,7 +67,27 @@
 }
 #depositMemo {
   display: none;
+  
 }
 #networkSelect {
   text-transform: capitalize;
+}
+.select-currency-title {
+    color: #ffffff;
+}
+
+.select-network-title {
+    color: #ffffff;
+}
+
+.deposit-details-title{
+  color: #ffffff;
+}
+.recent-deposits-title{
+  color: #ffffff;
+}
+
+.minimum-deposit {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }

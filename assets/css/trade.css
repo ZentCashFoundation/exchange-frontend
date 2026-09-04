@@ -410,6 +410,7 @@ input[type="radio"] {
 #orderbook-bid-container{
     height: 220px;
     overflow-y: auto;
+    border-bottom: 1px solid #000000 ;
 }
 .ask-row {
     background:rgba(255,77,79,.08);
