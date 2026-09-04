@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async() => {
     }
     
     const registerloginbtn = document.querySelector('.register-login-btn');
-    const closesessionbtn = document.querySelector('.close-session-btn');
+    const closesessionbtn = document.querySelector('.user-menu');
     const authuser = document.querySelector('.auth-container');
     const walletuserlink = document.getElementById('wallet-user-link');
     const transationsuserlink = document.getElementById('transactions-link');
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async() => {
             authuser.style.display = "none";
         }
         registerloginbtn.style.display = "none";  
-		    closesessionbtn.style.display = "initial";
+		    closesessionbtn.style.display = "flex";
         walletuserlink.style.display = "initial";
         transationsuserlink.style.display = "initial";
       }  
@@ -35,7 +35,8 @@ document.addEventListener("DOMContentLoaded", async() => {
 /** Session management */
   async function closeSession() {
     localStorage.removeItem('token');
-    location.href = "./";
+    localStorage.removeItem("token-date");
+    location.href = "/";
 }
 /** End of session management */
 
@@ -44,8 +45,7 @@ const getCurrentYear = ()=>{
     return new Date().getFullYear();
 }
 document.getElementById('currentyear').textContent = getCurrentYear()
-
-/** Disable right-click context menu 
+/** 
 document.addEventListener('contextmenu', function (e) {
   e.preventDefault();
 });

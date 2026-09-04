@@ -7,6 +7,50 @@ body {
     display: flex;
     flex-direction: column;
 }
+.user-menu{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    text-align: center;
+    min-width: 160px;
+    
+}
+.nav-item.nav-item-user-menu{
+    font-size: small;
+} 
+
+.dropdown-menu.show {
+    display: block;
+    min-width: stretch;
+}
+
+.user-menu-image {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 3rem;
+    background: radial-gradient(ellipse at bottom, #6b8099 5%, #080606 95%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #696969;
+    z-index: 9999
+}
+#user-image{
+    max-height: 2.5rem;
+    max-width: 2.5rem;
+}
+
+#user-menu-username{
+    margin-left: -7px;
+    background: radial-gradient(ellipse at bottom, #6b8099 5%, #080606 95%);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-top-right-radius:1rem;
+    border-bottom-right-radius:1rem;
+    border: 3px solid #696969;
+    color: #FFFFFF
+}
+
 #toast {
     position: fixed;
     display:none;
@@ -19,6 +63,12 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 9999;
+}
+
+.auth-show{
+    text-decoration: none;
+    font-size: xx-large;
+    color: #FFFFFF;
 }
 
 #toast.show {

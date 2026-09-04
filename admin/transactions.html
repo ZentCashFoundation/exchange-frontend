@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions Manager - Administration Portal - LibreSwapNet</title>
+  <link rel="stylesheet" type="text/css" href="../assets/vendors/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/fonts.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="../assets/css/admin-asset.css">
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href=".../"><img alt="LibreSwapNet" loading="lazy" src="../assets/images/libreswapnet.png" height="48"> <span class="logo-text">Libre<span class="logo-text-p1">Sw</span><span class="logo-text-p2">ap</span>Net</span></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<div class="navbar-nav">
+				<a class="nav-item" href="../">Home</a>
+				<a class="nav-item" href="../markets.html">Markets</a>
+				<a class="nav-item" href="../trade.html">Trade</a>
+			</div>
+			<div class="nav-item dropdown">
+              	<div class="nav-link user-menu" role="menu" data-bs-toggle="dropdown" aria-expanded="false">
+					<div class="user-menu-image">
+						<img id="user-image" src="../assets/images/user.webp">
+					</div>
+					<div id="user-menu-username">Username</div>
+				</div>
+				<div class="dropdown-menu">
+					<div><a id="wallet-user-link" class="nav-item nav-item-user-menu" href="../wallet.html">Wallet</a></div>
+					<div><a id="transactions-link" class="nav-item nav-item-user-menu" href="../transactions.html">Transactions</a></div>
+					<div><a id="close-session-btn" onclick="closeSession()" class="nav-item nav-item-user-menu">Close Session</a></div>
+				</div>
+            </div>
+       		<button class="register-login-btn" onclick="window.location.href='../auth.html'" style="display: initial;">Register / Login</button>
+		</div>
+	</div>
+</nav>
     
 </body>
 </html>

@@ -8,7 +8,7 @@ let gameSessionId = null;
 
 const toast = document.getElementById("toast");
 function showToast(text, type = "success") {
-    toast.textContent = text;
+    toast.innerHTML = text;
 
     toast.className = "";
     toast.classList.add("show", type);
@@ -24,13 +24,19 @@ if (Number(tokenDate) + 7200000 < Date.now()) {
     localStorage.removeItem("token-date");
 }
 
+let sessionExpiring = false;
+
 async function outSession() {
-    if (Number(tokenDate) + 7200000 < Date.now()) {  
-    localStorage.removeItem("token");
-    localStorage.removeItem("token-date");
-    window.location.href = "auth.html";
+
+    if (Number(tokenDate) + 7200000 < Date.now() && token && !sessionExpiring) {
+        sessionExpiring = true;
+        localStorage.removeItem("token");
+        localStorage.removeItem("token-date");
+        showToast("Session expired, please login again", "error");
+        setTimeout(() => location.reload(), 1500);
     }
 }
+
 
 // =======================
 // Funcion de registro
