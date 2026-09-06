@@ -1,0 +1,115 @@
+.section-profile{
+	margin-right: 2rem;
+	margin-left: 2rem;
+	margin-bottom: 3rem;
+}
+.profile-header{
+    width:100%;
+    padding:24px 22px;
+    background:linear-gradient(180deg, #161a25 0%, #0f1320 100%);
+    border:1px solid #1e2636;
+    border-radius:18px;
+	margin-top: 2rem;
+    margin-bottom:16px;
+	text-align: center;
+}
+.profile-title {
+    margin:0;
+    font-size:24px;
+    font-weight:800;
+    color:#ffffff;
+    letter-spacing:.3px;
+}
+.profile-description {
+    margin:6px 0 0 0;
+    font-size:14px;
+    color:#8a93a6;
+    line-height:1.4;
+}
+.profile-content{
+    background:#0f1320;
+    border:1px solid #1e2636;
+    border-radius:18px;
+    overflow:hidden;
+}
+.profile-information{
+    margin-right: 2rem;
+	margin-left: 2rem;
+    margin-top: 3rem;
+	margin-bottom: 3rem;
+    padding: 2rem;
+}
+.personalinformation{
+    margin-right: 2rem;
+	margin-left: 2rem;
+    margin-top: 3rem;
+	margin-bottom: 3rem;
+    background:linear-gradient(180deg, #161a25 0%, #303b61 100%);
+    border:1px solid #3f5070;
+    border-radius:18px;
+    padding: 2rem;
+}
+.personal-information{
+    font-size: x-large;
+    font-weight: bold
+}
+
+.pi-item{
+    font-weight: bold;
+}
+
+.pi-data{
+    font-weight: normal;
+}
+
+.accountdetails{
+    margin-right: 2rem;
+	margin-left: 2rem;
+    margin-top: 3rem;
+	margin-bottom: 3rem;
+    background:linear-gradient(180deg, #161a25 0%, #303b61 100%);
+    border:1px solid #3f5070;
+    border-radius:18px;
+    padding: 2rem;
+}
+
+.account-details{
+    font-size: x-large;
+    font-weight: bold
+}
+
+.ad-item{
+    font-weight: bold;
+}
+
+.ad-data{
+    font-weight: normal;
+}
+
+.kycaccountdetails {
+    margin-right: 2rem;
+	margin-left: 2rem;
+    margin-top: 3rem;
+	margin-bottom: 3rem;
+    background:linear-gradient(180deg, #161a25 0%, #303b61 100%);
+    border:1px solid #3f5070;
+    border-radius:18px;
+    padding: 2rem;
+}
+
+.kyc-account-details{
+    font-size: x-large;
+    font-weight: bold
+}
+
+.kycad-item{
+    font-weight: bold;
+}
+
+.kycad-data{
+    font-weight: normal;
+}
+
+.personalinformation{
+
+}

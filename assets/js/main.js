@@ -32,6 +32,13 @@ document.addEventListener("DOMContentLoaded", async() => {
     });
 
 
+async function profileUser() {
+    const data = await profile();
+    if (!data) return;
+    const username = document.getElementById('user-menu-username');
+    username.textContent = data[0].username;
+}    
+
 /** Session management */
   async function closeSession() {
     localStorage.removeItem('token');
@@ -60,3 +67,9 @@ document.addEventListener('keydown', function (e) {
     e.preventDefault();
   }
 });**/
+
+setInterval(() => {
+    if (token) {
+      profileUser()
+    }
+}, 1000);

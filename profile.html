@@ -1,11 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile User</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - LibreSwapNet</title>
+  <link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/profile.css">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/"><img alt="LibreSwapNet" loading="lazy" src="assets/images/libreswapnet.png" height="48"> <span class="logo-text">Libre<span class="logo-text-p1">Sw</span><span class="logo-text-p2">ap</span>Net</span></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<div class="navbar-nav">
+				<a class="nav-item" href="./">Home</a>
+				<a class="nav-item" href="markets.html">Markets</a>
+				<a class="nav-item" href="trade.html">Trade</a>
+			</div>
+			<div class="nav-item dropdown">
+              	<div class="nav-link user-menu" role="menu" data-bs-toggle="dropdown" aria-expanded="false">
+					<div class="user-menu-image">
+						<img id="user-image" src="./assets/images/user.webp">
+					</div>
+					<div id="user-menu-username">Username</div>
+				</div>
+				<div class="dropdown-menu">
+					<div><a id="wallet-user-link" class="nav-item nav-item-user-menu" href="wallet.html">Wallet</a></div>
+					<div><a id="transactions-link" class="nav-item nav-item-user-menu" href="transactions.html">Transactions</a></div>
+					<div><a id="close-session-btn" onclick="closeSession()" class="nav-item nav-item-user-menu">Close Session</a></div>
+				</div>
+            </div>
+       		<button class="register-login-btn" onclick="window.location.href='auth.html'">Register / Login</button>
+		</div>
+	</div>
+</nav>
+<div id="toast"></div>
+<div class="section-profile">
+	<div class="profile-header">
+			<h1 class="profile-title">Profile</h1>
+			<p class="profile-description">Manage your personal information, account settings, security preferences, and trading activity from one place.</p>
+	</div>
+	<div class="profile-content">
+		<div class="profile-information">
+			<div class="personalinformation">
+				<p class="personal-information">Personal Information</p>
+				<p class="pi-item">Name: <span class="pi-data" id="first_name"></span> <span class="pi-data" id="last_name"></span></p>
+				<p class="pi-item">Date of Birth: <span class="pi-data" id="date_of_birth"></span></p>
+				<p class="pi-item">Nacionality: <span class="pi-data" id="nationality"></span></p>
+				<p class="pi-item">Country: <span class="pi-data" id="country"></span></p>
+				<p class="pi-item">City: <span class="pi-data" id="city"></span></p>
+				<p class="pi-item">Postal Code: <span class="pi-data" id="postal_code"></span></p>
+				<p class="pi-item">Address: <span class="pi-data" id="address_line1"></span></p>
+			</div>
+
+			<div class="accountdetails">
+				<p class="account-details">Account Details</p>
+				<p class="ad-item">Username: <span class="ad-data" id="username"></span></p>
+				<p class="ad-item">Email: <span class="ad-data" id="email_user"></span></p>
+			</div>
+
+			<div class="kycaccountdetails">
+				<p class="kyc-account-details">KYC Account Details</p>
+				<p class="kycad-item capitalize">Status: <span class="kycad-data" id="status"></span></p>
+				<p class="kycad-item capitalize">Document Type: <span class="kycad-data" id="document_type"></span></p>
+				<p class="kycad-item">Document Country: <span class="kycad-data" id="document_country"></span></p>
+				<p class="kycad-item">Document Expire <span class="kycad-data" id="document_expire"></span></p>
+				<p class="kycad-item">Verification Date: <span class="kycad-data" id="verification_date"></span></p>
+				<p class="kycad-item">Last Update: <span class="kycad-data" id="last_update"></span></p>
+			</div>
+		</div>
+
+	</div>	
+</div>
+<section class="footer">
+	<div class="row">
+	    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+            <img class="footer-logo" loading="lazy"  alt="libreswapnet-wordmark" src="./assets/images/libreswapnet-wordmark.png">
+            <p class="footer-description"></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                  <h4>Resources</h4>
+				  <a class="footer-item" href="./system-status.html">System Status</a>
+                  <a class="footer-item" href="./fees.html">Fees</a>
+				  <a class="footer-item" href="./listing.html">Listing</a>                
+				</div>   
+				<div class="col-12 col-sm-6 col-md-6 col-lg-6"> 
+                  <h4>Legal</h4>
+                  <a class="footer-item" href="./cookie-policy.html">Cookie Policy</a>
+                  <a class="footer-item" href="./privacy-policy.html">Privacy Policy</a>
+                  <a class="footer-item" href="./terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>  
+        </div>
+		<hr>
+		<div class="footer-copyright">		     
+		<p>Copyright © <span id="currentyear">2026</span> LibreSwapNet. All rights reserved.</p>
+		</div>
+	</div>		
+</section>
+<script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/api.js"></script>   
+<script src="assets/js/main.js"></script>
+<script src="assets/js/profile.js"></script>    
 </body>
 </html>

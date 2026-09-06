@@ -86,6 +86,19 @@ async function login() {
     location.href = "./";
 }
 
+async function profile() {
+
+    const res = await fetch(API + "/auth/profile", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        }
+    });
+
+    const data = await res.json();
+    return data.profile;
+}
 // ==========================
 // Funcion de depósito
 // ==========================

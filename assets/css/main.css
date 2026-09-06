@@ -162,3 +162,7 @@ body {
     text-align: center !important;
 }
 /* Footer Styles */
+
+.capitalize{
+    text-transform: capitalize;
+}
