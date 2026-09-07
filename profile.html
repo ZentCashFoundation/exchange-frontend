@@ -31,6 +31,7 @@
 				<div class="dropdown-menu">
 					<div><a id="wallet-user-link" class="nav-item nav-item-user-menu" href="wallet.html">Wallet</a></div>
 					<div><a id="transactions-link" class="nav-item nav-item-user-menu" href="transactions.html">Transactions</a></div>
+					<div><a id="transactions-link" class="nav-item nav-item-user-menu" href="profile.html">Profile</a></div>
 					<div><a id="close-session-btn" onclick="closeSession()" class="nav-item nav-item-user-menu">Close Session</a></div>
 				</div>
             </div>
@@ -46,31 +47,68 @@
 	</div>
 	<div class="profile-content">
 		<div class="profile-information">
-			<div class="personalinformation">
-				<p class="personal-information">Personal Information</p>
-				<p class="pi-item">Name: <span class="pi-data" id="first_name"></span> <span class="pi-data" id="last_name"></span></p>
-				<p class="pi-item">Date of Birth: <span class="pi-data" id="date_of_birth"></span></p>
-				<p class="pi-item">Nacionality: <span class="pi-data" id="nationality"></span></p>
-				<p class="pi-item">Country: <span class="pi-data" id="country"></span></p>
-				<p class="pi-item">City: <span class="pi-data" id="city"></span></p>
-				<p class="pi-item">Postal Code: <span class="pi-data" id="postal_code"></span></p>
-				<p class="pi-item">Address: <span class="pi-data" id="address_line1"></span></p>
-			</div>
+			<div class="row">
+				<div class="col-12">
+					<div class="personalinformation">
+						<p class="personal-information">Personal Information</p>
+						<p class="pi-item">Name: <span class="pi-data" id="first_name"></span> <span class="pi-data" id="last_name"></span></p>
+						<p class="pi-item">Date of Birth: <span class="pi-data" id="date_of_birth"></span></p>
+						<p class="pi-item">Nacionality: <span class="pi-data" id="nationality"></span></p>
+						<p class="pi-item">Country: <span class="pi-data" id="country"></span></p>
+						<p class="pi-item">City: <span class="pi-data" id="city"></span></p>
+						<p class="pi-item">Postal Code: <span class="pi-data" id="postal_code"></span></p>
+						<p class="pi-item">Address: <span class="pi-data" id="address_line1"></span></p>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="accountdetails">
+						<p class="account-details">Account Details</p>
+						<p class="ad-item">Username: <span class="ad-data" id="username"></span></p>
+						<p class="ad-item">Email: <span class="ad-data" id="email_user"></span></p>
+						<div class="row">
+							<div class="col-12 col-xxl-6">
+								<div class="profile-item">
+									<label class="profile-label" for="usernameinput">Change Username:</label>
+									<input class="form-control" id="usernameinput" placeholder="Username">
+									<button class="profile" onclick="profileChangeUsername()"> Change</button>
+								</div>	
+							</div>
+							<div class="col-12 col-xxl-6">
+								<div class="profile-item">
+									<label class="profile-label" for="emailinput">Change Email:</label>
+									<input class="form-control" id="emailinput" placeholder="Email">
+									<button class="profile" onclick="profileChangeEmail()"> Change</button>
+								</div>
+							</div>
+							<div class="col-12  col-xxl-6">
+								<div class="profile-item">
+									<label class="profile-label" for="passwordinput">Change Password:</label>
+									<input class="form-control" id="passwordinput" placeholder="Password">
+									<button class="profile" onclick="profileChangePassword()"> Change</button>
+								</div>	
+							</div>
+														<div class="col-12  col-xxl-6">
+								<div class="profile-item">
+									<label class="profile-label" for="passwordinput">2FA:</label>
+									<input class="form-control-2fa" type="checkbox" id="2FA" placeholder="">
+									<button class="profile" onclick="active2FA()"> Activate</button>
+								</div>	
+							</div>
+						</div>
+					</div>
 
-			<div class="accountdetails">
-				<p class="account-details">Account Details</p>
-				<p class="ad-item">Username: <span class="ad-data" id="username"></span></p>
-				<p class="ad-item">Email: <span class="ad-data" id="email_user"></span></p>
-			</div>
-
-			<div class="kycaccountdetails">
-				<p class="kyc-account-details">KYC Account Details</p>
-				<p class="kycad-item capitalize">Status: <span class="kycad-data" id="status"></span></p>
-				<p class="kycad-item capitalize">Document Type: <span class="kycad-data" id="document_type"></span></p>
-				<p class="kycad-item">Document Country: <span class="kycad-data" id="document_country"></span></p>
-				<p class="kycad-item">Document Expire <span class="kycad-data" id="document_expire"></span></p>
-				<p class="kycad-item">Verification Date: <span class="kycad-data" id="verification_date"></span></p>
-				<p class="kycad-item">Last Update: <span class="kycad-data" id="last_update"></span></p>
+				</div>
+				<div class="col-6">
+					<div class="kycaccountdetails">
+						<p class="kyc-account-details">KYC Account Details</p>
+						<p class="kycad-item capitalize">Status: <span class="kycad-data" id="status"></span></p>
+						<p class="kycad-item capitalize">Document Type: <span class="kycad-data" id="document_type"></span></p>
+						<p class="kycad-item">Document Country: <span class="kycad-data" id="document_country"></span></p>
+						<p class="kycad-item">Document Expire <span class="kycad-data" id="document_expire"></span></p>
+						<p class="kycad-item">Verification Date: <span class="kycad-data" id="verification_date"></span></p>
+						<p class="kycad-item">Last Update: <span class="kycad-data" id="last_update"></span></p>
+					</div>
+				</div>
 			</div>
 		</div>
 

@@ -36,7 +36,18 @@ async function profileUser() {
     const data = await profile();
     if (!data) return;
     const username = document.getElementById('user-menu-username');
+    const usernameImage = document.querySelector('.user-menu-image');
     username.textContent = data[0].username;
+
+    if ( data[0].status === 'pending') {
+      username.style.borderColor = 'red';
+      usernameImage.style.borderColor = 'red'
+    }
+
+    if ( data[0].status === 'verified') {
+      username.style.borderColor = 'green';
+      usernameImage.style.borderColor = 'green'
+    }
 }    
 
 /** Session management */

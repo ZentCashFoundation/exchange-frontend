@@ -110,6 +110,41 @@
     font-weight: normal;
 }
 
-.personalinformation{
+label.profile-label {
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
 
+.profile-item{
+    background:linear-gradient(180deg, #161a25 0%, #303b61 100%);
+    border:1px solid #121720;
+    border-radius:18px;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+.form-control-2fa{
+    display: block;
+    height: 2.4rem;
+    width: 2.4rem;
+}
+
+button.profile{
+    padding:10px 10px;
+    background:linear-gradient(180deg, #464f66 0%, #0f1320 100%);
+    border:1px solid #3f434b;
+    border-radius:10px;
+	margin-top: 11px;
+    margin-bottom:11px;
+	text-align: center;
+    color: #f2f2f2;
+    font-weight: 500;
+    font-size: large;
+}
+
+ button:hover.profile{
+    transform: scale(1.05);
+    background:linear-gradient(180deg, #3a425a 0%, #0f1320 100%);
 }

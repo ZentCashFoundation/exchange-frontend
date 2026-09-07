@@ -1,9 +1,7 @@
   async function profileUser2() {
     const data = await profile();
     if (!data) return;
-
-    console.log(data[0]);
-
+   
     const username_account = document.getElementById('username');
     username_account.textContent = data[0].username;
 
@@ -54,4 +52,21 @@
 
 } 
 
-profileUser2()
+async function profileChangeUsername() {
+  const usernameChange = document.getElementById('usernameinput').value;
+  changeUsername(usernameChange)
+}
+
+async function profileChangePassword() {
+  const passwordChange = document.getElementById('passwordinput').value;
+  changePassword(passwordChange);
+}
+
+async function profileChangeEmail() {
+  const emailChange = document.getElementById('emailinput').value;
+  changeEmail(emailChange);
+}
+
+if (token) {
+  profileUser2()
+}

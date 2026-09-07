@@ -689,6 +689,47 @@ async function loadUserBalances() {
     }
 }
 
+// =======================
+// Funcion de cambio de nombre de usuario
+// =======================
+async function changeUsername(username) {
+    const res = await fetch(API + "/auth/changenick", {
+        method: "POST",
+        headers: { 
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json" 
+        },
+        body: JSON.stringify({
+            username: username
+        })
+    });
+
+    const data = await res.json();
+
+    showToast("Username changed", "success");
+
+}
+
+// =======================
+// Funcion de cambio de correo electrónico
+// =======================
+async function changeEmail(email) {
+    const res = await fetch(API + "/auth/changeemail", {
+        method: "POST",
+        headers: { 
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json" 
+        },
+        body: JSON.stringify({
+            email: email
+        })
+    });
+
+    const data = await res.json();
+
+    showToast("Email changed", "success");
+}
+
 // ====================================
 // Funcion de consulta lista de monedas 
 // para listar.
