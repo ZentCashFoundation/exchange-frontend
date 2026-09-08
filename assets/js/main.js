@@ -82,5 +82,6 @@ document.addEventListener('keydown', function (e) {
 setInterval(() => {
     if (token) {
       profileUser()
+      outSession();
     }
 }, 1000);

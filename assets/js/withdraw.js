@@ -427,22 +427,23 @@ async function recentWithdrawals() {
 
   if (!data) return;
 
-  const tableBody = document.getElementById("recentWithdrawalsTableBody");
-  tableBody.innerHTML = "";
+  const container = document.getElementById("recentWithdrawalsBody");
+  container.innerHTML = "";
 
   data.history.forEach(history => {
-    const row = document.createElement("tr");
+    const row = document.createElement("div");
+     row.className = "withdraw-row";
 
     if (history.created_at) {
       history.created_at = new Date(history.created_at).toLocaleString();
     }
 
     if (history.address) {
-      history.address = history.address.length > 20 ? history.address.slice(0, 10) + "..." + history.address.slice(-10) : history.address;
+      history.address = history.address.length > 20 ? history.address.slice(0, 8) + "..." + history.address.slice(-7) : history.address;
     }
 
     if (history.tx_hash) {
-      history.tx_hash = history.tx_hash.length > 20 ? history.tx_hash.slice(0, 10) + "..." + history.tx_hash.slice(-10) : history.tx_hash;
+      history.tx_hash = history.tx_hash.length > 20 ? history.tx_hash.slice(0, 10) + "..." + history.tx_hash.slice(-8) : history.tx_hash;
     }
 
     if (history.tx_hash === null) {
@@ -458,18 +459,18 @@ async function recentWithdrawals() {
     }
 
     row.innerHTML = `
-      <td>${history.created_at}</td>
-      <td>${history.asset_ticker}</td>
-      <td>${history.amount}</td>
-      <td>${history.fee}
-      <td>${history.address}</td>
-      <td>${history.tx_hash}</td>
-      <td style="font-weight: bold; text-transform: capitalize; color: ${history.status === "confirmed" ? "#2bff00" : history.status === "pending" ? "orange" : history.status === "broadcasted" ? "#00bcd4" : "red"}">
+      <div data-label="Date">${history.created_at}</div>
+      <div data-label="Asset">${history.asset_ticker}</div>
+      <div data-label="Amount">${history.amount}</div>
+      <div data-label="Fee">${history.fee}</div>
+      <div data-label="To Destination">${history.address}</div>
+      <div data-label="TxID">${history.tx_hash}</div>
+      <div data-label="status" style="font-weight: bold; text-transform: capitalize; color: ${history.status === "confirmed" ? "#2bff00" : history.status === "pending" ? "orange" : history.status === "broadcasted" ? "#00bcd4" : "red"}">
         ${history.status}
-      </td>
+      </div>
     `;
 
-    tableBody.appendChild(row);
+    container.appendChild(row);
 
   });
 

@@ -262,11 +262,12 @@ async function recentDeposits() {
 
     if (!data) return;
 
-    const tableBody = document.getElementById("recentDepositsTableBody");
-    tableBody.innerHTML = "";
+    const container = document.getElementById("recentDepositsBody");
+    container.innerHTML = "";
 
     data.history.forEach(history => {
-        const row = document.createElement("tr");
+        const row = document.createElement("div");
+        row.className = "deposit-row";
 
 		if (history.created_at) {
 			history.created_at = new Date(history.created_at).toLocaleString();
@@ -285,16 +286,16 @@ async function recentDeposits() {
 		}	
 
         row.innerHTML = `            
-          <td>${history.created_at}</td>
-          <td>${history.asset_ticker}</td>
-          <td>${history.amount}</td>
-          <td>${history.address}</td>
-          <td>${history.tx_hash}</td>
-          <td>${history.confirmations}</td>
-          <td style="font-weight: bold; text-transform: capitalize; color: ${history.status === 'confirmed'  ? '#2bff00':'red' }">${history.status}</td>
+          <div data-label="Date">${history.created_at}</div>
+          <div data-label="Asset">${history.asset_ticker}</div>
+          <div data-label="Amount">${history.amount}</div>
+          <div data-label="Destination">${history.address}</div>
+          <div data-label="TxID">${history.tx_hash}</div>
+          <div data-label="Confirmations">${history.confirmations}</div>
+          <div data-label="Status" style="font-weight: bold; text-transform: capitalize; color: ${history.status === 'confirmed'  ? '#2bff00':'red' }">${history.status}</div>
         `;
 
-        tableBody.appendChild(row);
+        container.appendChild(row);
     });
 }
 

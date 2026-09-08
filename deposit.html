@@ -118,21 +118,19 @@
 				<div class="card border-0 shadow-sm">
 					<div class="card-body">
 						<h2 class="recent-deposits-title">Recent Deposits</h2>
-							<div class="table-responsive">
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<th scope="col">Date</th>
-											<th scope="col">Asset</th>
-											<th scope="col">Amount</th>
-											<th scope="col">Destination</th>
-											<th scope="col">TxID</th>
-											<th scope="col">Confirmations</th>
-											<th scope="col">Status</th>
-										</tr>
-									</thead>
-									<tbody id="recentDepositsTableBody"></tbody>
-								</table>
+							<div class="deposit-table-wrapper">
+								<div class="deposit-card"> 
+									<div class="deposit-row deposit-header">
+										<div scope="col">Date</div>
+										<div scope="col">Asset</div>
+										<div scope="col">Amount</div>
+										<div scope="col">Destination</div>
+										<div scope="col">TxID</div>
+										<div scope="col">Confirmations</div>
+										<div scope="col">Status</div>
+									</div>
+									<div id="recentDepositsBody"></div>
+								</div>
 							</div>	
 					</div>
 				</div>
@@ -140,7 +138,6 @@
 		</div>
 	</div>
 </section>
-
 
 <section class="footer">
 	<div class="row">

@@ -148,3 +148,36 @@ button.profile{
     transform: scale(1.05);
     background:linear-gradient(180deg, #3a425a 0%, #0f1320 100%);
 }
+
+@media (max-width: 768px) {
+    .section-profile{
+        margin-right: 1rem;
+        margin-left: 1rem;
+        margin-bottom: 2rem;
+    }
+    .profile-information{
+        margin-right: 0rem;
+        margin-left: 0rem;
+        padding: 1rem;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+    .personalinformation{
+        margin-right: 0rem;
+        margin-left: 0rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .accountdetails{
+        margin-right: 0rem;
+        margin-left: 0rem;
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+    .kycaccountdetails {
+        margin-right: 0rem;
+        margin-left: 0rem;
+        margin-top: 2rem;
+        margin-bottom: 0rem;
+    }
+}

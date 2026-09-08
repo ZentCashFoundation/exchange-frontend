@@ -197,6 +197,5 @@ setInterval(() => {
         openOrders();
         historicalOrders();
         myTrades(pair);
-        outSession();
     }
 }, 5000);

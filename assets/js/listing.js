@@ -47,6 +47,11 @@ async function listing() {
     });
 }
 
+if (!token) {
+    const addyouassetsButton = document.querySelector(".add-you-assets");
+    addyouassetsButton.style.display = "none";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     listing();
 });

@@ -121,22 +121,20 @@
 				<div class="card border-0 shadow-sm">
 					<div class="card-body">
 						<h2 class="recent-deposits-title">Recent Withdrawals</h2>
-              <div class="table-responsive">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">Date</th>
-                      <th scope="col">Asset</th>
-                      <th scope="col">Amount</th>
-                      <th scope="col">Fee</th>
-                      <th scope="col">To Destination</th>
-                      <th scope="col">TxID</th>
-                      <th scope="col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody id="recentWithdrawalsTableBody"></tbody>
-                </table>
-              </div>  
+              <div class="withdraw-table-wrapper">
+                <div class="withdraw-card"> 
+                    <div class="withdraw-row withdraw-header">
+                        <div scope="col">Date</div>
+                        <div scope="col">Asset</div>
+                        <div scope="col">Amount</div>
+                        <div scope="col">Fee</div>
+                        <div scope="col">To Destination</div>
+                        <div scope="col">TxID</div>
+                        <div scope="col">Status</div>
+                    </div>
+                    <div id="recentWithdrawalsBody"></div>
+                </div>
+              </div>
 					</div>
 				</div>
 			</div>
