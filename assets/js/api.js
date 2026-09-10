@@ -99,6 +99,33 @@ async function profile() {
     const data = await res.json();
     return data.profile;
 }
+
+async function kycProfile(first_name, last_name, date_of_birth, nationality, address_line1, country, city, postal_code, document_type, document_country, document_expire) {
+
+    const res = await fetch(API + "/auth/profile/kyc", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify({
+            first_name: `${first_name}`,
+            last_name: `${last_name}`,
+            date_of_birth: `${date_of_birth}`,
+            nationality: `${nationality}`,
+            address_line1: `${address_line1}`,
+            country: `${country}`,
+            city: `${city}`,
+            postal_code: postal_code,
+            document_type: `${document_type}`,
+            document_country: `${document_country}`,
+            document_expire: `${document_expire}`
+        })
+    });
+
+    const data = await res.json();
+    return data.profile;
+}
 // ==========================
 // Funcion de depósito
 // ==========================

@@ -70,7 +70,7 @@
                         <div class="col-12 col-xl-6 col-xxl-6">
                                 <p class="kycad-item">Document: <input class="form-control" type="file" id="document" placeholder="Document"></p>
                                 <p class="kycad-item capitalize">Document Type:                         
-                                    <select class="form-control" id="type" placeholder="Type">
+                                    <select class="form-control" id="document_type" placeholder="Type">
                                         <option>National ID</option>
                                         <option>Passport</option>
                                         <option>Driving License</option>
@@ -82,7 +82,10 @@
                                 <p class="kycad-item">Document Expire:  <input class="form-control" type="date" id="document_expire" placeholder="Document Expire"></p>
                         </div>
                     </div>    
-                </div>    
+                </div>
+                <div class="kyc-personal-profile">
+                    <button  onclick="kycPersonalSend()"> Send</button>
+                </div>
 			</div>
 		</div>
 	</div>	
@@ -119,6 +122,6 @@
 <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/api.js"></script>   
 <script src="assets/js/main.js"></script>
-<script src="assets/js/profile.js"></script>    
+<script src="assets/js/kyc.js"></script>    
 </body>
 </html>
