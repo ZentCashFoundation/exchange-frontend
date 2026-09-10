@@ -1,0 +1,87 @@
+.section-kyc-profile {
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 3rem;
+}
+.kyc-profile-header {
+    width: 100%;
+    padding: 24px 22px;
+    background: linear-gradient(180deg, #161a25 0%, #0f1320 100%);
+    border: 1px solid #1e2636;
+    border-radius: 18px;
+    margin-top: 2rem;
+    margin-bottom: 16px;
+    text-align: center;
+}
+.kyc-profile-title{
+    margin: 0;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: .3px;
+}
+.kyc-profile-content {
+    background: #0f1320;
+    border: 1px solid #1e2636;
+    border-radius: 18px;
+    overflow: hidden;
+}
+.kyc-profile-information{
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+}
+.kyc-personal-information{
+    font-size: x-large;
+    font-weight: bold;
+}
+.kyc-document-information{
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.kyc-personal-information-content {
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(180deg, #161a25 0%, #303b61 100%);
+    border: 1px solid #3f5070;
+    border-radius: 18px;
+    padding: 2rem;
+}
+
+.kyc-document-information-content {
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(180deg, #161a25 0%, #303b61 100%);
+    border: 1px solid #3f5070;
+    border-radius: 18px;
+    padding: 2rem;
+}
+
+@media(max-width:768px){
+    .section-kyc-profile{
+        margin: 1rem;
+    }
+    .kyc-profile-header{
+        margin-left: 0px;
+        margin-left: 0px;
+        width: 100%;
+    }
+    .kyc-profile-information{
+        margin: 0px;
+        padding: 0px;
+    }
+    .kyc-personal-information-content{
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+    .kyc-document-information-content{
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+}

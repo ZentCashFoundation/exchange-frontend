@@ -1,11 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KYC User</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYC User - LibreSwapNet</title>
+  <link rel="stylesheet" type="text/css" href="assets/vendors/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/kyc.css">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/"><img alt="LibreSwapNet" loading="lazy" src="assets/images/libreswapnet.png" height="48"> <span class="logo-text">Libre<span class="logo-text-p1">Sw</span><span class="logo-text-p2">ap</span>Net</span></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<div class="navbar-nav">
+				<a class="nav-item" href="./">Home</a>
+				<a class="nav-item" href="markets.html">Markets</a>
+				<a class="nav-item" href="trade.html">Trade</a>
+			</div>
+			<div class="nav-item dropdown">
+              	<div class="nav-link user-menu" role="menu" data-bs-toggle="dropdown" aria-expanded="false">
+					<div class="user-menu-image">
+						<img id="user-image" src="./assets/images/user.webp">
+					</div>
+					<div id="user-menu-username">Username</div>
+				</div>
+				<div class="dropdown-menu">
+					<div><a id="wallet-user-link" class="nav-item nav-item-user-menu" href="wallet.html">Wallet</a></div>
+					<div><a id="transactions-link" class="nav-item nav-item-user-menu" href="transactions.html">Transactions</a></div>
+					<div><a id="transactions-link" class="nav-item nav-item-user-menu" href="profile.html">Profile</a></div>
+					<div><a id="close-session-btn" onclick="closeSession()" class="nav-item nav-item-user-menu">Close Session</a></div>
+				</div>
+            </div>
+       		<button class="register-login-btn" onclick="window.location.href='auth.html'">Register / Login</button>
+		</div>
+	</div>
+</nav>
+<div id="toast"></div>
+
+<div class="section-kyc-profile">
+	<div class="kyc-profile-header">
+			<h1 class="kyc-profile-title">KYC Profile</h1>
+	</div>
+	<div class="kyc-profile-content">
+		<div class="kyc-profile-information">
+                <div class="kyc-personal-information-content">
+                    <div class="row">
+                        <p class="kyc-personal-information">Personal Information</p>
+                        <div class="col-12 col-xl-6 col-xxl-6">
+                                <p class="kycpi-item">First Name: <input class="form-control" id="first_name" placeholder="First Name"></p>
+                                <p class="kycpi-item">Last Name: <input class="form-control" id="last_name" placeholder="Last Name"></p>
+                                <p class="kycpi-item">Date of Birth: <input class="form-control" type="date" id="date_of_birth" placeholder="Date of Birth"></p>
+                                <p class="kycpi-item">Nationality: <input class="form-control" id="nationality" placeholder="Nationality"></p>
+                        </div>        
+                        <div class="col-12 col-xl-6 col-xxl-6">        
+                                <p class="kycpi-item">Country: <input class="form-control" id="country" placeholder="Country"></p>
+                                <p class="kycpi-item">City: <input class="form-control" id="city" placeholder="City"></p>
+                                <p class="kycpi-item">Postal Code: <input class="form-control" id="postal_code" placeholder="Postal Code"></p>
+                                <p class="kycpi-item">Address: <input class="form-control" id="address_line1" placeholder="Address"></p>
+                        </div>
+                    </div>    
+                </div>    
+				<div class="kyc-document-information-content">
+                    <div class="row">
+                        <p class="kyc-document-information">Document Information</p>
+                        <div class="col-12 col-xl-6 col-xxl-6">
+                                <p class="kycad-item">Document: <input class="form-control" type="file" id="document" placeholder="Document"></p>
+                                <p class="kycad-item capitalize">Document Type:                         
+                                    <select class="form-control" id="type" placeholder="Type">
+                                        <option>National ID</option>
+                                        <option>Passport</option>
+                                        <option>Driving License</option>
+                                    </select>
+                                </p>
+                        </div>
+                        <div class="col-12 col-xl-6 col-xxl-6">        
+                                <p class="kycad-item">Document Country: <input class="form-control" id="document_country" placeholder="Document Country"></p>
+                                <p class="kycad-item">Document Expire:  <input class="form-control" type="date" id="document_expire" placeholder="Document Expire"></p>
+                        </div>
+                    </div>    
+                </div>    
+			</div>
+		</div>
+	</div>	
+</div>
     
+<section class="footer">
+	<div class="row">
+	    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+            <img class="footer-logo" loading="lazy"  alt="libreswapnet-wordmark" src="./assets/images/libreswapnet-wordmark.png">
+            <p class="footer-description"></p>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                  <h4>Resources</h4>
+				  <a class="footer-item" href="./system-status.html">System Status</a>
+                  <a class="footer-item" href="./fees.html">Fees</a>
+				  <a class="footer-item" href="./listing.html">Listing</a>                
+				</div>   
+				<div class="col-12 col-sm-6 col-md-6 col-lg-6"> 
+                  <h4>Legal</h4>
+                  <a class="footer-item" href="./cookie-policy.html">Cookie Policy</a>
+                  <a class="footer-item" href="./privacy-policy.html">Privacy Policy</a>
+                  <a class="footer-item" href="./terms-of-service.html">Terms of Service</a>
+                </div>
+            </div>  
+        </div>
+		<hr>
+		<div class="footer-copyright">		     
+		<p>Copyright © <span id="currentyear">2026</span> LibreSwapNet. All rights reserved.</p>
+		</div>
+	</div>		
+</section>
+<script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/api.js"></script>   
+<script src="assets/js/main.js"></script>
+<script src="assets/js/profile.js"></script>    
 </body>
 </html>
