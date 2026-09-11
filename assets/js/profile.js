@@ -67,6 +67,22 @@ async function profileChangeEmail() {
   changeEmail(emailChange);
 }
 
-if (token) {
-  profileUser2()
+async function initProfile() {
+
+    if (!token) {
+        window.location.href = "/";
+        return;
+    }
+
+    profileUser2();
+    
+    const data = await profile();
+    if (!data) return;
+
+    if (data[0] && data[0].status !== null) {
+        document.getElementById('profileCompleteKYC').style.display = "none";
+    }
 }
+
+
+initProfile();

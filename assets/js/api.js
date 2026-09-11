@@ -86,6 +86,9 @@ async function login() {
     location.href = "./";
 }
 
+// =======================
+// Funcion de perfil
+// =======================
 async function profile() {
 
     const res = await fetch(API + "/auth/profile", {
@@ -100,32 +103,44 @@ async function profile() {
     return data.profile;
 }
 
-async function kycProfile(first_name, last_name, date_of_birth, nationality, address_line1, country, city, postal_code, document_type, document_country, document_expire) {
+// =======================
+// Funcion de KYC
+// =======================
+async function kycProfile(first_name, last_name, date_of_birth, nationality, address_line1, country, city, postal_code, document_type, document_country, document_expire, documentFile) {
+    const formData = new FormData();
+
+    formData.append("first_name", first_name);
+    formData.append("last_name", last_name);
+    formData.append("date_of_birth", date_of_birth);
+    formData.append("nationality", nationality);
+    formData.append("address_line1", address_line1);
+    formData.append("country", country);
+    formData.append("city", city);
+    formData.append("postal_code", postal_code);
+    formData.append("document_type", document_type);
+    formData.append("document_country", document_country);
+    formData.append("document_expire", document_expire);
+
+    formData.append("document", documentFile);
 
     const res = await fetch(API + "/auth/profile/kyc", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
             "Authorization": "Bearer " + token
         },
-        body: JSON.stringify({
-            first_name: `${first_name}`,
-            last_name: `${last_name}`,
-            date_of_birth: `${date_of_birth}`,
-            nationality: `${nationality}`,
-            address_line1: `${address_line1}`,
-            country: `${country}`,
-            city: `${city}`,
-            postal_code: postal_code,
-            document_type: `${document_type}`,
-            document_country: `${document_country}`,
-            document_expire: `${document_expire}`
-        })
+        body: formData
     });
 
     const data = await res.json();
-    return data.profile;
+
+    if (!data.error) {
+        showToast("KYC Registered", "success");
+        setTimeout(() => location.href = "/profile.html", 1500);
+    } else {
+        showToast(data.error, "error");
+    }
 }
+
 // ==========================
 // Funcion de depósito
 // ==========================
